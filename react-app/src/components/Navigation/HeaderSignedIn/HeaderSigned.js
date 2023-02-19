@@ -3,9 +3,13 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Avatar } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import * as sessionAction from '../../../store/session'
+import { useHistory } from 'react-router-dom';
 
 export default function BasicMenuSignedIn() {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -16,6 +20,13 @@ export default function BasicMenuSignedIn() {
     setAnchorEl(null);
   };
 
+  const handleLogOut = (e) =>{
+    e.preventDefault()
+    handleClose()
+    dispatch(sessionAction.logout())
+    history.push('/')
+
+  }
   return (
     <div>
       <Button
@@ -36,9 +47,9 @@ export default function BasicMenuSignedIn() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
+        {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+        <MenuItem onClick={handleLogOut}>Logout</MenuItem>
       </Menu>
     </div>
   );

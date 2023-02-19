@@ -32,14 +32,16 @@
   align-items: center;
 }
 
-.header_icons{
+.header_icons_home{
   display: flex;
   align-items: center;
   font-size: 25px;
+  cursor: pointer;
+  color: gray;
 }
 
 
-.header_icons:hover{
+.header_icons_home:hover{
 border-bottom: 5px solid blue;
 }
 

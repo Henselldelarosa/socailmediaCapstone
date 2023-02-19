@@ -21,9 +21,13 @@ function Navigation({ isLoaded }){
 
 
 				<div className='header_center'>
-					<div className='header_icons'>
-				<i className="fa-sharp fa-solid fa-house"></i>
+
+					<div title='Home'className='header_icons_home'>
+					<NavLink className='link' to='/'>
+				     <i className="fa-sharp fa-solid fa-house"></i>
+					</NavLink>
 					</div>
+
 				</div>
 
 				<div className='header_right'>
