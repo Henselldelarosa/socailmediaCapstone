@@ -22,5 +22,7 @@ class Post(db.Model):
           'post':self.post,
           'postUrl':self.postUrl,
           'dateCreated':self.dateCreated,
-          'userId':self.userId
+          'userId':self.userId,
+
+          'user':self.user.to_post_dict()
         }

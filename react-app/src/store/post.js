@@ -42,19 +42,36 @@ export const getAllPosts = () => async(dispatch) => {
        }
 }
 
+export const getPostById =(id) => async(dispatch) =>{
+  const response = await fetch(`/api/posts/${id}`)
+
+  if(response.ok){
+    const data = await response.json()
+    dispatch(get(data))
+    return data
+  }
+
+}
 
 let initialState = {}
 const postReducer = (state = initialState, action) => {
-
    switch(action.type){
+
       case GET_POSTS:{
       const newState = {...state}
       action.posts.forEach(post => {
         newState[post.id] = post
       })
       return newState
-
     }
+
+      case GET_POST:{
+        return {
+          ...state,
+          [action.post.id] : action.post
+        }
+      }
+
       default:
         return state
    }

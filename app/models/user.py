@@ -40,3 +40,11 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'userUrl': self.userUrl
         }
+
+    def to_post_dict(self):
+        return{
+            'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'userUrl': self.userUrl
+        }

@@ -1,0 +1,8 @@
+.post_user_info{
+  display: flex;
+  align-items: center;
+}
+
+.post_first_last{
+  padding-left: 10px;
+}

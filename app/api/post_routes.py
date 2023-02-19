@@ -28,6 +28,15 @@ def validation_errors_to_error_messages(validation_errors):
 def get_all_post():
     all_posts = db.session.query(Post).all()
     return {'posts': [post.to_dict() for post in all_posts]}
+
+# get post by Id
+@posts_routes.route("/<int:id>", methods=["GET"])
+def get_post_by_id(id):
+    wanted_post = Post.query.get(id)
+    return wanted_post.to_dict()
+
+
+
 #create post
 @posts_routes.route('/', methods=['POST'])
 @login_required

@@ -1,1 +1,9 @@
 /* TODO Add site wide styles */
+
+*{
+  margin: 0;
+}
+
+:root{
+  --theme: #4267B2;
+}
