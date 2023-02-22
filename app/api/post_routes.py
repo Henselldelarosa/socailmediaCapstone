@@ -64,7 +64,7 @@ def delete_post(id):
     desired_post = Post.query.get(id)
     if desired_post.userId == current_user.id:
         db.session.delete(desired_post)
-        db.session.commit
+        db.session.commit()
         return {'message': 'This post was successfully deleted'}
     else:
         return {'message': 'This post doesnt belong to you'}

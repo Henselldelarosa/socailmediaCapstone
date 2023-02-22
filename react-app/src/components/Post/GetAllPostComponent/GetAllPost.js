@@ -6,7 +6,7 @@ import LoginFormPage from '../../LoginFormPage'
 import './GetAllPost.css'
 import PostCard from './PostCard'
 import PostForm from '../PostFormComponent/PostForm'
-
+import { NavLink } from 'react-router-dom'
 
 function GetAllPost() {
   const dispatch = useDispatch()
@@ -20,6 +20,7 @@ function GetAllPost() {
 
 const handleDelete = (e,id,postId) =>{
 e.preventDefault()
+if(posts[id].userId = sessionuUser.id)
 dispatch(deletePost(deletePost(id, postId)))
 }
 
@@ -41,6 +42,7 @@ dispatch(deletePost(deletePost(id, postId)))
                   )}
 
                 <div>
+                  <NavLink className='posts_link' to={`/posts/${post.id}`}>
 
                 <PostCard
                 userUrl={post.user?.userUrl}
@@ -50,6 +52,7 @@ dispatch(deletePost(deletePost(id, postId)))
                 post={post.post}
                 postUrl={post.postUrl}
                 />
+                  </NavLink>
                 </div>
             </div>
           )})

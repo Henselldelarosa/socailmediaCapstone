@@ -6,3 +6,8 @@
 .post_first_last{
   padding-left: 10px;
 }
+
+.posts_link{
+  color: black;
+  text-decoration: none;
+}

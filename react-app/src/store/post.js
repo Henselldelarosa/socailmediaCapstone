@@ -68,10 +68,9 @@ export const addPost = (postData) => async(dispatch)=>{
   })
 
   const data = await response.json()
-  console.log(data)
   if(response.ok){
     data['postUrl'] = postUrl
-    dispatch(add(post))
+    dispatch(add(data))
     return data
 
   }else{
@@ -79,13 +78,13 @@ export const addPost = (postData) => async(dispatch)=>{
   }
 }
 
-export const deletePost = (id, replyId) => async(dispatch) => {
+export const deletePost = (id) => async(dispatch) => {
     const response = await fetch(`/api/posts/${id}`, {
       method:'delete'
     })
     if(response.ok){
       const data = await response.json()
-      dispatch(remove(id, replyId))
+      dispatch(remove(id))
       return data
     }
 }
