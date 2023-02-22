@@ -44,7 +44,7 @@ def create_post():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_in_submit():
+    if form.validate_on_submit():
        desired_post = Post(
         post = form.data['post'],
         postUrl = form.data['postUrl'],

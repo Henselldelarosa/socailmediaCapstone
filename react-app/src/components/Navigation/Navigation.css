@@ -25,6 +25,8 @@
   justify-content: space-between;
   background-color: var(--theme);
   border-bottom: 1px solid gray;
+  position: sticky;
+  top: 0;
 }
 
 .header_center{

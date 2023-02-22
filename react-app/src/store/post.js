@@ -20,9 +20,10 @@ const update = (post) =>({
   post
 })
 
-const remove = (postId) =>({
+const remove = (id,replyId) =>({
   type:DELETE_POST,
-  postId
+  id,
+  replyId
 })
 
 const add = (post) =>({
@@ -53,6 +54,42 @@ export const getPostById =(id) => async(dispatch) =>{
 
 }
 
+export const addPost = (postData) => async(dispatch)=>{
+  const {post, postUrl, userId} = postData
+  const response = await fetch(`/api/posts/`, {
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      post,
+      postUrl
+    })
+  })
+
+  const data = await response.json()
+  console.log(data)
+  if(response.ok){
+    data['postUrl'] = postUrl
+    dispatch(add(post))
+    return data
+
+  }else{
+    return data
+  }
+}
+
+export const deletePost = (id, replyId) => async(dispatch) => {
+    const response = await fetch(`/api/posts/${id}`, {
+      method:'delete'
+    })
+    if(response.ok){
+      const data = await response.json()
+      dispatch(remove(id, replyId))
+      return data
+    }
+}
+
 let initialState = {}
 const postReducer = (state = initialState, action) => {
    switch(action.type){
@@ -72,6 +109,17 @@ const postReducer = (state = initialState, action) => {
         }
       }
 
+      case ADD_POST:{
+        return{
+          ...state,
+          [action.post.id] : action.post
+        }
+      }
+      case DELETE_POST:{
+        const newState = {...state}
+        delete newState[action.id]
+        return newState
+      }
       default:
         return state
    }
