@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import BasicMenuSignedIn from './HeaderSignedIn/HeaderSigned';
 
@@ -47,19 +46,7 @@ function Navigation({ isLoaded }){
 
 
 	return (isLoaded, sessionLinks)
-// console.log(sessionUser)
-// 	return (
-// 		<ul>
-// 			<li>
-// 				<NavLink exact to="/">Home</NavLink>
-// 			</li>
-// 			{isLoaded && (
-// 				<li>
-// 					<ProfileButton user={sessionUser} />
-// 				</li>
-// 			)}
-// 		</ul>
-// 	);
+
 }
 
 export default Navigation;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import './LoginForm.css';
 
 
@@ -23,35 +23,81 @@ function LoginFormPage() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
+
+    <div className="login">
+      <h1 className="login_logo">Sagebook</h1>
+
+      <div className="login_container">
+        <h3>Login In To Sagebook</h3>
+      <form>
+        <center>
+        <input
+        type='email'
+        className="login_ele"
+        placeholder="Email Address"
+        />
+        </center>
+
+        <center>
+        <input
+        type='password'
+        className="login_ele"
+        placeholder="Password"
+        />
+        </center>
+
+
+        <center>
+          <button type='submit' className="login_button">
+            Log In
+          </button>
+        </center>
+
+        
+        <center>
+
+        <div className="bottom_info">
+          <button className="login_signup">
+          <NavLink className='link' to='/signup'>Create new account </NavLink>
+          </button>
+        </div>
+
+        </center>
       </form>
-    </>
+
+      </div>
+
+    </div>
+    // <div className="login_form_div">
+    //   <h1 className="loging_header">Login</h1>
+    //   <form className='login_form' onSubmit={handleSubmit}>
+    //     <ul>
+    //       {errors.map((error, idx) => (
+    //         <li key={idx}>{error}</li>
+    //       ))}
+    //     </ul>
+
+    //     <input
+    //     type="text"
+    //     className="login_ele"
+    //     placeholder="Email"
+    //     value={email}
+    //     onChange={(e) => setEmail(e.target.value)}
+    //     required
+    //     />
+
+    //     <input
+    //     type='text'
+    //     className="login_ele"
+    //     placeholder="Password"
+    //     value={password}
+    //     onChange={(e) => setPassword(e.target.value)}
+    //     required
+    //     />
+
+    //     <button type="submit">Log In</button>
+    //   </form>
+    // </div>
   );
 }
 

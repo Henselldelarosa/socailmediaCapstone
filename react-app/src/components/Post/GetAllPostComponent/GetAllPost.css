@@ -11,3 +11,25 @@
   color: black;
   text-decoration: none;
 }
+
+.post_form{
+  display: flex;
+}
+
+
+
+.all_post_delete_button{
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--theme);
+  cursor: pointer;
+  border: none;
+  border-radius: 500px;
+  transition: 0.5s;
+}
+
+.all_post_delete_button:hover{
+  box-shadow: 0 0 7.5px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+}

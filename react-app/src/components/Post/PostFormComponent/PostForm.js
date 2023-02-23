@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './PostForm.css'
 import { addPost } from '../../../store/post'
 import { Avatar } from '@mui/material'
-
+// import {useForm} from 'react-hook-form'
 
 
 function PostForm() {
@@ -14,12 +14,26 @@ const [error, setError] = useState([])
 const [post, setPost] = useState('')
 const [postUrl, setPostUrl] = useState('')
 
-
 const updatePost = (e) => setPost(e.target.value)
 const updatePostUrl = (e) => setPostUrl(e.target.value)
 
+// useEffect(() => {
+//   let errors=[]
+//   if(!post){
+//     errors.push("Post field can't be empty")
+//   }
+//   setError(errors)
+// },[setError])
 
-const handleSubmit = async (e) =>{
+let formRef = useRef()
+
+useEffect(() =>{
+if(!updatePost){
+  formRef.current?.reset()
+}
+})
+
+const handleSubmit =  (e) =>{
   e.preventDefault()
   setError([])
 
@@ -28,15 +42,30 @@ const handleSubmit = async (e) =>{
     post,
     postUrl
   }
+let error = []
+  if(!payload.post){
+    error.push("Post field can't be empty")
+  }
 
-  await dispatch(addPost(payload))
+  if(payload.postUrl !== ''){
+    if(!payload.postUrl.endsWith('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tif', '.tiff')){
+      error.push('Not a Valid Image')
+    }
+  }
+  dispatch(addPost(payload))
+  setError(error)
+  setPostUrl('')
+  setPost('')
 }
   return (
     <div className='post_create_form'>
 
       <div className='post_form_top'>
         <Avatar src={user.userUrl}/>
-        <form onSubmit={handleSubmit}>
+        <form ref={formRef} onSubmit={handleSubmit}>
+          <ul>
+            {error && error.map((error, id) => <li key={id}>{error}</li>)}
+          </ul>
 
           <input
           type='text'

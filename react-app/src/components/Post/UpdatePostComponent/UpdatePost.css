@@ -1,0 +1,72 @@
+.update_post_user_info{
+  display: flex;
+  background-color:gray;
+}
+
+.update_post_user_name{
+  display: flex;
+  margin:5px;
+}
+
+.submit_button{
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--theme);
+  cursor: pointer;
+  border: none;
+  border-radius: 500px;
+  transition: 0.5s;
+}
+
+.submit_button:hover{
+  box-shadow: 0 0 7.5px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+}
+
+.cancel_button{
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--theme);
+  cursor: pointer;
+  border: none;
+  border-radius: 500px;
+  transition: 0.5s;
+}
+
+.cancel_button:hover{
+  box-shadow: 0 0 7.5px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+}
+
+.update_post_buttons{
+display: flex;
+margin-left: 20px;
+margin-top:10px ;
+
+}
+
+.update_cancel_div{
+  margin-left: 5px;
+}
+
+.update_ele{
+background-color: transparent;
+font-weight: bold;
+background-color: var(--theme);
+}
+
+.update_post_ele{
+  font-weight: 800;
+  font-size: 18px;
+  color: black;
+}
+
+.update_ele{
+  margin-right:10px ;
+}
+
+.update_label{
+  padding-left: 100px;
+}

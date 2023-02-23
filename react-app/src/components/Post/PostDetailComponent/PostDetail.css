@@ -1,0 +1,22 @@
+.edit_button{
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: var(--theme);
+  cursor: pointer;
+  border: none;
+  border-radius: 500px;
+  transition: 0.5s;
+}
+
+.edit_button:hover{
+  box-shadow: 0 0 7.5px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+}
+
+
+
+.post_info{
+  display: flex;
+  align-items: center;
+}
