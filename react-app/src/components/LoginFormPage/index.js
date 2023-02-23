@@ -29,12 +29,15 @@ function LoginFormPage() {
 
       <div className="login_container">
         <h3>Login In To Sagebook</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <center>
         <input
         type='email'
         className="login_ele"
         placeholder="Email Address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
         />
         </center>
 
@@ -43,6 +46,9 @@ function LoginFormPage() {
         type='password'
         className="login_ele"
         placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
         />
         </center>
 
@@ -53,7 +59,8 @@ function LoginFormPage() {
           </button>
         </center>
 
-        
+
+      </form>
         <center>
 
         <div className="bottom_info">
@@ -63,7 +70,6 @@ function LoginFormPage() {
         </div>
 
         </center>
-      </form>
 
       </div>
 
