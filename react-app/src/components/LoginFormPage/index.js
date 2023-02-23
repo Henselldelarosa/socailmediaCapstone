@@ -30,6 +30,13 @@ function LoginFormPage() {
       <div className="login_container">
         <h3>Login In To Sagebook</h3>
       <form onSubmit={handleSubmit}>
+
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+
         <center>
         <input
         type='email'
