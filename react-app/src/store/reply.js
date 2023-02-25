@@ -1,12 +1,14 @@
-// const GETS_REPLY = 'reply/GETS_REPLY'
+const GET_REPLIES = 'reply/GET_REPLIES'
 // const ADD_REPLY = 'reply/ADD_REPLY'
 // const DELETE_REPLY = 'reply/DELETE_REPLY'
 // const UPDATE_REPLY = 'reply/UPDATE_REPLY'
 
 
-// const getsReply = (replies) =>({
-//   type:GETS_REPLY
-// })
+const gets = (replies,id) =>({
+  type:GET_REPLIES,
+  replies,
+  id
+})
 
 
 // const addReply = () =>({
@@ -24,9 +26,16 @@
 // })
 
 
-// export const getAllReplies= () => async(dispatch) =>{
-//   const response = null
-// }
+export const getAllReplies= (id) => async(dispatch) =>{
+  const response = await fetch(`/api/replies/posts/${id}`)
+
+  if(response.ok){
+    const data = await response.json()
+
+    dispatch(gets(data, id))
+    return data
+  }
+}
 
 
 
@@ -50,18 +59,21 @@
 
 
 
-// let initialState ={}
-// const replyReducer = (state = initialState, action) =>{
-//   swicth(action.type){
+let initialState ={}
+const replyReducer = (state = initialState, action) => {
+  switch(action.type){
 
-//     case GETS_REPLY:{
-//       const newState = {...state}
-//     }
+    case GET_REPLIES:{
+      const newState = {...state}
+      console.log(action, 'dadfadfadf')
+      action.replies.replies.forEach((reply) => {
+        newState[reply.id] = reply
+      })
+      return newState
+    }
+    default:
+      return state
+  }
+}
 
-
-//     default:
-//       return state
-//   }
-// }
-
-// export default replyReducer
+export default replyReducer

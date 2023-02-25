@@ -23,6 +23,6 @@ class Post(db.Model):
           'postUrl':self.postUrl,
           'dateCreated':self.dateCreated,
           'userId':self.userId,
-
-          'user':self.user.to_post_dict()
+          'user':self.user.to_post_dict(),
+          # 'reply':self.reply.to_post_reply_dict()
         }

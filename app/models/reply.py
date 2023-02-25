@@ -18,12 +18,21 @@ class Reply(db.Model):
      user = db.relationship('User', back_populates='replies')
      posts = db.relationship('Post', back_populates='replies')
 
-     def to_dic(self):
+     def to_dict(self):
          return{
           'id': self.id,
           'reply': self.reply,
           'replyUrl': self.replyUrl,
           'dateCreated': self.dateCreated,
           'postId': self.postId,
-          'userId': self.userId
+          'userId': self.userId,
+          'user':self.user.to_post_dict(),
          }
+
+    #  def to_post_reply_dict(self):
+    #       return{
+    #         'id': self.id,
+    #         'reply': self.reply,
+    #         'replyUrl': self.replyUrl,
+    #         'userId': self.userId
+    #       }

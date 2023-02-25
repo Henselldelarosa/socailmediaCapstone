@@ -130,13 +130,6 @@ const postReducer = (state = initialState, action) => {
         }
       }
 
-
-      // case UPDATE_POST:{
-      //   const newState = Object.assign({}, state)
-      //   newState['post'].post = action.post
-      //   newState['post'].postUrl = action.post
-      //   return newState
-      // }
       case ADD_POST:
       case UPDATE_POST:
         return{

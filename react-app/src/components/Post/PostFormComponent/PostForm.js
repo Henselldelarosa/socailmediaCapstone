@@ -91,10 +91,10 @@ let error = []
       </div>
 
       <div className='post_form_bottom'>
-        <div className='options'>
+        {/* <div className='options'>
       <i className="fa-solid fa-image" style={{color:'red'}}/>
       <h3>Photo</h3>
-        </div>
+        </div> */}
         <div>
 
         </div>

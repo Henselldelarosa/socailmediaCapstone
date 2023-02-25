@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getAllReplies } from '../../../store/reply'
 import { getAllPosts, deletePost} from '../../../store/post'
 // import { Avatar } from '@mui/material'
 import LoginFormPage from '../../LoginFormPage'
@@ -13,10 +14,13 @@ function GetAllPost() {
   const dispatch = useDispatch()
   const sessionuUser = useSelector(state=> state.session.user)
   const posts = useSelector(state => Object.values(state.posts))
+  // const replies = useSelector(state => Object.values(state.replies))
 
+  // console.log(replies)
 
   useEffect(() =>{
     dispatch(getAllPosts())
+    // dispatch(getAllReplies(id))
   },[dispatch])
 
 
