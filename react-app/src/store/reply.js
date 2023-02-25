@@ -27,13 +27,12 @@ const gets = (replies,id) =>({
 
 
 export const getAllReplies= (id) => async(dispatch) =>{
-  const response = await fetch(`/api/replies/posts/${parseInt(id)}`)
+  const response = await fetch(`/api/replies/posts/${id}`)
 
   if(response.ok){
     const data = await response.json()
-
-    dispatch(gets(data, parseInt(id)))
-    return data
+    dispatch(gets(data))
+    // return data
   }
 }
 
