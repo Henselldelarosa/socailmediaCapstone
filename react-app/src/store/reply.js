@@ -27,12 +27,12 @@ const gets = (replies,id) =>({
 
 
 export const getAllReplies= (id) => async(dispatch) =>{
-  const response = await fetch(`/api/replies/posts/${id}`)
+  const response = await fetch(`/api/replies/posts/${parseInt(id)}`)
 
   if(response.ok){
     const data = await response.json()
 
-    dispatch(gets(data, id))
+    dispatch(gets(data, parseInt(id)))
     return data
   }
 }
@@ -65,7 +65,6 @@ const replyReducer = (state = initialState, action) => {
 
     case GET_REPLIES:{
       const newState = {...state}
-      console.log(action, 'dadfadfadf')
       action.replies.replies.forEach((reply) => {
         newState[reply.id] = reply
       })

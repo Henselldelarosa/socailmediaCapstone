@@ -19,7 +19,12 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 # Get all Replies
+# @replies_routes.route('/posts/<int:id>', methods=['GET'])
+# def get_all_reply(id):
+#     all_reply = db.session.query(Reply).filter(Reply.postId is id)
+#     return {'replies': [reply.to_dict() for reply in all_reply]}
+
 @replies_routes.route('/posts/<int:id>', methods=['GET'])
 def get_all_reply(id):
-    all_reply = db.session.query(Reply).filter(Reply.postId.like(id))
+    all_reply = Reply.query.filter(Reply.postId == int(id))
     return {'replies': [reply.to_dict() for reply in all_reply]}

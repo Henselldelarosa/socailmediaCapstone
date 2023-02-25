@@ -59,6 +59,8 @@ function PostDetail() {
             </div>
           )
         })}
+        <div>
+        </div>
       </div>:<></>
       )
     }
