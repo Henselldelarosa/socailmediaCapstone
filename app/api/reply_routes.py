@@ -28,3 +28,20 @@ def validation_errors_to_error_messages(validation_errors):
 def get_all_reply(id):
     all_reply = Reply.query.filter(Reply.postId == int(id))
     return {'replies': [reply.to_dict() for reply in all_reply]}
+
+
+# create reply
+@replies_routes.route('/posts/<int:id>', methods=['POST'])
+@login_required
+def create_reply(id):
+    wanted_post = Post.query.get(id)
+
+    form = ReplyForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        created_reply = Reply(reply = form.data['reply'], replyUrl = form.data['replyUrl'],
+                         userId = current_user.id, postId = wanted_post.id)
+        db.session.add(created_reply)
+        db.session.commit()
+        return create_reply.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

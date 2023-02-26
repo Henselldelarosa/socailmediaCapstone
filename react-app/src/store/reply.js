@@ -31,8 +31,8 @@ export const getAllReplies= (id) => async(dispatch) =>{
 
   if(response.ok){
     const data = await response.json()
-    dispatch(gets(data))
-    // return data
+    dispatch(gets(data, id))
+    return data
   }
 }
 
@@ -63,7 +63,7 @@ const replyReducer = (state = initialState, action) => {
   switch(action.type){
 
     case GET_REPLIES:{
-      const newState = {...state}
+      const newState = {}
       action.replies.replies.forEach((reply) => {
         newState[reply.id] = reply
       })

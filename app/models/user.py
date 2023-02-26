@@ -48,3 +48,12 @@ class User(db.Model, UserMixin):
             'lastName': self.lastName,
             'userUrl': self.userUrl
         }
+
+
+    def to_reply_dict(self):
+        return{
+            'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'userUrl': self.userUrl
+        }

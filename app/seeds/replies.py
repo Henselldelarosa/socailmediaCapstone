@@ -5,10 +5,10 @@ def seed_replies():
     reply1 = Reply( reply='How Good?', userId=2, postId=1)
     reply2 = Reply( reply='Wassup', userId=2, postId=1)
     reply3 = Reply( reply='Yes it was', userId=3, postId=2)
-    reply4 = Reply( reply='Chest day?', userId=4, postId=2)
-    reply5 = Reply( reply='My day been good', userId=6, postId=3)
-    reply6 = Reply( reply='That helps', userId=2, postId=4)
-    reply7 = Reply( reply='Not cool', userId=2, postId=5)
+    reply4 = Reply( reply='Chest day?', userId=3, postId=2)
+    reply5 = Reply( reply='My day been good', userId=1, postId=3)
+    reply6 = Reply( reply='That helps', userId=1, postId=4)
+    reply7 = Reply( reply='Not cool', userId=1, postId=5)
 
 
     db.session.add(reply1)

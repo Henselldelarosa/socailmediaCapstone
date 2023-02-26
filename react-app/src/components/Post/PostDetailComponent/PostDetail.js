@@ -7,6 +7,10 @@ import UpdatePost from '../UpdatePostComponent/UpdatePost'
 import { getAllReplies } from '../../../store/reply'
 import './PostDetail.css'
 
+import ReplyCard from '../../Replies/ReplyDetailComponent/ReplyCard'
+import { Avatar } from '@mui/material'
+import CreateReply from '../../Replies/CreateReplyComponent/CreateReply'
+
 function PostDetail() {
   const dispatch = useDispatch()
   const {id} = useParams()
@@ -52,10 +56,19 @@ function PostDetail() {
         post={post.post}
         postUrl={post.postUrl}
         />
+        <CreateReply/>
+
         {replies && replies.map((reply) => {
           return (
             <div key ={reply.id}>
-              <p>{reply.reply}</p>
+              <ReplyCard
+              userUrl={reply.user.userUrl}
+              firstName={reply.user.firstName}
+              lastName={reply.user.lastName}
+              dateCreated={reply.dateCreated}
+              reply={reply.reply}
+              replyUrl={reply.replyUrl}
+              />
             </div>
           )
         })}

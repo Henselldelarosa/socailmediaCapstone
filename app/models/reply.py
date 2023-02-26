@@ -26,7 +26,7 @@ class Reply(db.Model):
           'dateCreated': self.dateCreated,
           'postId': self.postId,
           'userId': self.userId,
-          'user':self.user.to_post_dict(),
+          'user' : self.user.to_reply_dict()
          }
 
     #  def to_post_reply_dict(self):
