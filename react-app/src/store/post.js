@@ -62,7 +62,7 @@ export const getPostById =(id) => async(dispatch) =>{
 }
 
 export const addPost = (postData) => async(dispatch)=>{
-  const {post, postUrl, userId} = postData
+  const {post, postUrl} = postData
   const response = await fetch(`/api/posts/`, {
     method:'POST',
     headers: {

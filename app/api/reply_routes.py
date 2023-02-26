@@ -35,12 +35,17 @@ def get_all_reply(id):
 @login_required
 def create_reply(id):
     wanted_post = Post.query.get(id)
-
     form = ReplyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
-        created_reply = Reply(reply = form.data['reply'], replyUrl = form.data['replyUrl'],
-                         userId = current_user.id, postId = wanted_post.id)
+        created_reply = Reply(
+            reply = form.data['reply'],
+            replyUrl = form.data['replyUrl'],
+            postId = wanted_post.id,
+            userId = current_user.id
+            )
+
         db.session.add(created_reply)
         db.session.commit()
         return create_reply.to_dict()

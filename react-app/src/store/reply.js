@@ -1,5 +1,5 @@
 const GET_REPLIES = 'reply/GET_REPLIES'
-// const ADD_REPLY = 'reply/ADD_REPLY'
+const ADD_REPLY = 'reply/ADD_REPLY'
 // const DELETE_REPLY = 'reply/DELETE_REPLY'
 // const UPDATE_REPLY = 'reply/UPDATE_REPLY'
 
@@ -11,9 +11,11 @@ const gets = (replies,id) =>({
 })
 
 
-// const addReply = () =>({
-//   type:ADD_REPLY
-// })
+const addReply = (reply,postId) =>({
+  type:ADD_REPLY,
+  reply,
+  postId
+})
 
 
 // const removeReply = () =>({
@@ -38,9 +40,23 @@ export const getAllReplies= (id) => async(dispatch) =>{
 
 
 
-// export const addAReplies= () => async(dispatch) =>{
-//   const response = null
-// }
+export const addAReply= (postId,replyData,user) => async(dispatch) =>{
+  // const {reply, replyUrl} = replyData
+  const response = await fetch(`/api/replies/posts/${postId}`, {
+    method:'POST',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(replyData)
+  })
+
+  if (response.ok){
+    const data = await response.json()
+    // data['replyUrl'] = replyUrl
+    dispatch(addReply(data, postId))
+    return data
+  }
+}
 
 
 
@@ -68,6 +84,13 @@ const replyReducer = (state = initialState, action) => {
         newState[reply.id] = reply
       })
       return newState
+    }
+
+    case ADD_REPLY:{
+      return{
+        ...state,
+        [action.reply.id] : action.reply
+      }
     }
     default:
       return state
