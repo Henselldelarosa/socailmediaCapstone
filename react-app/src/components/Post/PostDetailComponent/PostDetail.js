@@ -19,7 +19,6 @@ function PostDetail() {
   const sessionUser = useSelector(state => state.session.user)
   const [showEditPostForm, setShowEditPostForm] = useState(false)
 
-  console.log(replies)
 
   useEffect(() =>{
     dispatch(postActions.getPostById(id))

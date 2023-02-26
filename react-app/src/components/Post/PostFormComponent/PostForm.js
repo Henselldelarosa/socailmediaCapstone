@@ -17,13 +17,6 @@ const [postUrl, setPostUrl] = useState('')
 const updatePost = (e) => setPost(e.target.value)
 const updatePostUrl = (e) => setPostUrl(e.target.value)
 
-// useEffect(() => {
-//   let errors=[]
-//   if(!post){
-//     errors.push("Post field can't be empty")
-//   }
-//   setError(errors)
-// },[setError])
 
 let formRef = useRef()
 

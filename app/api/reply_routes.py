@@ -26,7 +26,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @replies_routes.route('/posts/<int:id>', methods=['GET'])
 def get_all_reply(id):
-    all_reply = Reply.query.filter(Reply.postId == int(id))
+    all_reply = Reply.query.filter(Reply.postId == str(id))
     return {'replies': [reply.to_dict() for reply in all_reply]}
 
 
@@ -34,7 +34,6 @@ def get_all_reply(id):
 @replies_routes.route('/posts/<int:id>', methods=['POST'])
 @login_required
 def create_reply(id):
-    wanted_post = Post.query.get(id)
     form = ReplyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -42,11 +41,23 @@ def create_reply(id):
         created_reply = Reply(
             reply = form.data['reply'],
             replyUrl = form.data['replyUrl'],
-            postId = wanted_post.id,
+            postId = id,
             userId = current_user.id
             )
 
         db.session.add(created_reply)
         db.session.commit()
-        return create_reply.to_dict()
+        return created_reply.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# delete reply
+@replies_routes.route('/posts/<int:id>', methods=['DELETE'])
+@login_required
+def delete_reply(id):
+    wanted_reply= Reply.query.get(id)
+    if wanted_reply.userId == current_user.id:
+        db.session.delete(wanted_reply)
+        db.session.commit()
+        return {'message': 'This reply was successfully deleted'}
+    else:
+        return {'message': 'This reply doesnt belong to you'}

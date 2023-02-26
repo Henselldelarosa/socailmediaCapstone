@@ -11,9 +11,11 @@ import { Avatar } from '@mui/material'
 function CreateReply() {
   const dispatch = useDispatch()
   const {id} = useParams()
+  console.log(id)
+
   const user = useSelector(state => state.session.user)
+  // const actualId= parseInt(id)
   const post = useSelector(state => state.posts[id])
-  console.log(post)
 
   const [errorMesaage , setErrorMesaage] = useState([])
   const [reply, setReply] = useState('')
@@ -21,6 +23,7 @@ function CreateReply() {
 
   const updateReply = (e) => setReply(e.target.value)
   const updateReplyUrl = (e) => setReplyUrl(e.target.value)
+// console.log(post.id)
 
   useEffect(() => {
     dispatch(getPostById(id))
@@ -57,6 +60,10 @@ function CreateReply() {
       <Avatar src={user.userUrl}/>
 
       <form className='reply_form' onSubmit={handleSubmit}>
+        
+         <ul>
+            {errorMesaage && errorMesaage.map((error, id) => <li key={id}>{error}</li>)}
+          </ul>
 
         <input
         type='text'

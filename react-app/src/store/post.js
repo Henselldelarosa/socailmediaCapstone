@@ -15,11 +15,7 @@ const get = (post) =>({
   post
 })
 
-// const update = (post, id) =>({
-//   type: UPDATE_POST,
-//   post,
-//   id
-// })
+
 
 const update = (post) =>({
   type: UPDATE_POST,
