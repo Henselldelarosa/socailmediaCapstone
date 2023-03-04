@@ -86,7 +86,7 @@ export const updateReplies = (data) => async(dispatch) =>{
 
   if (response.ok){
     const reply = await response.json()
-    dispatch(update(reply))
+    dispatch(update(reply, data.postId))
     return reply
   }
 }

@@ -41,19 +41,24 @@ function ReplyForm({
 
 
   const [editReply, setEditReply] = useState(false)
-  const [currentReplyDetail, setCurrentReplyDetail] = useState(reply.reply)
+  const [currentReplyDetail, setCurrentReplyDetail] = useState(reply)
+  const [currentReplyUrlDetail, setCurrentReplyUrlDetail] = useState(replyUrl)
   const [errorMessages, setErrorMessages] = useState([])
 // const [, set] = useState()
 
+const updateReply = (e) => setCurrentReplyDetail(e.target.value)
+const updateReplyUrl = (e) => setCurrentReplyUrlDetail(e.target.value)
 
   const handleEdit = (e) => {
     e.preventDefault()
     const editedReply = {
-      reply: currentReplyDetail
+      reply: currentReplyDetail,
+      replyUrl: currentReplyUrlDetail
     }
 
     dispatch(updateReplies(editedReply,postId, id))
     setCurrentReplyDetail('')
+    setCurrentReplyUrlDetail('')
     setEditReply(false)
   }
 
@@ -71,13 +76,17 @@ function ReplyForm({
         <input
          type='text'
          value={currentReplyDetail}
-         onChange={(e) => {
-          setCurrentReplyDetail(e.target.value)
-         }}
+         onChange={updateReply}
          />
 
+         <input
+           type='text'
+           valur={currentReplyUrlDetail}
+           onChange = {updateReplyUrl}
+           />
+
          <form onSubmit={handleEdit}>
-          <button onClick={() => {setEditReply(false)}}>Cancel</button>
+          <button onClick={() => setEditReply(false)}>Cancel</button>
           <button>Apply Changes</button>
          </form>
       </div>
