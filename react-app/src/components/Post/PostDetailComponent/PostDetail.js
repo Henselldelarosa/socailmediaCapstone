@@ -36,7 +36,7 @@ function PostDetail() {
          reply={replyObj[reply].reply}
          replyUrl={replyObj[reply].replyUrl}
          dateCreated={replyObj[reply].dateCreated}
-         postId={replyObj[reply].reply.postId}
+         postId={replyObj[reply].postId}
          firstName={replyObj[reply].user.firstName}
          lastName={replyObj[reply].user.lastName}
          userUrl = {replyObj[reply].user.userUrl}
