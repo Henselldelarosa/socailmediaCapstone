@@ -51,7 +51,7 @@ function ReplyForm({
     e.preventDefault()
 
     dispatch(updateReplies(replyData, id, postId))
-    setReplyDetail('')
+    setReplyData('')
     setEditReply(false)
   }
 
@@ -68,9 +68,9 @@ function ReplyForm({
 
         <input
          type='text'
-         value={replyDetail}
+         value={replyData}
          onChange={(e) => {
-          setReplyDetail(e.target.value)
+          setReplyData(e.target.value)
          }}
          />
 
