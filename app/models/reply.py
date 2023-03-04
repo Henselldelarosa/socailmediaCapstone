@@ -30,10 +30,10 @@ class Reply(db.Model):
           'posts': self.posts.to_dict()
          }
 
-    #  def to_post_reply_dict(self):
-    #       return{
-    #         'id': self.id,
-    #         'reply': self.reply,
-    #         'replyUrl': self.replyUrl,
-    #         'userId': self.userId
-    #       }
+     def to_post_reply_dict(self):
+          return{
+            'id': self.id,
+            'reply': self.reply,
+            'replyUrl': self.replyUrl,
+            'userId': self.userId
+          }

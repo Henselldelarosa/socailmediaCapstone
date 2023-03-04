@@ -24,6 +24,7 @@ def validation_errors_to_error_messages(validation_errors):
 #     all_reply = db.session.query(Reply).filter(Reply.postId is id)
 #     return {'replies': [reply.to_dict() for reply in all_reply]}
 
+# Get all Replies
 @replies_routes.route('/posts/<int:id>', methods=['GET'])
 def get_all_reply(id):
     all_reply = Reply.query.filter(Reply.postId == str(id))
@@ -49,6 +50,27 @@ def create_reply(id):
         db.session.commit()
         return created_reply.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+#Update reply
+@replies_routes.route('/posts/<int:id>', methods=['PUT'])
+@login_required
+def update_reply(id):
+    form = ReplyForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        wanted_reply = Reply.query.get(id)
+        if wanted_reply.userId == current_user.id:
+           wanted_reply.reply = form.data['reply']
+           wanted_reply.replyUrl = form.data['replyUrl']
+
+           db.session.commit()
+           return wanted_reply.to_dict()
+        else:
+            return {'message': 'You are not allowed to edit this post'}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
 
 # delete reply
 @replies_routes.route('/posts/<int:id>', methods=['DELETE'])

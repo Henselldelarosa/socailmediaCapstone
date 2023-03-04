@@ -2,19 +2,19 @@ from app.models import db, Post, environment, SCHEMA
 
 
 def seed_posts():
-    post1 = Post(post = 'Today was a good day', userId=1)
+    post1 = Post(post = 'Today was a good day', postUrl='', userId=1)
 
-    post2 = Post(post = 'Hello World', userId=1)
+    post2 = Post(post = 'Hello World', postUrl='', userId=1)
 
-    post3 = Post(post = 'Great Summer', userId=2)
+    post3 = Post(post = 'Great Summer', postUrl='', userId=2)
 
-    post4 = Post(post = 'Great gym day today', userId=3)
+    post4 = Post(post = 'Great gym day today', postUrl='', userId=3)
 
-    post5 = Post(post = 'Hows Everyone Day?', userId=3)
+    post5 = Post(post = 'Hows Everyone Day?', postUrl='', userId=3)
 
-    post6 = Post(post = 'simply jump inside a body of water. this is better when you add soap', userId=1)
+    post6 = Post(post = 'simply jump inside a body of water. this is better when you add soap', postUrl='', userId=1)
 
-    post7 = Post(post = 'i came here to troll', userId=1)
+    post7 = Post(post = 'i came here to troll', postUrl='', userId=1)
 
 
     db.session.add(post1)

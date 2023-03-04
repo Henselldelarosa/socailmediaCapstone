@@ -24,5 +24,4 @@ class Post(db.Model):
           'dateCreated':self.dateCreated,
           'userId':self.userId,
           'user':self.user.to_post_dict(),
-          # 'reply':self.reply.to_post_reply_dict()
         }

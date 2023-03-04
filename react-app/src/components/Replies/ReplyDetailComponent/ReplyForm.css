@@ -1,0 +1,48 @@
+.reply{
+  display: block;
+  box-sizing: border-box;
+  width: 50%;
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 5px  7px -7px rgba(0, 0, 0, .75);
+}
+
+.reply_top{
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--theme);
+  height: 25px;
+  border-radius: 10px;
+}
+
+.reply_avatar{
+  margin-right: 10px;
+}
+
+.reply_topInfo > p{
+font-size: small;
+color: darkgray;
+}
+
+.reply_topInfo > h3{
+  font-size: medium;
+}
+
+.reply_user_info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit_delete_dropdown_icon{
+  color:black;
+  transition: 0.5s;
+}
+
+.edit_delete_dropdown_icon:hover{
+  color:white;
+  transform: scale(0.95);
+}

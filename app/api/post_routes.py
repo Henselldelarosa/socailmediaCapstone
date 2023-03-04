@@ -58,19 +58,6 @@ def create_post():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-# delete a post
-@posts_routes.route('/<int:id>', methods=['DELETE'])
-@login_required
-def delete_post(id):
-    desired_post = Post.query.get(id)
-    if desired_post.userId == current_user.id:
-        db.session.delete(desired_post)
-        db.session.commit()
-        return {'message': 'This post was successfully deleted'}
-    else:
-        return {'message': 'This post doesnt belong to you'}
-
-
 # edit a post
 @posts_routes.route('/<int:id>', methods=['PUT'])
 @login_required
@@ -92,3 +79,16 @@ def edit_post(id):
             return {'message': 'You are not allowed to edit this post'}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+# delete a post
+@posts_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_post(id):
+    desired_post = Post.query.get(id)
+    if desired_post.userId == current_user.id:
+        db.session.delete(desired_post)
+        db.session.commit()
+        return {'message': 'This post was successfully deleted'}
+    else:
+        return {'message': 'This post doesnt belong to you'}
