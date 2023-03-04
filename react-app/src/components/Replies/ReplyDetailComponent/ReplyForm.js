@@ -29,6 +29,7 @@ function ReplyForm({
 }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
+  const replies = useSelector(state => Object.values(state.replies))
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -41,18 +42,15 @@ function ReplyForm({
 
 
   const [editReply, setEditReply] = useState(false)
-  const [replyDetail, setReplyDetail] = useState('')
+  const [replyData, setReplyData] = useState(replies[id])
   const [errorMessages, setErrorMessages] = useState([])
 // const [, set] = useState()
 
 
   const handleEdit = (e) => {
     e.preventDefault()
-    const editedReply = {
-      reply: replyDetail
-    }
 
-    dispatch(updateReplies(editedReply, id, postId))
+    dispatch(updateReplies(replyData, id, postId))
     setReplyDetail('')
     setEditReply(false)
   }
@@ -66,7 +64,7 @@ function ReplyForm({
     <>
     {editReply ? (
       <div>
-        <Avatar src={reply.user.userUrl}/>
+        <Avatar src={userUrl}/>
 
         <input
          type='text'
@@ -118,8 +116,8 @@ function ReplyForm({
 
                 }}
               >
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
-                <MenuItem onClick={handleClose}>Delete</MenuItem>
+                <MenuItem onClick={(e) => {setEditReply(true)}}>Edit</MenuItem>
+                <MenuItem onClick={(e) => {handleDelete(e)}}>Delete</MenuItem>
               </Menu>
               </div>
               )}

@@ -23,9 +23,11 @@ const removeReply = (id) =>({
 })
 
 
-const update = (reply) =>({
+const update = (reply, id, postId) =>({
   type:UPDATE_REPLY,
-  reply
+  reply,
+  id,
+  postId
 })
 
 
@@ -75,18 +77,18 @@ export const deleteReplies= (id) => async(dispatch) =>{
 
 
 
-export const updateReplies = (data) => async(dispatch) =>{
-  const response = await fetch(`/api/replies/posts/${data.postId}`, {
+export const updateReplies = (replyData, id, postId) => async(dispatch) =>{
+  const response = await fetch(`/api/replies/${id}`, {
     method: 'put',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(replyData)
   })
 
   if (response.ok){
     const data = await response.json()
-    dispatch(update(data))
+    dispatch(update(data, id, postId))
     return data
   }
 }
@@ -107,7 +109,12 @@ const replyReducer = (state = initialState, action) => {
       return newState
     }
 
-    case UPDATE_REPLY:
+    case UPDATE_REPLY:{
+      console.log(action)
+      const newState = {...state}
+      newState[action.id].reply = action.reply
+      return newState
+    }
     case ADD_REPLY:{
       return{
         ...state,

@@ -44,7 +44,7 @@ function PostDetail() {
          />
       )
     }
-    return allReply
+    return allReply.reverse()
   }
 
   let content = null

@@ -52,22 +52,22 @@ def create_reply(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #Update reply
-@replies_routes.route('/posts/<int:id>', methods=['PUT'])
+@replies_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_reply(id):
     form = ReplyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        wanted_reply = Reply.query.get(id)
-        if wanted_reply.userId == current_user.id:
+    wanted_reply = Reply.query.get(id)
+    if wanted_reply.userId == current_user.id:
+       if form.validate_on_submit():
            wanted_reply.reply = form.data['reply']
            wanted_reply.replyUrl = form.data['replyUrl']
 
            db.session.commit()
            return wanted_reply.to_dict()
-        else:
-            return {'message': 'You are not allowed to edit this post'}
+    else:
+        return {'message': 'You are not allowed to edit this post'}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
