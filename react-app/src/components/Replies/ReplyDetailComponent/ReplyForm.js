@@ -41,7 +41,7 @@ function ReplyForm({
 
 
   const [editReply, setEditReply] = useState(false)
-  const [replyDetail, setReplyDetail] = useState('')
+  const [currentReplyDetail, setCurrentReplyDetail] = useState(reply.reply)
   const [errorMessages, setErrorMessages] = useState([])
 // const [, set] = useState()
 
@@ -49,11 +49,11 @@ function ReplyForm({
   const handleEdit = (e) => {
     e.preventDefault()
     const editedReply = {
-      reply: replyDetail
+      reply: currentReplyDetail
     }
 
-    dispatch(updateReplies(editedReply, id, postId))
-    setReplyDetail('')
+    dispatch(updateReplies(editedReply,postId, id))
+    setCurrentReplyDetail('')
     setEditReply(false)
   }
 
@@ -66,13 +66,13 @@ function ReplyForm({
     <>
     {editReply ? (
       <div>
-        <Avatar src={reply.user.userUrl}/>
+        <Avatar src={userUrl}/>
 
         <input
          type='text'
-         value={replyDetail}
+         value={currentReplyDetail}
          onChange={(e) => {
-          setReplyDetail(e.target.value)
+          setCurrentReplyDetail(e.target.value)
          }}
          />
 
@@ -118,8 +118,8 @@ function ReplyForm({
 
                 }}
               >
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
-                <MenuItem onClick={handleClose}>Delete</MenuItem>
+                <MenuItem onClick={() => {setEditReply(true)}}>Edit</MenuItem>
+                <MenuItem onClick={(e) => {handleDelete(e, postId,reply.id)}}>Delete</MenuItem>
               </Menu>
               </div>
               )}

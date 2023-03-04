@@ -32,11 +32,11 @@ function PostDetail() {
     for (let reply in replyObj){
       allReply.push(
         <ReplyForm
-         id={replyObj[reply].id}
+         id={replyObj[reply].reply.id}
          reply={replyObj[reply].reply}
          replyUrl={replyObj[reply].replyUrl}
          dateCreated={replyObj[reply].dateCreated}
-         postId={replyObj[reply].postId}
+         postId={replyObj[reply].reply.postId}
          firstName={replyObj[reply].user.firstName}
          lastName={replyObj[reply].user.lastName}
          userUrl = {replyObj[reply].user.userUrl}
