@@ -75,18 +75,21 @@ export const deleteReplies= (id) => async(dispatch) =>{
 
 
 
-export const updateReplies = (replyData, id) => async(dispatch) =>{
+export const updateReplies = (replyData,id) => async(dispatch) =>{
+  console.log(replyData, ' <----- replyData in thunk')
+  console.log(id,'<----- id in thunk')
+
   const response = await fetch(`/api/replies/${id}`, {
     method: 'put',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(replyData)
+    body: JSON.stringify({replyData})
   })
 
   if (response.ok){
     const data = await response.json()
-    dispatch(update(data, id))
+    dispatch(update(data))
     return data
   }
 }

@@ -44,13 +44,13 @@ function ReplyForm({
   const [editReply, setEditReply] = useState(false)
   const [replyData, setReplyData] = useState(replies[id])
   const [errorMessages, setErrorMessages] = useState([])
-// const [, set] = useState()
+  // const [, set] = useState()
 
 
   const handleEdit = (e) => {
     e.preventDefault()
 
-    dispatch(updateReplies(replyData, id, postId))
+    dispatch(updateReplies(replyData,id))
     setReplyData('')
     setEditReply(false)
   }
