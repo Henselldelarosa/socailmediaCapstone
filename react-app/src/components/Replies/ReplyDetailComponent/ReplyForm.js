@@ -42,16 +42,23 @@ function ReplyForm({
 
 
   const [editReply, setEditReply] = useState(false)
-  const [replyData, setReplyData] = useState(replies[id])
+  const [replyData, setReplyData] = useState(reply)
+  const [replyUrlData, setReplyUrlData] = useState(replyUrl)
   const [errorMessages, setErrorMessages] = useState([])
-  // const [, set] = useState()
 
+
+const updateReplyData = (e) => setReplyData(e.target.value)
+const updateReplyUrlData = (e) => setReplyUrlData(e.target.value)
 
   const handleEdit = (e) => {
     e.preventDefault()
 
-    dispatch(updateReplies(replyData,id))
-    setReplyData('')
+    const payload = {
+      reply:replyData,
+      replyUrl:replyUrlData,
+    }
+    handleClose()
+    dispatch(updateReplies(payload,id))
     setEditReply(false)
   }
 
@@ -60,24 +67,30 @@ function ReplyForm({
     dispatch(deleteReplies(id))
     handleClose()
   }
+  console.log(replyData)
   return (
     <>
     {editReply ? (
       <div>
+         <form onSubmit={handleEdit}>
         <Avatar src={userUrl}/>
 
         <input
          type='text'
          value={replyData}
-         onChange={(e) => {
-          setReplyData(e.target.value)
-         }}
+         onChange={updateReplyData}
          />
 
-         <form onSubmit={handleEdit}>
-          <button onClick={() => {setEditReply(false)}}>Cancel</button>
-          <button>Apply Changes</button>
+         <input
+         type='text'
+         accept='images/*'
+         value={replyUrlData}
+         onChange={updateReplyUrlData}
+         />
+
+          <button type='submit'>Apply Changes</button>
          </form>
+          <button onClick={() => {setEditReply(false)}}>Cancel</button>
       </div>
 
     ) : (
@@ -116,7 +129,7 @@ function ReplyForm({
 
                 }}
               >
-                <MenuItem onClick={(e) => {setEditReply(true)}}>Edit</MenuItem>
+                <MenuItem onClick={() => {setEditReply(true)}}>Edit</MenuItem>
                 <MenuItem onClick={(e) => {handleDelete(e)}}>Delete</MenuItem>
               </Menu>
               </div>

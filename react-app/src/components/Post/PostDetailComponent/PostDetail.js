@@ -44,6 +44,7 @@ function PostDetail() {
          />
       )
     }
+    console.log(allReply)
     return allReply.reverse()
   }
 
@@ -79,7 +80,22 @@ function PostDetail() {
         />
         <CreateReply/>
 
-        {replies && replyRender(replies)}
+        {replies && replies.reverse().map((reply) => {
+          return(
+            <div key={reply.id}>
+            <ReplyForm
+            id={reply.id}
+            reply={reply.reply}
+            replyUrl={reply.replyUrl}
+            dateCreated={reply.dateCreated}
+            postId={reply.postId}
+            firstName={reply.user.firstName}
+            lastName={reply.user.lastName}
+            userUrl = {reply.user.userUrl}
+            userId={reply.userId}
+            /></div>
+          )
+          })}
 
         {/* {replies && replies.map((reply) => {
           return (

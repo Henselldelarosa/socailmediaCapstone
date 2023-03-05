@@ -4,35 +4,22 @@ const DELETE_REPLY = 'reply/DELETE_REPLY'
 const UPDATE_REPLY = 'reply/UPDATE_REPLY'
 
 
-const gets = (replies,id) =>({
-  type:GET_REPLIES,
-  replies,
-  id
-})
+const gets = (replies, id) => ({type: GET_REPLIES, replies, id})
 
 
-const addReply = (reply) =>({
-  type:ADD_REPLY,
-  reply
-})
+const addReply = (reply) => ({type: ADD_REPLY, reply})
 
 
-const removeReply = (id) =>({
-  type:DELETE_REPLY,
-  id
-})
+const removeReply = (id) => ({type: DELETE_REPLY, id})
 
 
-const update = (reply) =>({
-  type:UPDATE_REPLY,
-  reply
-})
+const update = (reply) => ({type: UPDATE_REPLY, reply})
 
 
-export const getAllReplies= (id) => async(dispatch) =>{
+export const getAllReplies = (id) => async (dispatch) => {
   const response = await fetch(`/api/replies/posts/${id}`)
 
-  if(response.ok){
+  if (response.ok) {
     const data = await response.json()
     dispatch(gets(data, id))
     return data
@@ -40,18 +27,19 @@ export const getAllReplies= (id) => async(dispatch) =>{
 }
 
 
-
-export const addAReply = (reply) => async(dispatch) =>{
-  const response = await fetch(`/api/replies/posts/${reply.postId}`, {
-    method:'POST',
-    headers:{
+export const addAReply = (reply) => async (dispatch) => {
+  const response = await fetch(`/api/replies/posts/${
+    reply.postId
+  }`, {
+    method: 'POST',
+    headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(reply)
   })
 
 
-  if (response.ok){
+  if (response.ok) {
     const data = await response.json()
     dispatch(addReply(data))
     console.log(data)
@@ -60,13 +48,10 @@ export const addAReply = (reply) => async(dispatch) =>{
 }
 
 
+export const deleteReplies = (id) => async (dispatch) => {
+  const response = await fetch(`/api/replies/posts/${id}`, {method: 'DELETE'})
 
-export const deleteReplies= (id) => async(dispatch) =>{
-  const response = await fetch(`/api/replies/posts/${id}`, {
-    method:'DELETE'
-  })
-
-  if(response.ok){
+  if (response.ok) {
     const data = await response.json()
     dispatch(removeReply(id))
     return data
@@ -74,20 +59,19 @@ export const deleteReplies= (id) => async(dispatch) =>{
 }
 
 
-
-export const updateReplies = (replyData,id) => async(dispatch) =>{
-  console.log(replyData, ' <----- replyData in thunk')
-  console.log(id,'<----- id in thunk')
+export const updateReplies = (replyData, id) => async (dispatch) => {
+  console.log(replyData, '<----- replyData in thunk')
+  console.log(id, '<----- id in thunk')
 
   const response = await fetch(`/api/replies/${id}`, {
     method: 'put',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({replyData})
+    body: JSON.stringify(replyData)
   })
 
-  if (response.ok){
+  if (response.ok) {
     const data = await response.json()
     dispatch(update(data))
     return data
@@ -95,35 +79,32 @@ export const updateReplies = (replyData,id) => async(dispatch) =>{
 }
 
 
-
-
-
-let initialState ={}
+let initialState = {}
 const replyReducer = (state = initialState, action) => {
-  switch(action.type){
+  switch (action.type) {
 
-    case GET_REPLIES:{
-      const newState = {}
-      action.replies.replies.forEach((reply) => {
-        newState[reply.id] = reply
-      })
-      return newState
-    }
+    case GET_REPLIES: {
+        const newState = {}
+        action.replies.replies.forEach((reply) => {
+          newState[reply.id] = reply
+        })
+        return newState
+      }
 
     case UPDATE_REPLY:
-    case ADD_REPLY:
-      return{
+    case ADD_REPLY: return {
         ...state,
-        [action.reply.id] : action.reply
+        [action.reply.id]: action.reply
       }
 
 
-
-    case DELETE_REPLY:{
-      const newState ={...state}
-      delete newState[action.id]
-      return newState
-    }
+    case DELETE_REPLY: {
+        const newState = {
+          ...state
+        }
+        delete newState[action.id]
+        return newState
+      }
     default:
       return state
   }
