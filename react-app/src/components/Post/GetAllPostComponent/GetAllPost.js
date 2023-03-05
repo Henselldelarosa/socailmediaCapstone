@@ -39,7 +39,7 @@ dispatch(deletePost(id, postId))
         <div>
           <PostForm/>
 
-          {posts && posts.map((post) =>{
+          {posts && posts.reverse().map((post) =>{
             return (
               <div className='post_container'key={post.id}>
 
