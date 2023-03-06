@@ -14,13 +14,11 @@ function GetAllPost() {
   const dispatch = useDispatch()
   const sessionuUser = useSelector(state=> state.session.user)
   const posts = useSelector(state => Object.values(state.posts))
-  // const replies = useSelector(state => Object.values(state.replies))
 
-  // console.log(replies)
 
   useEffect(() =>{
     dispatch(getAllPosts())
-    // dispatch(getAllReplies(id))
+    
   },[dispatch])
 
 

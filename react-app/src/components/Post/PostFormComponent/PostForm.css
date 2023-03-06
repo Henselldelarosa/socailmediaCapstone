@@ -58,3 +58,8 @@
   cursor: pointer;
   border-radius: 20px;
 }
+
+.post_error{
+  color: red;
+  font-weight: bolder;
+}

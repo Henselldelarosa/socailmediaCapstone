@@ -11,7 +11,7 @@ function UpdatePost({hideForm}) {
   const user = useSelector(state => state.session.user)
   const {id} = useParams()
   const currentPost = useSelector(state => state.posts[id])
-console.log(currentPost.post)
+
 
   const [ error, setError] = useState([])
   const [ post, setPost] = useState(currentPost.post)
@@ -22,7 +22,6 @@ console.log(currentPost.post)
     return currentPost.postUrl
   }
 
-  console.log(currentPost.postUrl)
   const updatePost = (e) =>setPost(e.target.value)
   const updatePostUrl = (e) =>setPostUrl(e.target.value)
 

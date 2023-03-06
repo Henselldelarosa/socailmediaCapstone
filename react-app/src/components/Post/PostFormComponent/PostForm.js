@@ -35,14 +35,22 @@ const handleSubmit =  (e) =>{
     post,
     postUrl
   }
+
 let error = []
+let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff']
+
+
+
   if(!payload.post){
     error.push("Post field can't be empty")
   }
 
-  if(payload.postUrl !== ''){
-    if(!payload.postUrl.endsWith('.png' || '.jpg' || '.jpeg' || '.gif'|| '.bmp'|| '.tif' || '.tiff')){
-      error.push('Not a Valid Image')
+
+  if (payload.postUrl !== '') {
+    if(payload.postUrl.endsWith(validImage[0]) || payload.postUrl.endsWith(validImage[1]) || payload.postUrl.endsWith(validImage[2]) || payload.postUrl.endsWith(validImage[3]) || payload.postUrl.endsWith(validImage[4]) || payload.postUrl.endsWith(validImage[5]) || payload.postUrl.endsWith(validImage[6])) {
+      dispatch(addPost(payload))
+    }else{
+      error.push("Not a valid Image")
     }
   }
   dispatch(addPost(payload))
@@ -56,7 +64,7 @@ let error = []
       <div className='post_form_top'>
         <Avatar src={user.userUrl}/>
         <form ref={formRef} onSubmit={handleSubmit}>
-          <ul>
+          <ul className='post_error'>
             {error && error.map((error, id) => <li key={id}>{error}</li>)}
           </ul>
 

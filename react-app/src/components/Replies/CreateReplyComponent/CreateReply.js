@@ -22,7 +22,7 @@ function CreateReply() {
 
   const updateReply = (e) => setReply(e.target.value)
   const updateReplyUrl = (e) => setReplyUrl(e.target.value)
-// console.log(post.id)
+
 
   useEffect(() => {
     dispatch(getPostById(id))
@@ -39,26 +39,33 @@ function CreateReply() {
       replyUrl
     }
 
-    let error = []
+    let errors = []
+    let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff']
+
     if(!payload.reply){
-      error.push("Reply can't be empty")
+      errors.push("Reply field can't be empty")
     }
 
-    if(payload.replyUrl !== ''){
-      if(!payload.replyUrl.endsWith('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tif', '.tiff')){
-        error.push('Not a Valid Image')
+    if (payload.replyUrl !== '') {
+      if(payload.replyUrl.endsWith(validImage[0]) || payload.replyUrl.endsWith(validImage[1]) || payload.replyUrl.endsWith(validImage[2]) || payload.replyUrl.endsWith(validImage[3]) || payload.replyUrl.endsWith(validImage[4]) || payload.replyUrl.endsWith(validImage[5]) || payload.replyUrl.endsWith(validImage[6])) {
+        dispatch(addAReply(payload, id))
+      }else{
+        errors.push("Not a valid Image")
       }
     }
+
     dispatch(addAReply(payload))
-    setErrorMesaage(error)
+    setErrorMesaage(errors)
     setReply('')
     setReplyUrl('')
   }
   return (
     <div className='reply_create_form'>
+
+      <div className='reply_form_top'>
       <Avatar src={user.userUrl}/>
 
-      <form className='reply_form' onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}>
 
          <ul>
             {errorMesaage && errorMesaage.map((error, id) => <li key={id}>{error}</li>)}
@@ -66,6 +73,7 @@ function CreateReply() {
 
         <input
         type='text'
+        className='form_reply_post'
         placeholder='Write a comment...'
         value={reply}
         onChange={updateReply}
@@ -76,13 +84,14 @@ function CreateReply() {
          accept='image/*'
          value={replyUrl}
          onChange={updateReplyUrl}
-        />
+         />
 
         <button type='submit'>
           Hidden Submit
         </button>
 
       </form>
+         </div>
 
     </div>
   )

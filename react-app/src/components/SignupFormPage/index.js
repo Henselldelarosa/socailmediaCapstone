@@ -18,6 +18,13 @@ function SignupFormPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    let error =[]
+
+    // if(!email.endsWith()){
+    //   error.push("Not a valid eamil mission '@'")
+    // }
+
     if (password === confirmPassword) {
         const data = await dispatch(signUp(firstName, lastName, email, password));
         if (data) {

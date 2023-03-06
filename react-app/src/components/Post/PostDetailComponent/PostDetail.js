@@ -44,7 +44,6 @@ function PostDetail() {
          />
       )
     }
-    console.log(allReply)
     return allReply.reverse()
   }
 

@@ -23,6 +23,8 @@
 .header{
   display: flex;
   justify-content: space-between;
+  position: relative;
+  width: 100%;
   z-index: 1;
   background-color: var(--theme);
   border-bottom: 1px solid gray;

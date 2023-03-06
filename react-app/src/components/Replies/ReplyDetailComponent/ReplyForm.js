@@ -93,7 +93,7 @@ function ReplyForm({
     dispatch(deleteReplies(id))
     handleClose()
   }
-  console.log(replyData)
+
   return (<> {
     editReply ? (<div>
       <form onSubmit={handleEdit}>
@@ -106,7 +106,8 @@ function ReplyForm({
           value={replyData}
           onChange={updateReplyData}/>
 
-        <input type='text'
+        <input
+         type='text'
           value={replyUrlData}
           onChange={updateReplyUrlData}/>
 
@@ -132,7 +133,8 @@ function ReplyForm({
               <h3> {firstName}
                 {lastName}</h3>
               {
-              (userId === sessionUser.id) && (<div>
+              (userId === sessionUser.id) && (
+              <div className='reply_drop_menu'>
                 <Button id="basic-button"
                   aria-controls={
                     open ? 'basic-menu' : undefined
@@ -153,16 +155,27 @@ function ReplyForm({
                   MenuListProps={
                     {'aria-labelledby': 'basic-button'}
                 }>
-                  <MenuItem onClick={
-                    () => {
-                      setEditReply(true)
-                    }
-                  }>Edit</MenuItem>
-                  <MenuItem onClick={
-                    (e) => {
-                      handleDelete(e)
-                    }
-                  }>Delete</MenuItem>
+                  <MenuItem onClick={() => {setEditReply(true)}}>
+
+                    <div className='menu_item'>
+                    <i className="fa-solid fa-pencil"/>
+                    <div className='menu_text'>
+                    Edit
+                    </div>
+                    </div>
+
+                    </MenuItem>
+
+                  <MenuItem
+                    onClick={(e) => {handleDelete(e)}}>
+                      <div className='menu_item2'>
+                      <i className="fa-solid fa-trash"/>
+                      <div className='menu_text'>
+                      Delete
+                      </div>
+                      </div>
+                      </MenuItem>
+
                 </Menu>
               </div>)
             } </div>
@@ -175,7 +188,7 @@ function ReplyForm({
         </div>
 
         <div>
-          <img src={replyUrl}
+          <img className ='replyUrl_image'src={replyUrl}
             alt=''/>
         </div>
 

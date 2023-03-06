@@ -42,7 +42,6 @@ export const addAReply = (reply) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json()
     dispatch(addReply(data))
-    console.log(data)
     return data
   }
 }
@@ -60,9 +59,6 @@ export const deleteReplies = (id) => async (dispatch) => {
 
 
 export const updateReplies = (replyData, id) => async (dispatch) => {
-  console.log(replyData, '<----- replyData in thunk')
-  console.log(id, '<----- id in thunk')
-
   const response = await fetch(`/api/replies/${id}`, {
     method: 'put',
     headers: {
