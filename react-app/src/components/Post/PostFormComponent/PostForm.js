@@ -41,7 +41,7 @@ let error = []
   }
 
   if(payload.postUrl !== ''){
-    if(!payload.postUrl.endsWith('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tif', '.tiff')){
+    if(!payload.postUrl.endsWith('.png' || '.jpg' || '.jpeg' || '.gif'|| '.bmp'|| '.tif' || '.tiff')){
       error.push('Not a Valid Image')
     }
   }

@@ -23,6 +23,7 @@
 .header{
   display: flex;
   justify-content: space-between;
+  z-index: 1;
   background-color: var(--theme);
   border-bottom: 1px solid gray;
   position: sticky;

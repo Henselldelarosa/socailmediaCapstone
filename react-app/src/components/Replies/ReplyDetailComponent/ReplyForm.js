@@ -1,10 +1,10 @@
 // libraries
-import { Avatar } from '@mui/material'
-import React,{useState} from 'react'
+import {Avatar} from '@mui/material'
+import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 // thunk
-import { addAReply, updateReplies,deleteReplies } from '../../../store/reply'
+import {addAReply, updateReplies, deleteReplies} from '../../../store/reply'
 
 // handle drop down
 import Button from '@mui/material/Button';
@@ -47,19 +47,45 @@ function ReplyForm({
   const [errorMessages, setErrorMessages] = useState([])
 
 
-const updateReplyData = (e) => setReplyData(e.target.value)
-const updateReplyUrlData = (e) => setReplyUrlData(e.target.value)
+  const updateReplyData = (e) => setReplyData(e.target.value)
+  const updateReplyUrlData = (e) => setReplyUrlData(e.target.value)
 
   const handleEdit = (e) => {
     e.preventDefault()
-
     const payload = {
-      reply:replyData,
-      replyUrl:replyUrlData,
+      reply: replyData,
+      replyUrl: replyUrlData
     }
-    handleClose()
-    dispatch(updateReplies(payload,id))
-    setEditReply(false)
+
+    let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff']
+
+
+    let errors = []
+
+
+    if (! payload.reply) {
+      errors.push(`${firstName} The reply can not be empty`)
+    }
+
+
+
+    if (payload.replyUrl !== '') {
+      if(payload.replyUrl.endsWith(validImage[0]) || payload.replyUrl.endsWith(validImage[1]) || payload.replyUrl.endsWith(validImage[2]) || payload.replyUrl.endsWith(validImage[3]) || payload.replyUrl.endsWith(validImage[4]) || payload.replyUrl.endsWith(validImage[5]) || payload.replyUrl.endsWith(validImage[6])) {
+        setEditReply(false)
+        handleClose()
+        dispatch(updateReplies(payload, id))
+      }else{
+        errors.push("Not a valid Image")
+      }
+    }
+
+    if (! errors.length) {
+      setEditReply(false)
+      handleClose()
+      dispatch(updateReplies(payload, id))
+    } else {
+      setErrorMessages(errors)
+    }
   }
 
   const handleDelete = (e) => {
@@ -68,101 +94,101 @@ const updateReplyUrlData = (e) => setReplyUrlData(e.target.value)
     handleClose()
   }
   console.log(replyData)
-  return (
-    <>
-    {editReply ? (
-      <div>
-         <form onSubmit={handleEdit}>
+  return (<> {
+    editReply ? (<div>
+      <form onSubmit={handleEdit}>
+        <ul> {
+          errorMessages && errorMessages.map((error, id) => <li key={id}> {error}</li>)
+        } </ul>
         <Avatar src={userUrl}/>
 
-        <input
-         type='text'
-         value={replyData}
-         onChange={updateReplyData}
-         />
+        <input type='text'
+          value={replyData}
+          onChange={updateReplyData}/>
 
-         <input
-         type='text'
-         accept='images/*'
-         value={replyUrlData}
-         onChange={updateReplyUrlData}
-         />
+        <input type='text'
+          value={replyUrlData}
+          onChange={updateReplyUrlData}/>
 
-          <button type='submit'>Apply Changes</button>
-         </form>
-          <button onClick={() => {setEditReply(false)}}>Cancel</button>
-      </div>
+        <button type='submit'>Apply Changes</button>
+      </form>
+      <button onClick={
+        () => {
+          setEditReply(false)
+          handleClose()
+        }
+      }>Cancel</button>
+    </div>) : (<center>
 
-    ) : (
+      <div className='reply'>
 
-      <center>
-
-        <div className='reply'>
-
-          <div className='reply_top'>
-            <Avatar className='reply_avatar' src={userUrl}/>
+        <div className='reply_top'>
+          <Avatar className='reply_avatar'
+            src={userUrl}/>
 
           <div className='reply_topInfo'>
             <div className='reply_user_info'>
 
-              <h3>{firstName} {lastName}</h3>
-              {(userId === sessionUser.id) && (
-                <div>
-              <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-              >
-                <div className='edit_delete_dropdown_icon'>
-                <i className="fa-solid fa-ellipsis"/>
-                </div>
-              </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  'aria-labelledby': 'basic-button',
-
-                }}
-              >
-                <MenuItem onClick={() => {setEditReply(true)}}>Edit</MenuItem>
-                <MenuItem onClick={(e) => {handleDelete(e)}}>Delete</MenuItem>
-              </Menu>
-              </div>
-              )}
-            </div>
-            <p>{dateCreated}</p>
+              <h3> {firstName}
+                {lastName}</h3>
+              {
+              (userId === sessionUser.id) && (<div>
+                <Button id="basic-button"
+                  aria-controls={
+                    open ? 'basic-menu' : undefined
+                  }
+                  aria-haspopup="true"
+                  aria-expanded={
+                    open ? 'true' : undefined
+                  }
+                  onClick={handleClick}>
+                  <div className='edit_delete_dropdown_icon'>
+                    <i className="fa-solid fa-ellipsis"/>
+                  </div>
+                </Button>
+                <Menu id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={
+                    {'aria-labelledby': 'basic-button'}
+                }>
+                  <MenuItem onClick={
+                    () => {
+                      setEditReply(true)
+                    }
+                  }>Edit</MenuItem>
+                  <MenuItem onClick={
+                    (e) => {
+                      handleDelete(e)
+                    }
+                  }>Delete</MenuItem>
+                </Menu>
+              </div>)
+            } </div>
+            <p> {dateCreated}</p>
           </div>
-          </div>
-
-          <div className='reply_bottom'>
-            <p>{reply}</p>
-          </div>
-
-          <div>
-            <img src={replyUrl} alt=''/>
-          </div>
-
         </div>
 
-      </center>
-    )
+        <div className='reply_bottom'>
+          <p> {reply}</p>
+        </div>
 
-    }
-    </>
-  )
+        <div>
+          <img src={replyUrl}
+            alt=''/>
+        </div>
+
+      </div>
+
+    </center>)
+  } </>)
 }
 
 export default ReplyForm
 
 
-
-
-//   return (
+// return (
 //     <div>
 //       <Button
 //         id="basic-button"
@@ -187,5 +213,5 @@ export default ReplyForm
 //         <MenuItem onClick={handleClose}>Logout</MenuItem>
 //       </Menu>
 //     </div>
-//   );
+// );
 // }
