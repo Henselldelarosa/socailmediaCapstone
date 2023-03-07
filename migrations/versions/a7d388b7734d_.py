@@ -32,6 +32,9 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('post', sa.String(length=1000), nullable=False),
@@ -41,6 +44,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
+
     op.create_table('replies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('reply', sa.String(length=2000), nullable=False),
@@ -52,6 +59,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE replies SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 
@@ -61,7 +71,7 @@ def downgrade():
     op.drop_table('posts')
     op.drop_table('users')
     # ### end Alembic commands ###
-    
+
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
