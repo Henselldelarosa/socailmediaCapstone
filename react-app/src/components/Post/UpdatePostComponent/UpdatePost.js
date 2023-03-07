@@ -29,14 +29,35 @@ function UpdatePost({hideForm}) {
     e.preventDefault()
     setError([])
 
+    let error = []
+    let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff']
+
     const payload = {
       ...currentPost,
       post,
       postUrl
     }
 
-    await dispatch(updateAPost(payload))
-    hideForm()
+
+  if(!payload.post){
+    error.push("Post field can't be empty")
+  }
+
+
+    if (payload.postUrl !== '' && payload.post) {
+      if(payload.postUrl.endsWith(validImage[0]) || payload.postUrl.endsWith(validImage[1]) || payload.postUrl.endsWith(validImage[2]) || payload.postUrl.endsWith(validImage[3]) || payload.postUrl.endsWith(validImage[4]) || payload.postUrl.endsWith(validImage[5]) || payload.postUrl.endsWith(validImage[6])) {
+        dispatch(updateAPost(payload))
+        hideForm()
+      }else{
+        error.push("Not a valid Image")
+      }
+    }else if(payload.post){
+      dispatch(updateAPost(payload))
+      hideForm()
+    }
+
+    setError(error)
+    // await dispatch(updateAPost(payload))
   }
 
   const handleCancer = (e) =>{
@@ -45,52 +66,56 @@ function UpdatePost({hideForm}) {
   }
 
   return (
-    <div className='update_post_div_container'>
-      <div className='update_post_user_info'>
+    <div className='post_update_form'>
+      <center>
 
-        <Avatar src={currentPost.user?.userUrl}/>
+      <div className='updatePost_userInfo'>
+        <Avatar src={user.userUrl}/>
+        <h3>{user.firstName} {user.lastName}</h3>
 
-        <div className='update_post_user_name'>
-        <h3>{currentPost.user?.firstName} {currentPost.user?.lastName} </h3>
-        </div>
+
+      <div className='cancel_div'>
+        <button className='cancel_button' type='button'onClick={handleCancer}>Cancel</button>
+      </div>
 
       </div>
-      <form className='update_form'onSubmit={handleSubmit}>
 
-        <label className='update_label'>
-          <div className='update_post_ele'>Post:
-        <input
-         type='text'
-         className='update_ele'
-         value={post}
-         required
-         onChange={updatePost}
-         />
-          </div>
-        </label>
 
-        <label>
+      <div className='update_post_form_top'>
 
-        <div className='update_post_ele'>PostUrl:
-         <input
-          type='text'
-          className='update_ele'
-          value={postUrl}
-          onChange={updatePostUrl}
-          />
-        </div>
 
-        </label>
-          <div className='update_post_buttons'>
+      <form onSubmit={handleSubmit}>
+
+          <ul className='post_error'>
+            {error && error.map((error, id) => <li key={id}>{error}</li>)}
+          </ul>
+
+            <input
+            type='text'
+            className='form_post_poster'
+            placeholder='Edit your Post'
+            value={post}
+            onChange={updatePost}
+            />
+
+
+
+            <input
+            type='text'
+            placeholder='Edit Image (opnional)'
+            value={postUrl}
+            onChange={updatePostUrl}
+            />
+
+
+
+
           <button className='submit_button' type='submit'>Submit</button>
 
-          <div className='update_cancel_div'>
+            </form>
+        </div>
 
-          <button className='cancel_button' type='button'onClick={handleCancer}>Cancel</button>
-          </div>
-          </div>
-      </form>
-
+      </center>
     </div>
   )
 }

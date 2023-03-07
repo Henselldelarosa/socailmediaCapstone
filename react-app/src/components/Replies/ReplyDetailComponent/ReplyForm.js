@@ -81,6 +81,7 @@ function ReplyForm({
 
     if (! errors.length) {
       setEditReply(false)
+      setErrorMessages()
       handleClose()
       dispatch(updateReplies(payload, id))
     } else {
@@ -95,30 +96,52 @@ function ReplyForm({
   }
 
   return (<> {
-    editReply ? (<div>
+    editReply ? (
+    <div className='reply_update_form'>
+      <center>
+
+        <div className='updateReply_userInfo'>
+          <Avatar src={userUrl}/>
+          <h3>{firstName} {lastName}</h3>
+
+          <div className='reply_cancel_div'>
+          <button
+          className='reply_cancel_button'
+          onClick={() =>
+          {setEditReply(false)
+          handleClose()}}>Cancel</button>
+
+          </div>
+
+        </div>
+
+        <div className='update_reply_form_top'>
+
+
       <form onSubmit={handleEdit}>
+
         <ul> {
           errorMessages && errorMessages.map((error, id) => <li key={id}> {error}</li>)
         } </ul>
-        <Avatar src={userUrl}/>
 
-        <input type='text'
+        <input
+          type='text'
+          placeholder='Edit your Reply'
+          className='form_reply_poster'
           value={replyData}
           onChange={updateReplyData}/>
 
         <input
-         type='text'
+          type='text'
+          placeholder='Edit your Image (optional)'
           value={replyUrlData}
           onChange={updateReplyUrlData}/>
 
         <button type='submit'>Apply Changes</button>
       </form>
-      <button onClick={
-        () => {
-          setEditReply(false)
-          handleClose()
-        }
-      }>Cancel</button>
+
+          </div>
+      </center>
     </div>) : (<center>
 
       <div className='reply'>

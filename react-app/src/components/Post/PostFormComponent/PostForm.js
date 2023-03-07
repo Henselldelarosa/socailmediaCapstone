@@ -55,7 +55,7 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
   }else if(payload.post){
     dispatch(addPost(payload))
   }
-  
+
   setError(error)
   setPostUrl('')
   setPost('')
@@ -64,8 +64,11 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
     <div className='post_create_form'>
 
       <div className='post_form_top'>
+
         <Avatar src={user.userUrl}/>
+
         <form ref={formRef} onSubmit={handleSubmit}>
+
           <ul className='post_error'>
             {error && error.map((error, id) => <li key={id}>{error}</li>)}
           </ul>

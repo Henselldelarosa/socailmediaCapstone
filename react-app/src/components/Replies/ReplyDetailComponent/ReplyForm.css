@@ -1,3 +1,4 @@
+/* this is where the reply rendering css starts */
 .reply{
   display: block;
   box-sizing: border-box;
@@ -77,4 +78,88 @@ align-items: center;
 
 .MuiMenu-root ul{
   background-color: white;
+}
+
+/* this is where the reply rendering css ends */
+
+
+/* this is where the css for the EDIT reply starts */
+
+.reply_update_form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0 , .75);
+  margin-left: 100px;
+  margin-right: 100px;
+  width: 90%;
+}
+
+
+.update_reply_form_top{
+  display: flex;
+  border-bottom: 1px solid #eff2f5;
+  padding: 15px;
+}
+
+
+
+.update_reply_form_top > form{
+  flex:1;
+  display: flex;
+}
+
+
+.update_reply_form_top >form >input{
+  outline-width: 0;
+  border: none;
+  padding: 5px 20px;
+  margin: 0 10px;
+  border-radius: 999px;
+  background-color: #eff2f5;
+}
+
+.update_reply_form_top >form > button{
+  display: none;
+}
+
+.updateReply_userInfo{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  background-color: var(--theme);
+  border-radius: 15px;
+}
+
+.updateReply_userInfo >h3{
+  margin: 10px;
+}
+
+.reply_cancel_div{
+  padding-left:20px
+}
+
+.reply_cancel_button{
+  color: white;
+  font-weight: 600;
+  background-color: var(--theme);
+  cursor: pointer;
+  border: 3px groove white;
+  border-radius: 500px;
+  transition: .5;
+}
+
+.reply_cancel_button:hover{
+  box-shadow: 10px 10px 10.5px rgba(0, 0, 0, 0.2);;
+  transform: scale(0.95);
+  text-transform: uppercase;
+  color: var(--theme);
+  background-color: white;
+}
+
+
+.form_reply_poster{
+  flex:1;
 }

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import './LoginForm.css';
 
 
 function LoginFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +22,14 @@ function LoginFormPage() {
       setErrors(data);
     }
   };
+
+  const handleDemoLogin = (e) =>{
+    e.preventDefault()
+    let email = "demo@aa.io"
+    let password = "password"
+    dispatch(login(email, password))
+    history.push('/')
+  }
 
   return (
 
@@ -71,10 +80,16 @@ function LoginFormPage() {
         <center>
 
         <div className="bottom_info">
+          
           <button className="login_signup">
           <NavLink className='link' to='/signup'>Create new account </NavLink>
           </button>
+
+        <button className='demo_login_button'onClick={handleDemoLogin}>Demo Login</button>
         </div>
+
+
+
 
         </center>
 
