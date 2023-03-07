@@ -7,33 +7,74 @@ import './SignupForm.css';
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLaststName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [userUrl, setUserUrl] = useState('')
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   let error =[]
+
+  //   if (password === confirmPassword && userUrl === '') {
+  //       const data = await dispatch(signUp(firstName, lastName, email, password));
+  //       if (data) {
+  //         setErrors(data)
+  //       }
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff']
 
-    let error =[]
+    if (password !== confirmPassword){
+      return setErrors(["Your confirm password doesn't match your password"])
 
-    // if(!email.endsWith()){
-    //   error.push("Not a valid eamil mission '@'")
-    // }
+    }else if(!firstName || !lastName || !email || !password){
+      return setErrors(["First Name, Last Name, Email, and Password field are required"])
 
-    if (password === confirmPassword) {
-        const data = await dispatch(signUp(firstName, lastName, email, password));
-        if (data) {
-          setErrors(data)
-        }
-    } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+    }else if(userUrl !== ''){
+      if(userUrl.endsWith(validImage[0]) || userUrl.endsWith(validImage[1]) || userUrl.endsWith(validImage[2])|| userUrl.endsWith(validImage[3]) || userUrl.endsWith(validImage[4]) || userUrl.endsWith(validImage[5]) || userUrl.endsWith(validImage[6])){
+
+        const data = await dispatch(signUp(firstName, lastName, email, password, userUrl)).then(
+          async (res) =>{
+            const data = await res
+
+            if(data) {
+              const newError = res.map((ele) => {
+                return ele.slice(ele.indexOf(':') + 2)
+              })
+              setErrors(newError)
+            }
+          }
+        )
+
+      }else{
+        return setErrors(['Not a valid Image'])
+      }
+    }else if(userUrl === ''){
+        const data = await dispatch(signUp(firstName, lastName, email, password)).then(
+          async (res) =>{
+            const data = await res
+
+            if(data) {
+              const newError = res.map((ele) => {
+                return ele.slice(ele.indexOf(':') + 2)
+              })
+              setErrors(newError)
+            }
+          }
+        )
     }
-  };
+  }
 
   return (
 
@@ -52,23 +93,14 @@ function SignupFormPage() {
            </ul>
 
           <center>
-            <input
-            type='email'
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            />
-          </center>
-
-          <center>
-            <input
+          <input
             type='text'
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            required
+            // required
             />
+
           </center>
 
           <center>
@@ -76,7 +108,17 @@ function SignupFormPage() {
             type='text'
             placeholder='Last Name'
             value={lastName}
-            onChange={(e) => setLaststName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
+            // required
+            />
+          </center>
+
+          <center>
+            <input
+            type='email'
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             />
           </center>
@@ -99,6 +141,14 @@ function SignupFormPage() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             />
+          </center>
+
+          <center>
+            <input
+            type='text'
+            placeholder="Profile Image"
+            value={userUrl}
+            onChange={(e) => setUserUrl(e.target.value)}/>
           </center>
 
           <center>

@@ -32,6 +32,31 @@ function CreateReply() {
     e.preventDefault()
     setErrorMesaage([])
 
+
+
+
+
+    // if(password !== confirmPassword){
+    //   error.push("Your passwords do not match")
+    // }
+
+    // if (userUrl !== '' && password === confirmPassword){
+    //   if(userUrl.endsWith(validImage[0]) || userUrl.endsWith(validImage[1]) || userUrl.endsWith(validImage[2]) || userUrl.endsWith(validImage[3]) || userUrl.endsWith(validImage[4]) || userUrl.endsWith(validImage[5]) || userUrl.endsWith(validImage[6])){
+    //     const data = await dispatch(firstName, lastName, email, password,userUrl)
+    //     if(data){
+    //       setErrors(data)
+    //     }
+    //   }else{
+    //     error.push('Not a valid Image')
+    //   }
+    // }else if(userUrl === '' && password === confirmPassword){
+    //   const data = await dispatch(firstName, lastName, email, password)
+    //   if(data){
+    //     setErrors(data)
+    //   }
+    // }
+
+    // setErrors(errors)
     const payload ={
       userId: user.id,
       postId: post.id,
