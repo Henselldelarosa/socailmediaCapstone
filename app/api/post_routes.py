@@ -33,10 +33,9 @@ def get_all_post():
 @posts_routes.route("/<int:id>", methods=["GET"])
 def get_post_by_id(id):
     wanted_post = Post.query.get(id)
-    print(wanted_post)
     return wanted_post.to_dict()
 
-print(get_post_by_id, 'helloowwwww')
+
 
 #create post
 @posts_routes.route('/', methods=['POST'])
