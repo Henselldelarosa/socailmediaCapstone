@@ -18,7 +18,7 @@
   border: 1px solid #dddfe2;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0,0,0,.1);
-  height: 450px;
+  height: 455px;
   width: 396px;
   background-color: #fff;
   text-align: center;
@@ -129,4 +129,8 @@ vertical-align: middle;
   margin-top: 24px;
   margin-bottom: 20px ;
   font-family: Arial, Helvetica, sans-serif;
+ }
+
+ hr{
+  margin-top:5px;
  }

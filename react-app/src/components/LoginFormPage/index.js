@@ -79,8 +79,9 @@ function LoginFormPage() {
       </form>
         <center>
 
+          <hr></hr>
         <div className="bottom_info">
-          
+
           <button className="login_signup">
           <NavLink className='link' to='/signup'>Create new account </NavLink>
           </button>
