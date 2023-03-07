@@ -46,14 +46,16 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
   }
 
 
-  if (payload.postUrl !== '') {
+  if (payload.postUrl !== '' && payload.post) {
     if(payload.postUrl.endsWith(validImage[0]) || payload.postUrl.endsWith(validImage[1]) || payload.postUrl.endsWith(validImage[2]) || payload.postUrl.endsWith(validImage[3]) || payload.postUrl.endsWith(validImage[4]) || payload.postUrl.endsWith(validImage[5]) || payload.postUrl.endsWith(validImage[6])) {
       dispatch(addPost(payload))
     }else{
       error.push("Not a valid Image")
     }
+  }else if(payload.post){
+    dispatch(addPost(payload))
   }
-  dispatch(addPost(payload))
+  
   setError(error)
   setPostUrl('')
   setPost('')

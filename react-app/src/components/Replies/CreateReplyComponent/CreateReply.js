@@ -71,15 +71,17 @@ function CreateReply() {
       errors.push("Reply field can't be empty")
     }
 
-    if (payload.replyUrl !== '') {
+    if ((payload.replyUrl !== '' && payload.reply)) {
       if(payload.replyUrl.endsWith(validImage[0]) || payload.replyUrl.endsWith(validImage[1]) || payload.replyUrl.endsWith(validImage[2]) || payload.replyUrl.endsWith(validImage[3]) || payload.replyUrl.endsWith(validImage[4]) || payload.replyUrl.endsWith(validImage[5]) || payload.replyUrl.endsWith(validImage[6])) {
         dispatch(addAReply(payload, id))
       }else{
         errors.push("Not a valid Image")
       }
+    }else if(payload.reply){
+      dispatch(addAReply(payload, id))
     }
 
-    dispatch(addAReply(payload))
+
     setErrorMesaage(errors)
     setReply('')
     setReplyUrl('')

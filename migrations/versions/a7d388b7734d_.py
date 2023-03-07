@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: efbbb000e135
+Revision ID: a7d388b7734d
 Revises:
-Create Date: 2023-03-06 22:06:22.851450
+Create Date: 2023-03-06 22:24:25.262504
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'efbbb000e135'
+revision = 'a7d388b7734d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -61,7 +61,7 @@ def downgrade():
     op.drop_table('posts')
     op.drop_table('users')
     # ### end Alembic commands ###
-
+    
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
