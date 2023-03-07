@@ -1,16 +1,20 @@
-"""Users
+"""empty message
 
-Revision ID: a3380bf560fd
-Revises: 
-Create Date: 2023-03-03 21:24:12.226908
+Revision ID: efbbb000e135
+Revises:
+Create Date: 2023-03-06 22:06:22.851450
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
-revision = 'a3380bf560fd'
+revision = 'efbbb000e135'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -57,3 +61,13 @@ def downgrade():
     op.drop_table('posts')
     op.drop_table('users')
     # ### end Alembic commands ###
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
+
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE replies SET SCHEMA {SCHEMA};")

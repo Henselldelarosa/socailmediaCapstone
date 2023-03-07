@@ -26,9 +26,9 @@ def seed():
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
         db.session.commit()
 
 
