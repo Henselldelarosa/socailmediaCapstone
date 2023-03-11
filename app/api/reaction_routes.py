@@ -21,8 +21,8 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def get_reply_reactions(id):
     reply_reactions = Reaction.query.filter(
-        Reaction.replyId == id
-    ).all()
+        Reaction.reply_id == id
+    ).first()
     return reply_reactions.to_dict()
 
 @reaction_routes.route('/replies/<int:id>/up_vote', methods=['POST'])
@@ -30,8 +30,8 @@ def get_reply_reactions(id):
 def post_upvote_reaction(id):
 
     reaction_check = Reaction.query.filter(
-        Reaction.replyId ==id,
-        Reaction.userId == current_user.id
+        Reaction.reply_id ==id,
+        Reaction.user_id == current_user.id
         ).first()
 
     if reaction_check:

@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
 
     posts = db.relationship('Post', back_populates='user')
     replies = db.relationship('Reply', back_populates='user')
-    reactions = db.relationship('reactions', back_populates='user')
+    reactions = db.relationship('Reaction', back_populates='user')
 
     @property
     def password(self):
