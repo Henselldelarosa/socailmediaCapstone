@@ -1,7 +1,31 @@
-# from .db import db, environment, add_prefix_for_prod
-# from sqlalchemy.sql import func
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import func
 
-# class Reaction(db.Model):
-#      __tablename='reactions'
+class Reaction(db.Model):
+     __tablename='reactions'
 
-#      if environment == 'production'
+     if environment == "production":
+         __table_args__ = {'schema': SCHEMA}
+
+     id = db.Column(db.Integer, primary_key=True)
+     up_vote = db.Column(db.Boolean, default=False)
+     dateCreated = db.Column(db.DateTime(timezone=True), server_default=func.now())
+     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+     postId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
+     replyId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('replies.id')), nullable=False)
+
+
+     user = db.relationship('User', back_populates = 'reactions')
+
+     post = db.relationship('post', back_populates = 'reactions', cascade='all, delete-orphan')
+
+     reply = db.relationship('Reply', back_populates = 'reactions', cascade='all, delete-orphan')
+
+     def to_dict(self):
+          return {
+               'id':self.id,
+               'postId':self.postId,
+               'userId':self.userId,
+               'replyId':self.replyId,
+               'up_vote':self.up_vote,
+          }
