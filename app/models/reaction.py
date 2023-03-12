@@ -28,4 +28,5 @@ class Reaction(db.Model):
                'user_id':self.user_id,
                'reply_id':self.reply_id,
                # 'user': self.user.to_dict()
+               'replies':self.replies.to_dict()
           }

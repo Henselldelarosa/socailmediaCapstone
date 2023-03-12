@@ -1,10 +1,11 @@
 // libraries
 import {Avatar} from '@mui/material'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 // thunk
 import {addAReply, updateReplies, deleteReplies} from '../../../store/reply'
+import { getAllReactions } from '../../../store/reaction'
 
 // handle drop down
 import Button from '@mui/material/Button';
@@ -29,7 +30,7 @@ function ReplyForm({
 }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
-  const replies = useSelector(state => Object.values(state.replies))
+
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -39,6 +40,10 @@ function ReplyForm({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    dispatch(getAllReactions(id))
+  },[dispatch, id])
 
 
   const [editReply, setEditReply] = useState(false)
@@ -94,6 +99,8 @@ function ReplyForm({
     dispatch(deleteReplies(id))
     handleClose()
   }
+
+
 
   return (<> {
     editReply ? (
@@ -213,6 +220,11 @@ function ReplyForm({
         <div>
           <img className ='replyUrl_image'src={replyUrl}
             alt=''/>
+        </div>
+        <hr/>
+
+        <div>
+          {reactions}
         </div>
 
       </div>

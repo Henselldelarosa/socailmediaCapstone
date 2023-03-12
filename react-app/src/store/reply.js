@@ -7,7 +7,8 @@ const UPDATE_REPLY = 'reply/UPDATE_REPLY'
 const gets = (replies, id) => (
   {
     type: GET_REPLIES,
-    replies, id
+    replies,
+    id
   })
 
 

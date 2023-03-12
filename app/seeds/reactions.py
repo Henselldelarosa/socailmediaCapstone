@@ -69,13 +69,6 @@ def seed_reactions():
       reply_id =7 , user_id=3
   )
 
-  reaction18 = Reaction(
-      reply_id =8 , user_id=2
-  )
-
-  reaction19 = Reaction(
-      reply_id = 8 , user_id=1
-  )
 
   db.session.add(reaction1)
   db.session.add(reaction2)
@@ -94,8 +87,6 @@ def seed_reactions():
   db.session.add(reaction15)
   db.session.add(reaction16)
   db.session.add(reaction17)
-  db.session.add(reaction18)
-  db.session.add(reaction19)
   db.session.commit()
 
 def undo_reactions():

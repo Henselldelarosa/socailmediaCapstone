@@ -11,6 +11,7 @@ import ReplyCard from '../../Replies/ReplyDetailComponent/ReplyCard'
 import { Avatar } from '@mui/material'
 import CreateReply from '../../Replies/CreateReplyComponent/CreateReply'
 import ReplyForm from '../../Replies/ReplyDetailComponent/ReplyForm'
+import { getAllReactions } from '../../../store/reaction'
 
 function PostDetail() {
   const dispatch = useDispatch()
@@ -18,6 +19,7 @@ function PostDetail() {
   const post = useSelector(state => state.posts[id])
   const replies = useSelector(state => Object.values(state.replies))
   const sessionUser = useSelector(state => state.session.user)
+  const reaction = useSelector(state => Object.values(state.reactions))
   const [showEditPostForm, setShowEditPostForm] = useState(false)
 
 
@@ -26,26 +28,6 @@ function PostDetail() {
     dispatch(getAllReplies(id))
   },[dispatch, id])
 
-  const replyRender = (replyObj) => {
-    const allReply = []
-
-    for (let reply in replyObj){
-      allReply.push(
-        <ReplyForm
-         id={replyObj[reply].id}
-         reply={replyObj[reply].reply}
-         replyUrl={replyObj[reply].replyUrl}
-         dateCreated={replyObj[reply].dateCreated}
-         postId={replyObj[reply].postId}
-         firstName={replyObj[reply].user.firstName}
-         lastName={replyObj[reply].user.lastName}
-         userUrl = {replyObj[reply].user.userUrl}
-         userId={replyObj[reply].userId}
-         />
-      )
-    }
-    return allReply.reverse()
-  }
 
   let content = null
   if(showEditPostForm){
@@ -92,6 +74,7 @@ function PostDetail() {
             lastName={reply.user.lastName}
             userUrl = {reply.user.userUrl}
             userId={reply.userId}
+            reactions={reaction}
             /></div>
           )
           })}

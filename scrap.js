@@ -1,167 +1,63 @@
-// libraries
-import {Avatar} from '@mui/material'
-import React, {useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-
-// thunk
-import {addAReply, updateReplies, deleteReplies} from '../../../store/reply'
-
-// handle drop down
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-
-// css
-import './ReplyForm.css'
-
-function ReplyForm({
-  id,
-  user,
-  reply,
-  replyUrl,
-  dateCreated,
-  postId,
-  reactions,
-  userUrl,
-  firstName,
-  lastName,
-  userId
-}) {
-  const dispatch = useDispatch()
-  const sessionUser = useSelector(state => state.session.user)
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
 
-  const [editReply, setEditReply] = useState(false)
-  const [currentReplyDetail, setCurrentReplyDetail] = useState(reply)
-  const [currentReplyUrlDetail, setCurrentReplyUrlDetail] = useState(replyUrl)
-  const [errorMessages, setErrorMessages] = useState([])
-  // const [, set] = useState()
+// const handleSubmit = (e) => {
+//   e.preventDefault()
 
-  const updateReply = (e) => setCurrentReplyDetail(e.target.value)
-  const updateReplyUrl = (e) => setCurrentReplyUrlDetail(e.target.value)
+//   const payload = {
+//         user_id: user.id,
+//         title,
+//         price,
+//         description,
+//         glitter_factor,
+//         product_image,
+//       };
 
-  const handleEdit = (e) => {
-    e.preventDefault()
-    const editedReply = {
-      reply: currentReplyDetail,
-      replyUrl: currentReplyUrlDetail
-    }
+//   let errs = []
 
-    dispatch(updateReplies(editedReply, postId, id))
-    setCurrentReplyDetail('')
-    setCurrentReplyUrlDetail('')
-    setEditReply(false)
-  }
 
-  const handleDelete = (e) => {
-    e.preventDefault()
-    dispatch(deleteReplies(id, postId))
-    handleClose()
-  }
-  return (
-    <> {
-      editReply ? (
-        <div>
-          <Avatar src={userUrl}/>
+//   if (payload.title === '' || payload.glitter_factor ==='' || payload.description ===''){
+//   errs.push("Title, Glitter Factor, Description are needed field is required")
 
-          <input type='text'
-            value={currentReplyDetail}
-            onChange={updateReply}/>
+//   }else if(payload.title !== ''){
 
-          <input type='text'
-            valur={currentReplyUrlDetail}
-            onChange={updateReplyUrl}/>
+//   allProducts.map((product) => {
 
-          <form onSubmit={handleEdit}>
-            <button onClick={
-              () => {
-                setEditReply(false)
-              }
-            }>Cancel</button>
-            <button>Apply Changes</button>
-          </form>
-        </div>
+//   if(product.title === payload.title){
+//   errs.push('This Title already exists')
+//   }
+//   return product
+//   })
 
-      ) : (
+//   }
 
-        <center>
 
-          <div className='reply'>
 
-            <div className='reply_top'>
-              <Avatar className='reply_avatar'
-                src={userUrl}/>
+//   let isImage = ['.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tif', '.tiff'];
 
-              <div className='reply_topInfo'>
-                <div className='reply_user_info'>
+//   if (payload.product_image !== ''){
+//   let i = 0
 
-                  <h3>{firstName}
-                    {lastName}</h3>
-                  {
-                  (userId === sessionUser.id) && (
-                    <div>
-                      <Button id="basic-button"
-                        aria-controls={
-                          open ? 'basic-menu' : undefined
-                        }
-                        aria-haspopup="true"
-                        aria-expanded={
-                          open ? 'true' : undefined
-                        }
-                        onClick={handleClick}>
-                        <div className='edit_delete_dropdown_icon'>
-                          <i className="fa-solid fa-ellipsis"/>
-                        </div>
-                      </Button>
-                      <Menu id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={
-                          {'aria-labelledby': 'basic-button'}
-                      }>
-                        <MenuItem onClick={
-                          () => {
-                            setEditReply(true)
-                          }
-                        }>Edit</MenuItem>
-                        <MenuItem onClick={
-                          (e) => {
-                            handleDelete(e, postId, reply.id)
-                          }
-                        }>Delete</MenuItem>
-                      </Menu>
-                    </div>
-                  )
-                } </div>
-                <p>{dateCreated}</p>
-              </div>
-            </div>
+//   while(!payload.product_image.endsWith(isImage[i] && i < isImage.length))
 
-            <div className='reply_bottom'>
-              <p>{reply}</p>
-            </div>
+//   if(payload.product_image.endsWith(isImage[i])){
+//   break
 
-            <div>
-              <img src={replyUrl}
-                alt=''/>
-            </div>
+//   }else{
+//   i++
 
-          </div>
+//   }
+//   }else{
+//   errs.push('Must be a Valid Image)
+//   }
 
-        </center>
-      )
-    } </>
-  )
-}
+//   if(errs.length){
 
-export default ReplyForm
+//   setErrors(errs)
+
+//   }
+//   else{
+
+//   dispatch(productActions.postTheProduct(payload));
+//   history.push('/')
+
+//   }
