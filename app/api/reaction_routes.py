@@ -17,7 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@reaction_routes.route('/replies/<int:id>/', methods=['GETS'])
+@reaction_routes.route('/replies/<int:id>', methods=['GET'])
 @login_required
 def get_reply_reactions(id):
     reply_reactions = Reaction.query.filter(
