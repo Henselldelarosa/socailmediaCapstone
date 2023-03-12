@@ -25,7 +25,7 @@ def get_reply_reactions(id):
     ).first()
     return reply_reactions.to_dict()
 
-@reaction_routes.route('/replies/<int:id>/up_vote', methods=['POST'])
+@reaction_routes.route('/replies/<int:id>/', methods=['POST'])
 @login_required
 def post_upvote_reaction(id):
 
@@ -35,6 +35,14 @@ def post_upvote_reaction(id):
         ).first()
 
     if reaction_check:
-        if reaction_check.up_vote == True:
-            reaction_check.up_vote == False
-            db.session.delete(reaction_check)
+        db.session.delete(reaction_check)
+        db.session.commit()
+        return {'Message':'Reaction Deleted'}
+    else:
+        new_vote = Reaction(
+            reply_id = id,
+            user_id = current_user.id)
+
+        db.session.add(new_vote)
+        db.session.commit()
+        return new_vote.to_dict()

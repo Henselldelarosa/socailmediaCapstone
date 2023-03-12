@@ -4,16 +4,32 @@ const DELETE_REPLY = 'reply/DELETE_REPLY'
 const UPDATE_REPLY = 'reply/UPDATE_REPLY'
 
 
-const gets = (replies, id) => ({type: GET_REPLIES, replies, id})
+const gets = (replies, id) => (
+  {
+    type: GET_REPLIES,
+    replies, id
+  })
 
 
-const addReply = (reply) => ({type: ADD_REPLY, reply})
+const addReply = (reply) => (
+  {
+    type: ADD_REPLY,
+    reply
+  })
 
 
-const removeReply = (id) => ({type: DELETE_REPLY, id})
+const removeReply = (id) => (
+  {
+    type: DELETE_REPLY,
+    id
+  })
 
 
-const update = (reply) => ({type: UPDATE_REPLY, reply})
+const update = (reply) => (
+  {
+    type: UPDATE_REPLY,
+    reply
+  })
 
 
 export const getAllReplies = (id) => async (dispatch) => {
@@ -28,9 +44,7 @@ export const getAllReplies = (id) => async (dispatch) => {
 
 
 export const addAReply = (reply) => async (dispatch) => {
-  const response = await fetch(`/api/replies/posts/${
-    reply.postId
-  }`, {
+  const response = await fetch(`/api/replies/posts/${reply.postId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
