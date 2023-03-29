@@ -73,3 +73,13 @@ Once your info has been entered your specification press the 'Sign Up' button it
 
 <img width="298" alt="Screenshot 2023-03-29 184733" src="https://user-images.githubusercontent.com/97318548/228684816-47f4b848-c6b9-4472-9bc4-163b2c3359b6.png">
 
+If have come to this page by accident you can press the 'Cancel' button which will take you back to the /login route.
+
+<img width="297" alt="Screenshot 2023-03-29 175842" src="https://user-images.githubusercontent.com/97318548/228685037-e37a6e64-16d5-44e0-bf82-c888397a8bd5.png">
+
+If you don't have an account and don't want to create an account and just want to test the site you can press the 'Demo Login' button to sign in as a demo user which credentials has been hard coded.
+
+<img width="302" alt="Screenshot 2023-03-29 175901" src="https://user-images.githubusercontent.com/97318548/228685429-55b1f62a-226c-46aa-962f-ef0021c9e473.png">
+
+
+
