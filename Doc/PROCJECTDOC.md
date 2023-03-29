@@ -84,4 +84,10 @@ If you don't have an account and don't want to create an account and just want t
 
 ## Once you have signed in
 
+Once you have signed in you will be taken to the home route '/' where you will see a header bar with the name of the page a home Icon and the user first name and last name with the user profile image. You will also see an area where you can add pots by adding text or a image url. Below the post session you will see all the post everyone has made ordered in from newest to oldest.
 
+### Header bar
+
+<img width="550" alt="Screenshot 2023-03-29 190648" src="https://user-images.githubusercontent.com/97318548/228690521-bb42439d-f984-459b-8362-e55463bf513f.png">
+
+The header bar has a few functionalities.
