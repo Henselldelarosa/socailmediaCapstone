@@ -47,5 +47,17 @@ This is how you get the project started.
 8. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
 
+## Navigating site
+
+### Login
+If no user is signed in you will encounter this page will it will ask you for your user credentials at the /login page.
+
+<img width="447" alt="Screenshot 2023-03-29 175709" src="https://user-images.githubusercontent.com/97318548/228678962-e110f2b7-8792-4d20-b74f-d400339275e3.png">
+
+Once you have enter your credentials you can press the Log in button to sign in.
+
+
+<img width="293" alt="Screenshot 2023-03-29 181324" src="https://user-images.githubusercontent.com/97318548/228679593-ea020549-7e35-477b-9ba5-058553476da3.png">
+
 
 
