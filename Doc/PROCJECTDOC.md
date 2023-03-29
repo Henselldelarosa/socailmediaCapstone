@@ -49,15 +49,25 @@ This is how you get the project started.
 
 ## Navigating site
 
-### Login
+### /login
 If no user is signed in you will encounter this page will it will ask you for your user credentials at the /login page.
 
 <img width="447" alt="Screenshot 2023-03-29 175709" src="https://user-images.githubusercontent.com/97318548/228678962-e110f2b7-8792-4d20-b74f-d400339275e3.png">
 
 Once you have enter your credentials you can press the Log in button to sign in.
 
+<img width="293" alt="Screenshot 2023-03-29 181324" src="https://user-images.githubusercontent.com/97318548/228682541-baf9444a-1dd9-48c5-9158-55d2d54409f1.png">
 
-<img width="293" alt="Screenshot 2023-03-29 181324" src="https://user-images.githubusercontent.com/97318548/228679593-ea020549-7e35-477b-9ba5-058553476da3.png">
+### /signup
+
+If you would like to create a new account 
+
+<img width="297" alt="Screenshot 2023-03-29 175842" src="https://user-images.githubusercontent.com/97318548/228682383-9e1a9130-0e6a-4287-8a26-4160b38c3ca3.png">
 
 
+
+<img width="524" alt="Screenshot 2023-03-29 175830" src="https://user-images.githubusercontent.com/97318548/228682506-926f4f9c-5b2c-4354-8d6f-fe0b8400ca92.png">
+
+
+<img width="302" alt="Screenshot 2023-03-29 175901" src="https://user-images.githubusercontent.com/97318548/228682518-07274b53-c7a8-48f1-95f3-0d0993903a6b.png">
 
