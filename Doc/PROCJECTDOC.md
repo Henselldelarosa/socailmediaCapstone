@@ -60,9 +60,9 @@ Once you have enter your credentials you can press the 'Log in' button to sign i
 
 ### /signup
 
-If you would like to create a new account press the 'Create new account' button
+If you would like to create a new account press the 'Create new account' button this will take you to the /signup route.
 <img width="298" alt="Screenshot 2023-03-29 175800" src="https://user-images.githubusercontent.com/97318548/228684032-74e2d071-db75-413a-b7b9-7e08b726c265.png">
-this will take you to the /signup route.
+
 
 Once you at the /signup route it will ask you for your First Name, Last Name, Email, Password and to confirm your password, and if you want to but not mandatory you can add a Profile Image.
 
@@ -81,5 +81,7 @@ If you don't have an account and don't want to create an account and just want t
 
 <img width="302" alt="Screenshot 2023-03-29 175901" src="https://user-images.githubusercontent.com/97318548/228685429-55b1f62a-226c-46aa-962f-ef0021c9e473.png">
 
+
+## Once you have signed in
 
 
