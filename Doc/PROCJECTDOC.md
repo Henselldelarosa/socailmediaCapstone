@@ -48,5 +48,4 @@ This is how you get the project started.
 
 
 
-## Navigating the site
 
