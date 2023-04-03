@@ -17,6 +17,7 @@ class Reply(db.Model):
 
      user = db.relationship('User', back_populates='replies')
      posts = db.relationship('Post', back_populates='replies')
+     likes = db.relationship('Like', back_populates='replies')
 
      def to_dict(self):
          return{
@@ -37,3 +38,12 @@ class Reply(db.Model):
             'replyUrl': self.replyUrl,
             'userId': self.userId
           }
+
+     def to_like_reply_dict(self):
+         return{
+             'id': self.id,
+             'reply': self.reply,
+             'replyUrl':self.replyUrl,
+             'userId': self.userId,
+             'post': self.posts.to_dict()
+         }

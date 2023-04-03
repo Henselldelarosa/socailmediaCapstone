@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .posts import seed_posts, undo_posts
 from .replies import seed_replies, undo_replies
+from .likes import seed_likes, undo_likes
 
 from app.models.db import db, environment, SCHEMA
 
@@ -21,6 +22,7 @@ def seed():
         undo_users()
         undo_posts()
         undo_replies()
+        undo_likes()
 
 
         db.session.execute(
@@ -29,12 +31,16 @@ def seed():
             f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
         db.session.commit()
+
 
 
     seed_users()
     seed_posts()
     seed_replies()
+    seed_likes()
 
 
     # Add other seed functions here
@@ -46,4 +52,5 @@ def undo():
     undo_users()
     undo_posts()
     undo_replies()
+    undo_likes()
     # Add other undo functions here

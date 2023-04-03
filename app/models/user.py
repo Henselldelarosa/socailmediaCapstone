@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
 
     posts = db.relationship('Post', back_populates='user')
     replies = db.relationship('Reply', back_populates='user')
+    likes = db.relationship('Like', back_populates='user')
 
     @property
     def password(self):
@@ -51,6 +52,14 @@ class User(db.Model, UserMixin):
 
 
     def to_reply_dict(self):
+        return{
+            'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'userUrl': self.userUrl
+        }
+
+    def to_like_dict(self):
         return{
             'id': self.id,
             'firstName': self.firstName,

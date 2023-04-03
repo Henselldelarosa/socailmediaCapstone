@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 // css
 import './ReplyForm.css'
+import UserReactions from '../../Reactions/UserReactions';
 
 function ReplyForm({
   id,
@@ -215,6 +216,8 @@ function ReplyForm({
             alt=''/>
         </div>
 
+        <hr/>
+        
       </div>
 
     </center>)

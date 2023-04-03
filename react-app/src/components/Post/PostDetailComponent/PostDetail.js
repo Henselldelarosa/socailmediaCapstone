@@ -11,6 +11,7 @@ import ReplyCard from '../../Replies/ReplyDetailComponent/ReplyCard'
 import { Avatar } from '@mui/material'
 import CreateReply from '../../Replies/CreateReplyComponent/CreateReply'
 import ReplyForm from '../../Replies/ReplyDetailComponent/ReplyForm'
+import UserReactions from '../../Reactions/UserReactions'
 
 function PostDetail() {
   const dispatch = useDispatch()
@@ -92,7 +93,8 @@ function PostDetail() {
             lastName={reply.user.lastName}
             userUrl = {reply.user.userUrl}
             userId={reply.userId}
-            /></div>
+            />
+            </div>
           )
           })}
 
