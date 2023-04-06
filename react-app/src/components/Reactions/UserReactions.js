@@ -8,9 +8,9 @@ function UserReactions({userId, replyId}) {
   const like = useSelector(state => Object.values(state.likes))
 
 
-  useEffect(() =>{
-    dispatch(addRemoveTheReplyLike(replyId))
-  },[dispatch, replyId])
+  // useEffect(() =>{
+  //   dispatch(addRemoveTheReplyLike(replyId))
+  // },[dispatch, replyId])
 
   console.log(like)
   return (

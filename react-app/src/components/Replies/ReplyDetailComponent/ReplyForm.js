@@ -1,11 +1,11 @@
 // libraries
 import {Avatar} from '@mui/material'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 // thunk
 import {addAReply, updateReplies, deleteReplies} from '../../../store/reply'
-
+import { addRemoveTheReplyLike, getAllLikes } from '../../../store/like'
 // handle drop down
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -14,6 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 // css
 import './ReplyForm.css'
 import UserReactions from '../../Reactions/UserReactions';
+
+// icons
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 function ReplyForm({
   id,
@@ -30,7 +35,16 @@ function ReplyForm({
 }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
-  const replies = useSelector(state => Object.values(state.replies))
+  // const replies = useSelector(state => Object.values(state.replies))
+  const likes = useSelector(state => state.likes[id])
+  // const likesArr = []
+  // const replyLikes = likes.map((like) => {
+  //   if(like.replyId === id){
+  //     likesArr.push(like)
+  //   }
+  //   return likesArr
+  // })
+  console.log(likes)
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -41,6 +55,9 @@ function ReplyForm({
     setAnchorEl(null);
   };
 
+  useEffect(() =>{
+    dispatch(getAllLikes(id))
+  },[dispatch,id])
 
   const [editReply, setEditReply] = useState(false)
   const [replyData, setReplyData] = useState(reply)
@@ -217,7 +234,25 @@ function ReplyForm({
         </div>
 
         <hr/>
-        
+        <div>
+          {(likes?.userId === sessionUser.id) && likes?(
+            <div className='user_liked'>
+              <FavoriteIcon
+              onClick={(e) => {
+                e.preventDefault()
+                dispatch(addRemoveTheReplyLike(likes.id))
+              }}/>
+            </div>
+          )
+          :
+          (<div className='user_not_liked'>
+            <FavoriteBorderOutlinedIcon
+            onClick={(e) => {
+              e.preventDefault()
+              dispatch(addRemoveTheReplyLike(id, sessionUser.id))
+            }}/>
+          </div>)}
+        </div>
       </div>
 
     </center>)
@@ -225,32 +260,3 @@ function ReplyForm({
 }
 
 export default ReplyForm
-
-
-// return (
-//     <div>
-//       <Button
-//         id="basic-button"
-//         aria-controls={open ? 'basic-menu' : undefined}
-//         aria-haspopup="true"
-//         aria-expanded={open ? 'true' : undefined}
-//         onClick={handleClick}
-//       >
-//         Dashboard
-//       </Button>
-//       <Menu
-//         id="basic-menu"
-//         anchorEl={anchorEl}
-//         open={open}
-//         onClose={handleClose}
-//         MenuListProps={{
-//           'aria-labelledby': 'basic-button',
-//         }}
-//       >
-//         <MenuItem onClick={handleClose}>Profile</MenuItem>
-//         <MenuItem onClick={handleClose}>My account</MenuItem>
-//         <MenuItem onClick={handleClose}>Logout</MenuItem>
-//       </Menu>
-//     </div>
-// );
-// }

@@ -163,3 +163,14 @@ align-items: center;
 .form_reply_poster{
   flex:1;
 }
+
+.user_liked{
+  color: red;
+  cursor: pointer;
+}
+
+.user_not_liked{
+  color: red;
+  cursor: pointer;
+  
+}

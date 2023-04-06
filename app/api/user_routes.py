@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, db
+from app.models import User, db, Like
 
 user_routes = Blueprint('users', __name__)
 
@@ -23,3 +23,8 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+# @user_routes.route('/likes/<int:id>')
+# @login_required
+# def get_user_likes(id):
+#     user_likes = Like.query.filter(Like.userId =)
