@@ -50,9 +50,10 @@ def post_upvote_likes(id):
         Like.userId == current_user.id
         ).first()
     if reaction_check:
+        deleted_like = reaction_check.to_dict()
         db.session.delete(reaction_check)
         db.session.commit()
-        return {'message':'Reaction deleted'}
+        return deleted_like
     else:
         new_vote = Like(
             replyId = id,

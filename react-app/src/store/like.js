@@ -53,18 +53,22 @@ let initialState = {}
 const likeReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case GET_LIKES:{
+    case GET_LIKES: {
       const newState = {}
       action.likes.likes.forEach((like) => {
-        newState[like.id] = like
+        newState[like.replyId] = like
       })
       return newState
     }
 
-    case ADD_REMOVE_LIKE:{
-      return{
-        [action.like.id]: action.like
+    case ADD_REMOVE_LIKE: {
+      const newState = { ...state }
+      if (newState[action.like.replyId]) {
+        delete newState[action.like.replyId]
+      } else {
+        newState[action.like.replyId] = action.like
       }
+      return newState;
     }
 
     default:

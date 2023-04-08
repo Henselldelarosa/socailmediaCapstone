@@ -235,12 +235,12 @@ function ReplyForm({
 
         <hr/>
         <div>
-          {(likes?.userId === sessionUser.id) && likes?(
+          {likes ? (
             <div className='user_liked'>
               <FavoriteIcon
               onClick={(e) => {
                 e.preventDefault()
-                dispatch(addRemoveTheReplyLike(likes.id))
+                dispatch(addRemoveTheReplyLike(id))
               }}/>
             </div>
           )

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 574df102f93d
+Revision ID: 05e190e5c01f
 Revises:
-Create Date: 2023-04-06 00:52:08.087474
+Create Date: 2023-04-08 17:15:02.955290
 
 """
 from alembic import op
@@ -12,9 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = '574df102f93d'
+revision = '05e190e5c01f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -71,6 +70,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 
