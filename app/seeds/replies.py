@@ -24,7 +24,7 @@ def seed_replies():
 def undo_replies():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM replies")
 

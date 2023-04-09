@@ -80,7 +80,4 @@ def downgrade():
     op.drop_table('replies')
     op.drop_table('posts')
     op.drop_table('users')
-    
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###

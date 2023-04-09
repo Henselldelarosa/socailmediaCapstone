@@ -19,28 +19,27 @@ def seed():
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
-        undo_users()
-        undo_posts()
-        undo_replies()
         undo_likes()
-
-
-        db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
-        db.session.execute(
-            f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
-        db.session.execute(
-            f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
-        db.session.execute(
-            f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
-        db.session.commit()
-
-
+        undo_replies()
+        undo_posts()
+        undo_users()
 
     seed_users()
     seed_posts()
     seed_replies()
     seed_likes()
+
+
+        # db.session.execute(
+        #     f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        # db.session.execute(
+        #     f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
+        # db.session.execute(
+        #     f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
+        # db.session.execute(
+        #     f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
+        # db.session.commit()
+
 
 
     # Add other seed functions here
@@ -49,8 +48,8 @@ def seed():
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_users()
-    undo_posts()
-    undo_replies()
     undo_likes()
+    undo_replies()
+    undo_posts()
+    undo_users()
     # Add other undo functions here
