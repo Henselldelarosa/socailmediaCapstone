@@ -23,26 +23,22 @@ def seed():
         undo_replies()
         undo_posts()
         undo_users()
-
     seed_users()
     seed_posts()
     seed_replies()
     seed_likes()
-    db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
-    db.session.execute(
-            f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
-    db.session.execute(
-            f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
-    db.session.execute(
-            f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
-    db.session.commit()
-
-
-
-
-
     # Add other seed functions here
+
+#     db.session.execute(
+#             f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+#     db.session.execute(
+#             f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
+#     db.session.execute(
+#             f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
+#     db.session.execute(
+#             f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
+#     db.session.commit()
+
 
 
 # Creates the `flask seed undo` command
@@ -53,3 +49,36 @@ def undo():
     undo_posts()
     undo_users()
     # Add other undo functions here
+
+
+def undo_likes():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM likes")
+
+    db.session.commit()
+
+def undo_replies():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.replies RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM replies")
+
+    db.session.commit()
+
+def undo_posts():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM posts")
+
+    db.session.commit()
+
+def undo_users():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM users")
+
+    db.session.commit()

@@ -5,7 +5,7 @@ class Like(db.Model):
     __tablename__ = 'likes'
 
     if environment == "production":
-       __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
@@ -13,7 +13,6 @@ class Like(db.Model):
     replyId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('replies.id')), nullable=False)
 
     user = db.relationship('User', back_populates = 'likes')
-    # posts = db.relationship('Post', back_populates = 'likes')
     replies = db.relationship('Reply', back_populates = 'likes')
 
     def to_dict(self):
