@@ -50,6 +50,7 @@ def undo():
     undo_likes()
     undo_replies()
     undo_posts()
+    undo_search()
     undo_users()
     # Add other undo functions here
 
