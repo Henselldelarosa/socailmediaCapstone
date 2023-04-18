@@ -10,12 +10,15 @@ import PostDetail from "./components/Post/PostDetailComponent/PostDetail";
 
 // thunk
 import { getAllPosts, getPostById } from "./store/post";
+import { getTheUsers } from "./store/user";
+import SearchComponent from "./components/Search/SearchComponent";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(getTheUsers())
     dispatch(getAllPosts())
 
   }, [dispatch]);
@@ -40,6 +43,10 @@ function App() {
 
           <Route exact path='/'>
             <GetAllPost/>
+          </Route>
+
+          <Route exact path='/searches/users/:searchQuery'>
+            <SearchComponent/>
           </Route>
         </Switch>
       )}

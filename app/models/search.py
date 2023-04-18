@@ -19,5 +19,7 @@ class Search(db.Model):
         return {
             'id': self.id,
             'search': self.search,
+            'dateCreated': self.dateCreated,
             'userId': self.user_id,
+            'users': self.user.to_dict()
         }

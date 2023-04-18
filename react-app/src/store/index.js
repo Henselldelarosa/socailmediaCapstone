@@ -5,12 +5,15 @@ import postReducer from './post';
 import usersReducer from './user';
 import replyReducer from './reply';
 import likeReducer from './like'
+import searchReducer from './search';
+
 const rootReducer = combineReducers({
   session:session,
   posts:postReducer,
   users:usersReducer,
   replies: replyReducer,
-  likes:likeReducer
+  likes:likeReducer,
+  searches: searchReducer
 });
 
 

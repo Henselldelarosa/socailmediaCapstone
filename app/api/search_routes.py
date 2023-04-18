@@ -20,14 +20,17 @@ def validation_errors_to_error_messages(validation_errors):
 @search_routes.route('/users/<query>', methods=['GET'])
 @login_required
 def get_searches(query):
+    print(query)
     if current_user.is_authenticated:
         wanted_search = Search(search = query, userId = current_user.id)
-        db.session.add(wanted_search)
-        db.commit()
 
-    results = User.query.filter(User.firstName.contains(query) or User.lastName.contains(query))
+        db.session.add(wanted_search)
+        db.session.commit()
+
+    # results = User.query.filter(query in User.firstName or query in User.lastName)
+    results = User.query.filter(User.firstName.contains(query.lower()))
     if results:
-        return results.to_dict()
+        return {'search': [result.to_dict() for result in results]}
     else:
         return {'message': 'No results found'}
 
@@ -38,7 +41,7 @@ def get_searches(query):
 @login_required
 def get_user_searches(id):
     results = Search.query.filter(Search.userId == id)
-    final = {'seach': [result.to_dict() for result in results]}
+    final = {'search': [result.to_dict() for result in results]}
     return final
 
 
@@ -62,7 +65,8 @@ def clear_search_history():
 @search_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def clear_single_search(id):
-    delete_search = Search.query.filter(Search.userId == current_user and Search.id == id):
+    # wanted_search = Search.query.get(id)
+    delete_search = Search.query.filter(Search.userId == current_user and Search.id == id)
 
     if delete_search:
         db.session.delete(delete_search)

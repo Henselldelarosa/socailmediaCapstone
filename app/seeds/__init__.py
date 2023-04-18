@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .posts import seed_posts, undo_posts
 from .replies import seed_replies, undo_replies
 from .likes import seed_likes, undo_likes
+from .searches import seed_searches, undo_search
 
 from app.models.db import db, environment, SCHEMA
 
@@ -22,8 +23,10 @@ def seed():
         undo_likes()
         undo_replies()
         undo_posts()
+        undo_search()
         undo_users()
     seed_users()
+    seed_searches()
     seed_posts()
     seed_replies()
     seed_likes()
@@ -72,6 +75,15 @@ def undo_posts():
         db.session.execute(f"TRUNCATE table {SCHEMA}.posts RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM posts")
+
+    db.session.commit()
+
+
+def undo_searches():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.searches RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM searches")
 
     db.session.commit()
 

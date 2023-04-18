@@ -1,0 +1,26 @@
+
+.user_container{
+  margin-left: 10px;
+  align-items: center;
+  width: 400px;
+  height:80px;
+  cursor: pointer;
+}
+
+.user_container:hover{
+
+}
+
+.userInfo{
+  display: flex;
+  background-color: var(--theme);
+  margin-top:10px;
+  padding-left: 15px;
+  border-radius: 999px;
+  border-bottom: 2px solid gray;
+}
+
+.userInfo > h2{
+ margin-left: 15px;
+ place-items: center;
+}
