@@ -22,8 +22,8 @@ function SearchComponent() {
   },[dispatch, searchQuery])
 
   let content = null
-
-  if(allSearches.length >= 1){
+  console.log(allSearches)
+  if(allSearches[allSearches.length - 1].length){
     content =(
       allSearches && allSearches[allSearches.length - 1].map((search,id) =>{
         return (
