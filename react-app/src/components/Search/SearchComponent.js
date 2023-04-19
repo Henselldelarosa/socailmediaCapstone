@@ -23,7 +23,7 @@ function SearchComponent() {
 
   let content = null
   console.log(allSearches)
-  if(allSearches[allSearches.length - 1].length){
+  if(allSearches.length && allSearches[allSearches.length - 1].length >= 1 ){
     content =(
       allSearches && allSearches[allSearches.length - 1].map((search,id) =>{
         return (
