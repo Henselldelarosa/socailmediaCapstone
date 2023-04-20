@@ -28,12 +28,12 @@ function SearchComponent() {
         return (
 
           <center>
-        <div key={search.id}>
+        <div key={search?.id}>
           <IndividualUser
-          userUrl={search.userUrl}
-          firstName={search.firstName}
-          lastName={search.lastName}
-          email={search.email}/>
+          userUrl={search?.userUrl}
+          firstName={search?.firstName}
+          lastName={search?.lastName}
+          email={search?.email}/>
         </div>
           </center>
         )
