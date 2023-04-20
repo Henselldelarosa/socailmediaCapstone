@@ -22,7 +22,6 @@ function SearchComponent() {
   },[dispatch, searchQuery])
 
   let content = null
-  console.log(allSearches)
   if(allSearches.length){
     content =(
       allSearches && allSearches.map((search,id) =>{

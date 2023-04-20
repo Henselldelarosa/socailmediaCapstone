@@ -81,7 +81,6 @@ const searchReducer = (state = initialState, action ) => {
       newState.search.forEach((search) => {
         newState[search.id] = search.firstName
       })
-      console.log(newState.search)
       return newState.search
 
     }
