@@ -118,10 +118,10 @@ const initialState = {}
 const searchReducer = (state = initialState, action ) => {
   switch (action.type) {
     case GET_SEARCHES:{
-
+      console.log(action.searches.search.length)
       if(action.searches.search?.length === 1){
           return {
-              ...state,
+          
               [action.searches.search.id] : action.searches.search.firstName
             }
           }
