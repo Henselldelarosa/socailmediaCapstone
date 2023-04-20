@@ -72,12 +72,60 @@ export const deleteASearch = (id) => async (dispatch) => {
     return data
   }
 }
+// const initialState = {}
+// const searchReducer = (state = initialState, action ) => {
+//   switch (action.type) {
+//     case GET_SEARCHES:{
+
+//       const newState = action.searches
+//       newState.search.forEach((search) => {
+//         newState[search.id] = search.firstName
+//       })
+//       return newState.search
+
+//     }
+//     case GET_USER_SEARCHES:{
+
+//       const newState = {...state}
+//       newState.searches = action.searches
+//       return newState
+
+//     }
+
+//     case DELETE_SEARCHES_HISTORY:{
+
+//       const newState = {...state}
+//       delete newState[action.searches]
+//       return newState
+//     }
+
+//     case DELETE_SEARCH:{
+
+//       const newState = {...state}
+//       delete state[action.id]
+//       return newState
+
+//     }
+//     default:
+//       return state
+//   }
+
+// }
+
+// export default searchReducer
+
 const initialState = {}
 const searchReducer = (state = initialState, action ) => {
   switch (action.type) {
     case GET_SEARCHES:{
 
-      const newState = action.searches
+      if(action.searches.length === 1){
+          return {
+              ...state,
+              [action.searches.search.id] : action.searches.search.firstName
+            }
+          }
+      const newState = {...action.searches}
       newState.search.forEach((search) => {
         newState[search.id] = search.firstName
       })
