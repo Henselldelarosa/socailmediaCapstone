@@ -22,7 +22,7 @@ function SearchComponent() {
   },[dispatch, searchQuery])
 
   let content = null
-  if(allSearches.length){
+  if(allSearches?.length){
     content =(
       allSearches && allSearches.map((search,id) =>{
         return (
