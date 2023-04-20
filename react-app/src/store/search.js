@@ -78,10 +78,6 @@ const searchReducer = (state = initialState, action ) => {
     case GET_SEARCHES:{
 
       const newState = action.searches
-      if(newState.search.length === 1){
-        return newState.search
-      }
-      
       newState.search.forEach((search) => {
         newState[search.id] = search.firstName
       })

@@ -23,7 +23,8 @@ function SearchComponent() {
 
   let content = null
   console.log(allSearches)
-  if(allSearches.length){
+
+   allSearches?
     content =(
       allSearches && allSearches.map((search,id) =>{
         return (
@@ -39,16 +40,21 @@ function SearchComponent() {
           </center>
         )
       })
-    )
-  }
-  else{
-    content = (
-      <div>
+    ):(
+      content = (
         <h1 className='no_user'>User Not Found</h1>
-      </div>
+      )
     )
-  }
+  
   return content
 }
 
 export default SearchComponent
+
+// else{
+//   content = (
+//     <div>
+//       <h1 className='no_user'>User Not Found</h1>
+//     </div>
+//   )
+// }

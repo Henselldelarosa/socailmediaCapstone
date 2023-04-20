@@ -18,7 +18,7 @@ function GetAllPost() {
 
   useEffect(() =>{
     dispatch(getAllPosts())
-    
+
   },[dispatch])
 
 
