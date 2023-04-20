@@ -23,9 +23,9 @@ function SearchComponent() {
 
   let content = null
   console.log(allSearches)
-  if(allSearches.length && allSearches[allSearches.length - 1].length > 0 ){
+  if(allSearches.length){
     content =(
-      allSearches && allSearches[allSearches.length - 1].map((search,id) =>{
+      allSearches && allSearches.map((search,id) =>{
         return (
 
           <center>

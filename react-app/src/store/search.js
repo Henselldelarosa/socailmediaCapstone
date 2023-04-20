@@ -78,12 +78,11 @@ const searchReducer = (state = initialState, action ) => {
     case GET_SEARCHES:{
 
       const newState = action.searches
-      console.log(newState)
       newState.search.forEach((search) => {
         newState[search.id] = search.firstName
-        // newState[search.id] = search.lastName
       })
-      return newState
+      console.log(newState.search)
+      return newState.search
 
     }
     case GET_USER_SEARCHES:{
