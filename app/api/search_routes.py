@@ -28,7 +28,7 @@ def get_searches(query):
         db.session.commit()
 
     # results = User.query.filter(query in User.firstName or query in User.lastName)
-    results = User.query.filter(User.firstName.contains(query.lower()))
+    results = User.query.filter(User.firstName.contains(query.lower())).all()
     print(results)
     if results:
         return {'search': [result.to_dict() for result in results]}
