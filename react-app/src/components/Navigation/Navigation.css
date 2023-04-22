@@ -94,6 +94,21 @@ cursor: pointer;
   margin-left:10px ;
 }
 
+.header_search_button{
+ border: none;
+ background-color: var(--theme);
+ border-radius: 999px;
+ font-size: 16px;
+ font-weight: 600;
+ color: white;
+ cursor: pointer;
+}
+
+.header_search_button:hover{
+  background-color: white;
+  color: var(--theme);
+}
+
 /* .header_icons_home{
   display: flex;
   align-items: center;
