@@ -28,7 +28,7 @@ function SearchComponent() {
         return (
 
           <center>
-        <div key={search?.id}>
+        <div key={search.id}>
           <IndividualUser
           userUrl={search?.userUrl}
           firstName={search?.firstName}
