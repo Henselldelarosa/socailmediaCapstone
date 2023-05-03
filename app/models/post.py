@@ -17,7 +17,6 @@ class Post(db.Model):
 
     user = db.relationship('User', back_populates='posts')
     replies = db.relationship('Reply', back_populates='posts', cascade='all, delete-orphan')
-    # likes = db.relationship('Reply', back_populates='posts', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {

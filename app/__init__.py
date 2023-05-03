@@ -11,6 +11,7 @@ from .api.post_routes import posts_routes
 from .api.reply_routes import replies_routes
 from .api.likes_routes import likes_routes
 from .api.search_routes import search_routes
+from .api.images_routes import image_routes
 
 from .seeds import seed_commands
 from .config import Config
@@ -38,6 +39,7 @@ app.register_blueprint(posts_routes, url_prefix='/api/posts')
 app.register_blueprint(replies_routes, url_prefix='/api/replies')
 app.register_blueprint(likes_routes, url_prefix='/api/likes')
 app.register_blueprint(search_routes, url_prefix='/api/searches')
+app.register_blueprint(image_routes, url_prefix='/api/images')
 
 db.init_app(app)
 Migrate(app, db)

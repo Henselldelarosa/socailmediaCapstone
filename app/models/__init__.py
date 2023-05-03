@@ -4,4 +4,5 @@ from .post import Post
 from .reply import Reply
 from .like import Like
 from .search import Search
+from .image import Image
 from .db import environment, SCHEMA

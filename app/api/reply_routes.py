@@ -1,8 +1,10 @@
 from flask import Blueprint, request
-from app.models import Post, Reply, db
-from app.forms import ReplyForm
+from app.models import Post, Reply, db, Image
+from app.forms import ReplyForm, ImageForm
 from sqlalchemy import inspect
 from flask_login import current_user, login_required
+from app.aws_helpers import (upload_file_to_s3, get_unique_filename)
+
 
 
 replies_routes = Blueprint('replies', __name__)
@@ -17,12 +19,6 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-
-# Get all Replies
-# @replies_routes.route('/posts/<int:id>', methods=['GET'])
-# def get_all_reply(id):
-#     all_reply = db.session.query(Reply).filter(Reply.postId is id)
-#     return {'replies': [reply.to_dict() for reply in all_reply]}
 
 # Get all Replies
 @replies_routes.route('/posts/<int:id>', methods=['GET'])
@@ -49,7 +45,6 @@ def create_reply(id):
         db.session.add(created_reply)
         db.session.commit()
         return created_reply.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #Update reply
 @replies_routes.route('/<int:id>', methods=['PUT'])
@@ -63,7 +58,6 @@ def update_reply(id):
        if form.validate_on_submit():
            wanted_reply.reply = form.data['reply']
            wanted_reply.replyUrl = form.data['replyUrl']
-
            db.session.commit()
            return wanted_reply.to_dict()
     else:

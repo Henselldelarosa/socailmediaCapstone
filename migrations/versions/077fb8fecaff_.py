@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 2fb913a4ae8f
+Revision ID: 077fb8fecaff
 Revises:
-Create Date: 2023-04-12 17:48:06.060938
+Create Date: 2023-04-30 17:17:03.244556
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = '2fb913a4ae8f'
+revision = '077fb8fecaff'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,6 +34,16 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
+    op.create_table('images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('url', sa.String(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE images SET SCHEMA {SCHEMA};")
 
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -81,7 +92,6 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 
@@ -91,5 +101,6 @@ def downgrade():
     op.drop_table('replies')
     op.drop_table('searches')
     op.drop_table('posts')
+    op.drop_table('images')
     op.drop_table('users')
     # ### end Alembic commands ###
