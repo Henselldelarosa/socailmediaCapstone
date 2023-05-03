@@ -9,7 +9,18 @@ import PostCard from './PostCard'
 import PostForm from '../PostFormComponent/PostForm'
 import { NavLink} from 'react-router-dom'
 
+// Components
+import PostImageUpload from '../PostFormComponent/PostImageUpload'
 
+// function GetAllPost() {
+//   return (
+//     <div className='posts'>
+//       <PostImageUpload/>
+//     </div>
+//   )
+// }
+
+// export default GetAllPost
 function GetAllPost() {
   const dispatch = useDispatch()
   const sessionuUser = useSelector(state=> state.session.user)
@@ -36,6 +47,7 @@ dispatch(deletePost(id, postId))
       profileView =(
         <div>
           <PostForm/>
+          <PostImageUpload/>
 
           {posts && posts.reverse().map((post) =>{
             return (

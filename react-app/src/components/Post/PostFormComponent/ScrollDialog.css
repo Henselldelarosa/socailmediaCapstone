@@ -1,0 +1,21 @@
+.dialog_post_header{
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding-left: 20px;
+}
+
+.dialog_post_user_info{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.dialog_post_user_info > h3{
+  margin-left: 10px;
+}
+
+/* .post_dialog{
+  height: 600px;
+  width: 600px;
+} */

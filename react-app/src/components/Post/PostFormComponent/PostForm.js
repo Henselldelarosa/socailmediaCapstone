@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './PostForm.css'
 import { addPost } from '../../../store/post'
 import { Avatar } from '@mui/material'
+import ScrollDialog from './ScrollDialog'
 // import {useForm} from 'react-hook-form'
 
 
@@ -106,6 +107,7 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
         </div>
 
       </div>
+      <ScrollDialog/>
     </div>
   )
 }
