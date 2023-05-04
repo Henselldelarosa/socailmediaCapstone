@@ -33,11 +33,11 @@ def upload_image():
     return {'url':url}
 
 
-# @image_routes.route("")
-# @login_required
-# def get_all_images():
-#     images = Image.query.order_by(Image.id.desc()).all()
-#     return {"images": [image.to_dict() for image in images]}
+@image_routes.route("")
+@login_required
+def get_all_images():
+    images = Image.query.order_by(Image.id.desc()).all()
+    return {"images": [image.to_dict() for image in images]}
 
 
 # @image_routes.route("/filename", methods=['GET'])

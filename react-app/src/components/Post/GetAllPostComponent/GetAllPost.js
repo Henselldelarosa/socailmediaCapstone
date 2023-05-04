@@ -10,7 +10,8 @@ import PostForm from '../PostFormComponent/PostForm'
 import { NavLink} from 'react-router-dom'
 
 // Components
-import PostImageUpload from '../PostFormComponent/PostImageUpload'
+// import PostImageUpload from '../PostFormComponent/PostImageUpload'
+import UploadPicture from '../PostFormComponent/PostImageUpload'
 
 // function GetAllPost() {
 //   return (
@@ -46,8 +47,8 @@ dispatch(deletePost(id, postId))
       posts?
       profileView =(
         <div>
-          <PostForm/>
-          <PostImageUpload/>
+          {/* <PostForm/> */}
+         <UploadPicture/>
 
           {posts && posts.reverse().map((post) =>{
             return (

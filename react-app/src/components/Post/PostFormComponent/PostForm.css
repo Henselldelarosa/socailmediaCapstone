@@ -28,9 +28,9 @@
   background-color: #eff2f5;
 }
 
-.post_form_top > form > button{
+/* .post_form_top > form > button{
   display: none;
-}
+} */
 
 .form_post_poster{
   flex:1;
