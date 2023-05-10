@@ -10,18 +10,10 @@ import PostForm from '../PostFormComponent/PostForm'
 import { NavLink} from 'react-router-dom'
 
 // Components
-// import PostImageUpload from '../PostFormComponent/PostImageUpload'
 import UploadPicture from '../PostFormComponent/PostImageUpload'
+import PostModalRender from '../PostFormComponent/PostModalRender'
 
-// function GetAllPost() {
-//   return (
-//     <div className='posts'>
-//       <PostImageUpload/>
-//     </div>
-//   )
-// }
 
-// export default GetAllPost
 function GetAllPost() {
   const dispatch = useDispatch()
   const sessionuUser = useSelector(state=> state.session.user)
@@ -47,8 +39,9 @@ dispatch(deletePost(id, postId))
       posts?
       profileView =(
         <div>
-          {/* <PostForm/> */}
-         <UploadPicture/>
+          <PostForm/>
+          <PostModalRender/>
+
 
           {posts && posts.reverse().map((post) =>{
             return (

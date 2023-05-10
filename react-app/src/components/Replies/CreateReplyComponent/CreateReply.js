@@ -68,7 +68,7 @@ function CreateReply() {
       <div className='reply_form_top'>
       <Avatar src={user.userUrl}/>
 
-      <form  onSubmit={'hello'}>
+      <form  onSubmit={handleSubmit}>
 
          <ul>
             {errorMesaage && errorMesaage.map((error, id) => <li key={id}>{error}</li>)}

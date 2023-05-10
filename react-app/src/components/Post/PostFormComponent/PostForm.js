@@ -13,11 +13,11 @@ const user = useSelector(state => state.session.user)
 
 const [error, setError] = useState([])
 const [post, setPost] = useState('')
-const [postUrl, setPostUrl] = useState(null)
+const [postUrl, setPostUrl] = useState('')
 const [imageLoading, setImageLoading] = useState(false)
 
 const updatePost = (e) => setPost(e.target.value)
-// const updatePostUrl = (e) => setPostUrl(e.target.value)
+const updatePostUrl = (e) => setPostUrl(e.target.value)
 
 
 let formRef = useRef()
@@ -28,35 +28,21 @@ if(!updatePost){
 }
 })
 
-const handleUpload = async (e) =>{
-  e.preventDefault()
-  
-  const formData = new FormData()
-  formData.append('image', postUrl)
-  setImageLoading(true)
+// useEffect(() => {
+//   (async () => {
+//       const res = await fetch('/api/images');
+//       if (res.ok) {
+//           const data = await res.json();
+//           console.log(data)
+//           setPostUrl(data.images[0])
+//           console.log(data.images[0])
+//       } else {
+//           console.log("error")
+//       }
 
-  const res = await fetch('/api/images', {
-    method: 'POST',
-    body:formData
-  })
+//   })();
+// }, [])
 
-  console.log(res)
-
-  if (res.ok){
-    await res.json()
-    setImageLoading(false)
-  }else{
-    setImageLoading(false)
-    console.log('error on upload')
-  }
-
-}
-
-const updateImage = (e) =>{
-  handleUpload(e)
-  const file = e.target.files[0]
-  setPostUrl(file)
-}
 
 const handleSubmit =  (e) =>{
   e.preventDefault()
@@ -77,17 +63,17 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
     error.push("Post field can't be empty")
   }
 
-
-  // if (payload.postUrl !== '' && payload.post) {
-  //   if(payload.postUrl.endsWith(validImage[0]) || payload.postUrl.endsWith(validImage[1]) || payload.postUrl.endsWith(validImage[2]) || payload.postUrl.endsWith(validImage[3]) || payload.postUrl.endsWith(validImage[4]) || payload.postUrl.endsWith(validImage[5]) || payload.postUrl.endsWith(validImage[6])) {
-  //     dispatch(addPost(payload))
-  //   }else{
-  //     error.push("Not a valid Image")
-  //   }
-  // }
+  if (payload.postUrl !== '' && payload.post) {
+    if(payload.postUrl.endsWith(validImage[0]) || payload.postUrl.endsWith(validImage[1]) || payload.postUrl.endsWith(validImage[2]) || payload.postUrl.endsWith(validImage[3]) || payload.postUrl.endsWith(validImage[4]) || payload.postUrl.endsWith(validImage[5]) || payload.postUrl.endsWith(validImage[6])) {
+      dispatch(addPost(payload))
+    }else{
+      error.push("Not a valid Image")
+    }
+  }
   else{
     dispatch(addPost(payload))
   }
+
 
   setError(error)
   setPostUrl('')
@@ -100,46 +86,36 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
 
         <Avatar src={user.userUrl}/>
 
-        <form ref={formRef} onSubmit={handleUpload}>
+        <form ref={formRef} onSubmit={handleSubmit}>
 
           <ul className='post_error'>
             {error && error.map((error, id) => <li key={id}>{error}</li>)}
           </ul>
 
-          {/* <input
+          <input
           type='text'
           className='form_post_poster'
           placeholder={`whats on your mind, ${user.firstName}?`}
           value={post}
           onChange={updatePost}
-          /> */}
-
-          <input
-          type='file'
-          placeholder='image URL (opional)'
-          accept='image/*'
-          onChange={updateImage}
           />
 
-          <button type='submit'>
+          <input
+          type='text'
+          hidden
+          placeholder='image URL (opional)'
+          // accept='image/*'
+          value={postUrl}
+          onChange={updatePostUrl}
+          />
+
+          <button hidden type='submit'>
             Hidden submit
           </button>
 
         </form>
 
       </div>
-
-      <div className='post_form_bottom'>
-        {/* <div className='options'>
-      <i className="fa-solid fa-image" style={{color:'red'}}/>
-      <h3>Photo</h3>
-        </div> */}
-        <div>
-
-        </div>
-
-      </div>
-      {/* <ScrollDialog/> */}
     </div>
   )
 }

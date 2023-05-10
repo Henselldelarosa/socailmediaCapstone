@@ -1,0 +1,136 @@
+.post_modal_form{
+  background-color: #1c1e21;
+  width: 500px;
+  height: 525px;
+  place-items: center;
+  /* border: 1px solid gray; */
+  border-radius: 5px;
+}
+
+.post_modal_error{
+  color: var(--theme);
+  margin-top: 10px;
+}
+.post_modal_form_user_info{
+  display: flex;
+  margin-top: 15px;
+  padding-left: 10px;
+}
+
+
+
+.post_form_modal_title{
+font-size: 25px;
+font-weight: 600;
+/* border-bottom: 1px solid rgba(255, 255, 255, 0.05); */
+place-items: center;
+padding-top: 10px;
+padding-bottom: 15px;
+color: white;
+padding-left: 175px;
+}
+
+
+.modal_closing_button{
+  color: white;
+  /* background-color: rgba(23, 23, 23, 0.257); */
+  background-color: rgb(54, 54, 54);
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  margin-right: 10px;
+  height: 35px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.modal_closing_button:hover{
+  background-color: rgb(98, 98, 98);
+}
+
+.modal_closing_title_div{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+.post_modal_form_user_info > h3{
+  margin-left:10px;
+  color:white;
+}
+
+hr{
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.modal_file_upload_div{
+  height: 200px;
+  width:450px;
+  align-items: center;
+  /* margin-top: 10px; */
+  /* padding-top: 20px; */
+  margin-left: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+#modal_file_upload{
+  /* place-items: center; */
+  margin-left: 10px;
+  border: 2px solid lightgreen;
+  background-color: rgb(54, 53, 53);
+}
+
+.post_input{
+  width:450px;
+  border: none;
+  background-color: transparent;
+  margin-left: 20px;
+  color:white;
+  font-size:16px;
+  border-width: 0;
+  margin-top: 20px;
+}
+
+.post_input::placeholder{
+  color: lightgray;
+  font-size:16px ;
+  padding-top: 10px;
+}
+
+.post_modal_button{
+  place-items: center;
+  width: 450px;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: white;
+  background-color: var(--theme);
+  font-weight: 600;
+  height: 35px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.image_modal_upload{
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 165px;
+  color: white;
+  width: 430px;
+  margin-left: 10px;
+  background-color: rgba(58, 58, 58, 0.733);
+  border-radius: 5px;
+  cursor:pointer;
+}
+
+.modal_center_info{
+  margin-left: 150px;
+  padding-top: 50px;
+}
+
+.image_modal_upload:hover{
+  background-color:  rgba(68, 68, 68, 0.733);
+}

@@ -10,6 +10,7 @@ import App from "./App";
 
 import "./index.css";
 
+
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
@@ -26,7 +27,7 @@ function Root() {
 			<Provider store={store}>
 				<BrowserRouter>
 					<App />
-					<Modal />
+					{/* <Modal /> */}
 				</BrowserRouter>
 			</Provider>
 		</ModalProvider>
