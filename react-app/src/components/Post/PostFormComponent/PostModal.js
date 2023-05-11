@@ -6,9 +6,13 @@ import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import Button from '@mui/material/Button';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 
-import UploadPicture from './PostImageUpload';
+// import UploadPicture from './PostImageUpload';
 
+
+// components and style sheets
 import './PostModal.css'
+import ImageUploadComponent from './PostImageUpload';
+
 function PostModal({setShowModal, user}) {
   const dispatch = useDispatch()
 
@@ -34,9 +38,11 @@ useEffect(() => {
   })();
 }, [postUrl])
 
+
   const handleSubmit = async (e) =>{
     e.preventDefault()
     setErrorMessage([])
+
 
     const payload ={
       userId:user.id,
@@ -51,8 +57,8 @@ useEffect(() => {
     }
 
     if (payload.postUrl && payload.post) {
-        dispatch(addPost(payload))
-        setShowModal(false)
+      dispatch(addPost(payload))
+      setShowModal(false)
 
     }
 
@@ -73,6 +79,7 @@ useEffect(() => {
       </center>
 
 
+      <ImageUploadComponent setPostUrl={setPostUrl}/>
       <div className='post_modal_form_user_info'>
 
         <Avatar src={user.userUrl}/>
@@ -105,6 +112,8 @@ useEffect(() => {
           id='modal_file_upload'
           onChange={updatePostUrl}
           />
+
+          <img src={postUrl}/>
 
           <Button
           as='label'

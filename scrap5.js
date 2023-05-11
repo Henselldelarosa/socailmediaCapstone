@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-// import "./ImageUploadComponent.css";
+import "./ImageUploadComponent.css";
 
-const ImageUploadComponent = ({ setPostUrl }) => {
+const ImageUploadComponent = ({ setUrl }) => {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [uploadedImg, setUploadImg] = useState(false);
@@ -13,14 +13,14 @@ const ImageUploadComponent = ({ setPostUrl }) => {
     setImageLoading(true);
 
     formData.append("image", image);
-    const res = await fetch("/api/images", {
+    const res = await fetch("/api/img/upload", {
       method: "POST",
       body: formData,
     });
     if (res.ok) {
       const img_url = await res.json();
       setImageLoading(false);
-      setPostUrl(img_url.url);
+      setUrl(img_url.url);
       setUploadImg(true);
       setPrevImgUrl(img_url.url);
     } else {
@@ -45,9 +45,7 @@ const ImageUploadComponent = ({ setPostUrl }) => {
         {imageLoading && <p>Loading...</p>}
       </form>
       {uploadedImg && (
-        <img
-        // width={}
-        src={prevImgUrl} alt="yours" className="prev_img" />
+        <img src={prevImgUrl} alt="yours" className="prev_img" />
       )}
     </>
   );

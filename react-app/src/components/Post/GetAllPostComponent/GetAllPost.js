@@ -10,7 +10,6 @@ import PostForm from '../PostFormComponent/PostForm'
 import { NavLink} from 'react-router-dom'
 
 // Components
-import UploadPicture from '../PostFormComponent/PostImageUpload'
 import PostModalRender from '../PostFormComponent/PostModalRender'
 
 

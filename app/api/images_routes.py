@@ -32,17 +32,8 @@ def upload_image():
     db.session.commit()
     return {'url':url}
 
-
 @image_routes.route("")
 @login_required
 def get_all_images():
     images = Image.query.order_by(Image.id.desc()).all()
     return {"images": [image.to_dict() for image in images]}
-
-
-# @image_routes.route("/filename", methods=['GET'])
-# @login_required
-# def get_a_image(filename):
-#     image = Image.query.get(Image.name == filename)
-
-#     return image.to_dict()
