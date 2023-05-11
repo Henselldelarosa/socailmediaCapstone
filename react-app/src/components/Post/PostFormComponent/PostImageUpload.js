@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-// import "./ImageUploadComponent.css";
+import "./PostImageUpload.css";
+
+import UploadIcon from '@mui/icons-material/Upload';
 
 const ImageUploadComponent = ({ setPostUrl }) => {
   const [image, setImage] = useState(null);
@@ -35,20 +37,26 @@ const ImageUploadComponent = ({ setPostUrl }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}
+      <form
+      onSubmit={handleSubmit}
       className='upload-form-container'>
+
         <div className="upload-photo-container">
-          <input type="file" accept="image/*"
-          className='uli-input' onChange={updateImage} />
-          <button type="submit" className="upload-img-btn">Upload</button>
+
+          <input
+          type="file"
+          accept="image/*"
+          className='uli_input'
+          onChange={updateImage.submit} />
+          <button data-title='Upload' type="submit" className="upload-img-btn" onClick={(e) => setPostUrl('')}> <UploadIcon/></button>
         </div>
         {imageLoading && <p>Loading...</p>}
       </form>
-      {uploadedImg && (
+      {/* {uploadedImg && (
         <img
         // width={}
         src={prevImgUrl} alt="yours" className="prev_img" />
-      )}
+      )} */}
     </>
   );
 };

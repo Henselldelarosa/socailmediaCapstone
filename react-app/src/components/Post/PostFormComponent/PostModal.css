@@ -17,6 +17,11 @@
   padding-left: 10px;
 }
 
+.uploaded_image_modal{
+  width: 55%;
+  height: 200px;
+  padding-left: 15px;
+}
 
 
 .post_form_modal_title{

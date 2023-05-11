@@ -38,6 +38,44 @@ useEffect(() => {
   })();
 }, [postUrl])
 
+let content = null
+
+postUrl?(
+content = (
+  <center>
+
+    <img className='uploaded_image_modal'src={postUrl}/>
+  </center>
+)
+):(
+
+  content =(
+    <Button
+    as='label'
+    htmlFor='modal_file_upload'
+    cursor='pointer'
+    mb={4}
+    >
+      <div className='image_modal_upload'>
+
+
+        <div className='modal_center_info'>
+
+          <center>
+
+        <AddToPhotosIcon/>
+        <p>Add Photos</p>
+
+          </center>
+
+        </div>
+
+      </div>
+
+    </Button>
+  )
+)
+
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -73,13 +111,12 @@ useEffect(() => {
 
       <center>
         <div className='modal_closing_title_div'>
-          <p className='post_form_modal_title'>Create a post</p>
+          <p className='post_form_modal_title'>Create post</p>
           <button className='modal_closing_button' onClick={() => setShowModal(false)}> <CloseSharpIcon/></button>
         </div>
       </center>
 
 
-      <ImageUploadComponent setPostUrl={setPostUrl}/>
       <div className='post_modal_form_user_info'>
 
         <Avatar src={user.userUrl}/>
@@ -102,7 +139,8 @@ useEffect(() => {
           onChange={updatePost}
           placeholder={`Whats on your mind, ${user.firstName}?`}
           />
-
+          
+            <ImageUploadComponent setPostUrl={setPostUrl}/>
           <div className='modal_file_upload_div'>
 
           <input
@@ -113,31 +151,8 @@ useEffect(() => {
           onChange={updatePostUrl}
           />
 
-          <img src={postUrl}/>
 
-          <Button
-          as='label'
-          htmlFor='modal_file_upload'
-          cursor='pointer'
-          mb={4}
-          >
-            <div className='image_modal_upload'>
-
-
-              <div className='modal_center_info'>
-
-                <center>
-
-              <AddToPhotosIcon/>
-              <p>Add Photos</p>
-
-                </center>
-
-              </div>
-
-            </div>
-
-          </Button>
+            {content}
 
           </div>
 
