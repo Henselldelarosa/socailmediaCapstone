@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./PostImageUpload.css";
 
-import UploadIcon from '@mui/icons-material/Upload';
-
 const ImageUploadComponent = ({ setPostUrl }) => {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
@@ -15,7 +13,7 @@ const ImageUploadComponent = ({ setPostUrl }) => {
     setImageLoading(true);
 
     formData.append("image", image);
-    const res = await fetch("/api/images", {
+    const res = await fetch("/api/images/", {
       method: "POST",
       body: formData,
     });
@@ -37,26 +35,18 @@ const ImageUploadComponent = ({ setPostUrl }) => {
 
   return (
     <>
-      <form
-      onSubmit={handleSubmit}
+      <form onSubmit={handleSubmit}
       className='upload-form-container'>
-
         <div className="upload-photo-container">
-
-          <input
-          type="file"
-          accept="image/*"
-          className='uli_input'
-          onChange={updateImage.submit} />
-          <button data-title='Upload' type="submit" className="upload-img-btn" onClick={(e) => setPostUrl('')}> <UploadIcon/></button>
+          <input type="file" accept="image/*"
+          className='uli-input' onChange={updateImage} />
+          <button type="submit" className="upload-img-btn">Upload</button>
         </div>
         {imageLoading && <p>Loading...</p>}
       </form>
-      {/* {uploadedImg && (
-        <img
-        // width={}
-        src={prevImgUrl} alt="yours" className="prev_img" />
-      )} */}
+      {uploadedImg && (
+        <img src={prevImgUrl} alt="yours" className="prev_img" />
+      )}
     </>
   );
 };
