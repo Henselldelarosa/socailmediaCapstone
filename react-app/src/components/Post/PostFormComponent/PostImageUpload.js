@@ -13,7 +13,7 @@ const ImageUploadComponent = ({ setPostUrl }) => {
     setImageLoading(true);
 
     formData.append("image", image);
-    const res = await fetch("/api/images/", {
+    const res = await fetch("/api/images", {
       method: "POST",
       body: formData,
     });
