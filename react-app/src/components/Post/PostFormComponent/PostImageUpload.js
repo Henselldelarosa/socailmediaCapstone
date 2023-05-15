@@ -13,7 +13,7 @@ const ImageUploadComponent = ({ setPostUrl }) => {
     setImageLoading(true);
 
     formData.append("image", image);
-    const res = await fetch("/api/images/", {
+    const res = await fetch("/api/images", {
       method: "POST",
       body: formData,
     });
@@ -38,8 +38,11 @@ const ImageUploadComponent = ({ setPostUrl }) => {
       <form onSubmit={handleSubmit}
       className='upload-form-container'>
         <div className="upload-photo-container">
-          <input type="file" accept="image/*"
-          className='uli-input' onChange={updateImage} />
+          <input
+          type="file"
+          accept="image/*"
+          className='uli-input'
+          onChange={updateImage} />
           <button type="submit" className="upload-img-btn">Upload</button>
         </div>
         {imageLoading && <p>Loading...</p>}
