@@ -21,7 +21,9 @@
   padding-bottom: 5px;
 }
 
-[data-title]:hover::after{
+
+
+/* [data-title]:hover::after{
   opacity: 1;
   transition: all 0.1s ease 0.5s;
   visibility: visible;
@@ -38,10 +40,11 @@
   white-space: nowrap;
   box-shadow: 1px 1px 3px #222222;
   opacity: 0;
-  /* border: 1px solid #111111; */
   z-index: 99999;
-  /* visibility: hidden; */
-}
+
+} */
+
+
 [data-title] {
   /* position: relative; */
 }
