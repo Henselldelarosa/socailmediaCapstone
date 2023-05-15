@@ -75,15 +75,17 @@ export const deleteASearch = (id) => async (dispatch) => {
 const initialState = {}
 const searchReducer = (state = initialState, action ) => {
   switch (action.type) {
-    case GET_SEARCHES:{
+    case GET_SEARCHES:
 
-      const newState = action.searches
-      newState.search.forEach((search) => {
-        newState[search.id] = search.firstName
+    const newState = {}
+
+    if(action.searches.search){
+      action.searches.search.forEach((search) => {
+        newState[search.id] = search
       })
-      return newState.search
-
     }
+    return newState
+
     case GET_USER_SEARCHES:{
 
       const newState = {...state}

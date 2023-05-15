@@ -15,6 +15,8 @@ function SearchComponent() {
     return search
   })
 
+  console.log(allSearches)
+
   const dispatch = useDispatch()
 
   useEffect(() =>{
@@ -47,7 +49,7 @@ function SearchComponent() {
       </div>
     )
   }
-  return content
+  return (content)
 }
 
 export default SearchComponent

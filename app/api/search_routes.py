@@ -29,11 +29,11 @@ def get_searches(query):
 
     # results = User.query.filter(query in User.firstName or query in User.lastName)
     results = User.query.filter(User.firstName.contains(query.lower())).all()
-    print(results)
-    if results:
-        return {'search': [result.to_dict() for result in results]}
-    else:
+    print(results, '-------------------------')
+    if not results:
         return {'message': 'No results found'}
+    else:
+        return {'search': [result.to_dict() for result in results]}
 
 
 
