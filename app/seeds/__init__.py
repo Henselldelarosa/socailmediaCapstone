@@ -22,16 +22,16 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_likes()
-        undo_images()
         undo_replies()
         undo_posts()
         undo_search()
+        undo_images()
         undo_users()
     seed_users()
+    seed_images()
     seed_searches()
     seed_posts()
     seed_replies()
-    seed_images()
     seed_likes()
     # Add other seed functions here
 
@@ -51,10 +51,10 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_likes()
-    undo_images()
     undo_replies()
     undo_posts()
     undo_search()
+    undo_images()
     undo_users()
     # Add other undo functions here
 
@@ -66,14 +66,6 @@ def undo_likes():
         db.session.execute("DELETE FROM likes")
 
     db.session.commit()
-
-def undo_images():
-     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.images RESTART IDENTITY CASCADE;")
-     else:
-        db.session.execute("DELETE FROM images")
-
-     db.session.commit()
 
 def undo_replies():
     if environment == "production":
@@ -99,6 +91,16 @@ def undo_searches():
         db.session.execute("DELETE FROM searches")
 
     db.session.commit()
+
+
+def undo_images():
+     if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.images RESTART IDENTITY CASCADE;")
+     else:
+        db.session.execute("DELETE FROM images")
+
+     db.session.commit()
+
 
 def undo_users():
     if environment == "production":
