@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./PostImageUpload.css";
+import { Button } from "@mui/material";
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 
 const ImageUploadComponent = ({ setPostUrl }) => {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [uploadedImg, setUploadImg] = useState(false);
   const [prevImgUrl, setPrevImgUrl] = useState("");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,29 +32,65 @@ const ImageUploadComponent = ({ setPostUrl }) => {
   };
 
   const updateImage = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
+
+    if(e.target.files && e.target.files.length > 0)
+    setImage(e.target.files[0])
+
+    // const file = e.target.files[0];
+    // setImage(file);
   };
 
+
   return (
-    <>
-      <form onSubmit={handleSubmit}
-      className='upload-form-container'>
-        <div className="upload-photo-container">
-          <input
-          type="file"
-          accept="image/*"
-          className='uli-input'
-          onChange={updateImage} />
-          <button type="submit" className="upload-img-btn">Upload</button>
+    <div className="file_upload_div">
+
+      <input
+      type='file'
+      accept="image/*"
+      id='uti_upload'
+      onChange={updateImage}
+      hidden
+      />
+
+      {image? (
+        <div>
+          <center>
+
+          <img
+          className="previewImage"
+          as='label'
+          src={URL.createObjectURL(image)}
+          alt='Image preview'
+          width={'350px'}
+          />
+          </center>
         </div>
-        {imageLoading && <p>Loading...</p>}
-      </form>
-      {uploadedImg && (
-        <img src={prevImgUrl} alt="yours" className="prev_img" />
-      )}
-    </>
+      ): <>
+
+
+<Button
+      as='label'
+      htmlFor='uti_upload'
+      cursor='pointer'
+      mb={4}
+      >
+
+        <div className="image_upload_div">
+
+          <div className="image_center">
+
+            <center>
+              <AddToPhotosIcon/>
+              <p>Add Photo</p>
+            </center>
+
+          </div>
+
+        </div>
+      </Button>
+      </>}
+    </div>
   );
 };
 
-export default ImageUploadComponent;
+export default ImageUploadComponent

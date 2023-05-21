@@ -14,37 +14,39 @@
   color: white;
 }
 
-.upload-photo-container{
-  display: flex;
+
+.file_upload_div{
+  height: 200px;
+  width:450px;
   align-items: center;
   margin-left: 20px;
-  padding-bottom: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: transparent;
+  border-radius: 5px;
 }
 
-
-
-/* [data-title]:hover::after{
-  opacity: 1;
-  transition: all 0.1s ease 0.5s;
-  visibility: visible;
+.image_upload_div{
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 165px;
+  color: white;
+  width: 430px;
+  margin-left: 10px;
+  background-color: rgba(58, 58, 58, 0.733);
+  border-radius: 5px;
+  cursor:pointer;
 }
 
-[data-title]:after {
-  content: attr(data-title);
-  background-color: #1c1e21;
-  border: none;
-  outline-width: 0;
-  color: green;
-  font-size: 15px;
-  position: absolute;
-  white-space: nowrap;
-  box-shadow: 1px 1px 3px #222222;
-  opacity: 0;
-  z-index: 99999;
+.image_center{
+  margin-left: 150px;
+  padding-top: 50px;
+}
 
-} */
+.image_upload_div:hover{
+  background-color:  rgba(68, 68, 68, 0.733);
+}
 
-
-[data-title] {
-  /* position: relative; */
+.previewImage{
+  height: 200px;
+  border-radius:5px ;
 }

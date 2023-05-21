@@ -23,20 +23,23 @@ function PostModal({setShowModal, user}) {
   const updatePost = (e) => setPost(e.target.value)
   const updatePostUrl =(e) => setPost(e.target.files[0])
 
-useEffect(() => {
-  (async () => {
-      const res = await fetch('/api/images');
-      if (res.ok) {
-          const data = await res.json();
-          console.log(data, 'before setPostUrl')
-          setPostUrl(data.images[0].url)
-          console.log(data.images[0].url, 'after set postUrl')
-      } else {
-          console.log("error")
-      }
+// useEffect(() => {
+//   (async () => {
+//       const res = await fetch('/api/images');
+//       if (res.ok) {
+//           const data = await res.json();
+//           console.log(data, 'before setPostUrl')
 
-  })();
-}, [postUrl])
+//           if(data.images.length){
+//             setPostUrl(data.images[0].url)
+//             console.log(data.images[0].url, 'after set postUrl')
+//           }
+//       } else {
+//           console.log("error")
+//       }
+
+//   })();
+// }, [postUrl])
 
 
   const handleSubmit = async (e) =>{
@@ -47,7 +50,6 @@ useEffect(() => {
     const payload ={
       userId:user.id,
       post,
-      // <ImageUploadComponent setUrl= {}/>
       postUrl
     }
 
@@ -80,7 +82,6 @@ useEffect(() => {
       </center>
 
 
-          <ImageUploadComponent setPostUrl={setPostUrl}/>
       <div className='post_modal_form_user_info'>
 
         <Avatar src={user.userUrl}/>
@@ -104,43 +105,44 @@ useEffect(() => {
           placeholder={`Whats on your mind, ${user.firstName}?`}
           />
 
-          <div className='modal_file_upload_div'>
+          {/* <div className='modal_file_upload_div'> */}
 
-          <input
+          {/* <input
           type='file'
           accept='image/*'
           hidden
           id='modal_file_upload'
           onChange={updatePostUrl}
-          />
+          /> */}
 
           {/* <img src={postUrl}/> */}
-
+{/*
           <Button
           as='label'
           htmlFor='modal_file_upload'
           cursor='pointer'
           mb={4}
-          >
-            <div className='image_modal_upload'>
+          > */}
+          <ImageUploadComponent setPostUrl={setPostUrl}/>
+            {/* <div className='image_modal_upload'> */}
 
 
-              <div className='modal_center_info'>
+              {/* <div className='modal_center_info'> */}
 
-                <center>
+                {/* <center> */}
 
-              <AddToPhotosIcon/>
-              <p>Add Photos</p>
+              {/* <AddToPhotosIcon/> */}
+              {/* <p>Add Photos</p> */}
 
-                </center>
+                {/* </center> */}
 
-              </div>
+              {/* </div> */}
 
-            </div>
+            {/* </div> */}
 
-          </Button>
+          {/* </Button> */}
 
-          </div>
+          {/* </div> */}
 
           <button className='post_modal_button' type='submit'> Post </button>
 
