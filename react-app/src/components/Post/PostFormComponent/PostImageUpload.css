@@ -50,3 +50,25 @@
   height: 200px;
   border-radius:5px ;
 }
+
+.loading_image{
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.image_container{
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+}
+
+.image_container > button{
+  background-color: var(--theme);
+  border:none;
+  font-weight: bolder;
+  color: white;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}

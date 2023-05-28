@@ -6,11 +6,18 @@ const ImageUploadComponent = ({ setUrl }) => {
   const [imageLoading, setImageLoading] = useState(false);
   const [uploadedImg, setUploadImg] = useState(false);
   const [prevImgUrl, setPrevImgUrl] = useState("");
+  const [load, setLoad] = useState(0)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     setImageLoading(true);
+    let count = 0
+
+    while (setImageLoading === true ){
+      setLoad(load += 1)
+      console.log(load)
+    }
 
     formData.append("image", image);
     const res = await fetch("/api/img/upload", {
@@ -38,11 +45,15 @@ const ImageUploadComponent = ({ setUrl }) => {
       <form onSubmit={handleSubmit}
       className='upload-form-container'>
         <div className="upload-photo-container">
-          <input type="file" accept="image/*"
-          className='uli-input' onChange={updateImage} />
+          <input
+          type="file"
+          accept="image/*"
+          className='uli-input'
+          onChange={updateImage} />
           <button type="submit" className="upload-img-btn">Upload</button>
         </div>
-        {imageLoading && <p>Loading...</p>}
+        {imageLoading && <p>Loading...{load += 1}</p>}
+        {console.log(load)}
       </form>
       {uploadedImg && (
         <img src={prevImgUrl} alt="yours" className="prev_img" />

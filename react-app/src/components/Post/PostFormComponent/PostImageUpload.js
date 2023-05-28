@@ -8,9 +8,10 @@ const ImageUploadComponent = ({ setPostUrl }) => {
   const [imageLoading, setImageLoading] = useState(false);
   const [uploadedImg, setUploadImg] = useState(false);
   const [prevImgUrl, setPrevImgUrl] = useState("");
+  let [load, setLoad] = useState(0)
 
 
-  const handleSubmit = async (e) => {
+  const handleImageSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     setImageLoading(true);
@@ -35,14 +36,12 @@ const ImageUploadComponent = ({ setPostUrl }) => {
 
     if(e.target.files && e.target.files.length > 0)
     setImage(e.target.files[0])
-
-    // const file = e.target.files[0];
-    // setImage(file);
   };
 
 
   return (
     <div className="file_upload_div">
+      <form onSubmit={handleImageSubmit}>
 
       <input
       type='file'
@@ -53,7 +52,7 @@ const ImageUploadComponent = ({ setPostUrl }) => {
       />
 
       {image? (
-        <div>
+        <div className="image_container">
           <center>
 
           <img
@@ -63,7 +62,9 @@ const ImageUploadComponent = ({ setPostUrl }) => {
           alt='Image preview'
           width={'350px'}
           />
+          {imageLoading && <p className="loading_image">...Loading</p>}
           </center>
+            <button className='image_submit' type='submit'>Upload</button>
         </div>
       ): <>
 
@@ -89,6 +90,7 @@ const ImageUploadComponent = ({ setPostUrl }) => {
         </div>
       </Button>
       </>}
+      </form>
     </div>
   );
 };

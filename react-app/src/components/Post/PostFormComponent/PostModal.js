@@ -20,32 +20,14 @@ function PostModal({setShowModal, user}) {
   const [postUrl, setPostUrl] = useState('')
   const [errorMessage, setErrorMessage] = useState([])
 
+
   const updatePost = (e) => setPost(e.target.value)
-  const updatePostUrl =(e) => setPost(e.target.files[0])
 
-// useEffect(() => {
-//   (async () => {
-//       const res = await fetch('/api/images');
-//       if (res.ok) {
-//           const data = await res.json();
-//           console.log(data, 'before setPostUrl')
-
-//           if(data.images.length){
-//             setPostUrl(data.images[0].url)
-//             console.log(data.images[0].url, 'after set postUrl')
-//           }
-//       } else {
-//           console.log("error")
-//       }
-
-//   })();
-// }, [postUrl])
 
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
     setErrorMessage([])
-
 
     const payload ={
       userId:user.id,
@@ -91,7 +73,7 @@ function PostModal({setShowModal, user}) {
 
         <div className='modal_form'>
 
-        <form className='post_modal_form_input' onSubmit={handleSubmit}>
+        <form className='post_modal_form_input'>
 
           <ul className='post_modal_error'>
             {errorMessage && errorMessage.map((error, id) => <li key={id}>{error}</li>)}
@@ -105,49 +87,10 @@ function PostModal({setShowModal, user}) {
           placeholder={`Whats on your mind, ${user.firstName}?`}
           />
 
-          {/* <div className='modal_file_upload_div'> */}
-
-          {/* <input
-          type='file'
-          accept='image/*'
-          hidden
-          id='modal_file_upload'
-          onChange={updatePostUrl}
-          /> */}
-
-          {/* <img src={postUrl}/> */}
-{/*
-          <Button
-          as='label'
-          htmlFor='modal_file_upload'
-          cursor='pointer'
-          mb={4}
-          > */}
-          <ImageUploadComponent setPostUrl={setPostUrl}/>
-            {/* <div className='image_modal_upload'> */}
-
-
-              {/* <div className='modal_center_info'> */}
-
-                {/* <center> */}
-
-              {/* <AddToPhotosIcon/> */}
-              {/* <p>Add Photos</p> */}
-
-                {/* </center> */}
-
-              {/* </div> */}
-
-            {/* </div> */}
-
-          {/* </Button> */}
-
-          {/* </div> */}
-
-          <button className='post_modal_button' type='submit'> Post </button>
-
         </form>
-
+          <ImageUploadComponent setPostUrl={setPostUrl}/>
+          
+          <button onClick={handleSubmit} className='post_modal_button' type='submit'> Post </button>
       </div>
     </div>
   )

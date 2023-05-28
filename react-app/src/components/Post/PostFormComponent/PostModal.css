@@ -108,7 +108,7 @@ hr{
 .post_modal_button{
   place-items: center;
   width: 450px;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-left: 20px;
   color: white;
   background-color: var(--theme);
@@ -117,6 +117,8 @@ hr{
   border-radius: 6px;
   border: none;
   cursor: pointer;
+
+
 }
 
 .image_modal_upload{
@@ -138,4 +140,10 @@ hr{
 
 .image_modal_upload:hover{
   background-color:  rgba(68, 68, 68, 0.733);
+}
+
+.post_modal_form_input >textarea{
+  overflow: hidden;
+  resize: none;
+  outline: none;
 }
