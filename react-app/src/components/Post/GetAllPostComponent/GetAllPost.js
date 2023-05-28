@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllReplies } from '../../../store/reply'
 import { getAllPosts, deletePost} from '../../../store/post'
 // import { Avatar } from '@mui/material'
 import LoginFormPage from '../../LoginFormPage'

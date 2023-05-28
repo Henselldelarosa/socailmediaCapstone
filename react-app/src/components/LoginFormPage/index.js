@@ -97,36 +97,6 @@ function LoginFormPage() {
       </div>
 
     </div>
-    // <div className="login_form_div">
-    //   <h1 className="loging_header">Login</h1>
-    //   <form className='login_form' onSubmit={handleSubmit}>
-    //     <ul>
-    //       {errors.map((error, idx) => (
-    //         <li key={idx}>{error}</li>
-    //       ))}
-    //     </ul>
-
-    //     <input
-    //     type="text"
-    //     className="login_ele"
-    //     placeholder="Email"
-    //     value={email}
-    //     onChange={(e) => setEmail(e.target.value)}
-    //     required
-    //     />
-
-    //     <input
-    //     type='text'
-    //     className="login_ele"
-    //     placeholder="Password"
-    //     value={password}
-    //     onChange={(e) => setPassword(e.target.value)}
-    //     required
-    //     />
-
-    //     <button type="submit">Log In</button>
-    //   </form>
-    // </div>
   );
 }
 

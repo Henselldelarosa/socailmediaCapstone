@@ -5,15 +5,6 @@
 }
 
 .header{
-  /* display: flex;
-  justify-content: space-between;
-  position: relative;
-  width: 100%;
-  z-index: 1;
-  background-color: var(--theme);
-  border-bottom: 1px solid gray;
-  position: sticky;
-  top: 0; */
   padding: 15px 20px;
   display: flex;
   height: 35px;
@@ -108,21 +99,3 @@ cursor: pointer;
   background-color: white;
   color: var(--theme);
 }
-
-/* .header_icons_home{
-  display: flex;
-  align-items: center;
-  font-size: 25px;
-  cursor: pointer;
-  color: gray;
-}
-
-
-.header_icons_home:hover{
-border-bottom: 5px solid blue;
-}
-
-.header_right{
-  display: flex;
-  align-items: center;
-} */

@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './PostForm.css'
 import { addPost } from '../../../store/post'
 import { Avatar } from '@mui/material'
-// import ScrollDialog from './ScrollDialog'
-// import {useForm} from 'react-hook-form'
+
 
 
 function PostForm() {
@@ -14,7 +13,7 @@ const user = useSelector(state => state.session.user)
 const [error, setError] = useState([])
 const [post, setPost] = useState('')
 const [postUrl, setPostUrl] = useState('')
-const [imageLoading, setImageLoading] = useState(false)
+
 
 const updatePost = (e) => setPost(e.target.value)
 const updatePostUrl = (e) => setPostUrl(e.target.value)
@@ -27,21 +26,6 @@ if(!updatePost){
   formRef.current?.reset()
 }
 })
-
-// useEffect(() => {
-//   (async () => {
-//       const res = await fetch('/api/images');
-//       if (res.ok) {
-//           const data = await res.json();
-//           console.log(data)
-//           setPostUrl(data.images[0])
-//           console.log(data.images[0])
-//       } else {
-//           console.log("error")
-//       }
-
-//   })();
-// }, [])
 
 
 const handleSubmit =  (e) =>{

@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { getTheSearch } from '../../store/search'
 
 // component
-import { getTheUsers } from '../../store/user'
 import IndividualUser from '../User/IndividualUser'
 
 import './SearchComponent.css'

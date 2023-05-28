@@ -1,13 +1,8 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import { useDispatch } from 'react-redux'
 import {addPost} from '../../../store/post'
 import { Avatar } from '@mui/material'
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
-import Button from '@mui/material/Button';
-import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
-
-// import UploadPicture from './PostImageUpload';
-
 
 // components and style sheets
 import './PostModal.css'
@@ -89,7 +84,7 @@ function PostModal({setShowModal, user}) {
 
         </form>
           <ImageUploadComponent setPostUrl={setPostUrl}/>
-          
+
           <button onClick={handleSubmit} className='post_modal_button' type='submit'> Post </button>
       </div>
     </div>

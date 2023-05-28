@@ -33,30 +33,3 @@
   box-shadow: 0 0 7.5px rgba(0, 0, 0, 0.2);
   transform: scale(0.95);
 }
-
-/* .posts{
-  flex: 1;
-  min-width: fit-content;
-  height: 700px;
-  margin-left: 50%;
-}
-
-@media screen and (max-width: 1200px){
-  .posts{
-    margin-left: 0%;
-  }
-
-}
-
-.posts{
-  overflow-y: scroll;
-}
-
-.posts::-webkit-scrollbar {
-  display: none;
-}
-
-.posts{
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-} */

@@ -8,7 +8,6 @@ const ImageUploadComponent = ({ setPostUrl }) => {
   const [imageLoading, setImageLoading] = useState(false);
   const [uploadedImg, setUploadImg] = useState(false);
   const [prevImgUrl, setPrevImgUrl] = useState("");
-  let [load, setLoad] = useState(0)
 
 
   const handleImageSubmit = async (e) => {

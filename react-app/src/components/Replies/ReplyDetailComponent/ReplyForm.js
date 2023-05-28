@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 // thunk
-import {addAReply, updateReplies, deleteReplies} from '../../../store/reply'
+import {updateReplies, deleteReplies} from '../../../store/reply'
 import { addRemoveTheReplyLike, getAllLikes } from '../../../store/like'
 // handle drop down
 import Button from '@mui/material/Button';
@@ -13,12 +13,10 @@ import MenuItem from '@mui/material/MenuItem';
 
 // css
 import './ReplyForm.css'
-import UserReactions from '../../Reactions/UserReactions';
 
 // icons
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 function ReplyForm({
   id,
@@ -35,15 +33,8 @@ function ReplyForm({
 }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
-  // const replies = useSelector(state => Object.values(state.replies))
   const likes = useSelector(state => state.likes[id])
-  // const likesArr = []
-  // const replyLikes = likes.map((like) => {
-  //   if(like.replyId === id){
-  //     likesArr.push(like)
-  //   }
-  //   return likesArr
-  // })
+
   console.log(likes)
 
   const [anchorEl, setAnchorEl] = React.useState(null);
