@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 076b0a165d25
+Revision ID: 990a56fb621a
 Revises:
-Create Date: 2023-06-28 21:40:50.319233
+Create Date: 2023-06-28 22:44:21.315910
 
 """
 from alembic import op
@@ -12,9 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = '076b0a165d25'
+revision = '990a56fb621a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,6 +28,7 @@ def upgrade():
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('userUrl', sa.String(length=255), nullable=True),
+    sa.Column('profile_url', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
@@ -43,7 +43,7 @@ def upgrade():
     sa.UniqueConstraint('follower_id', 'followed_id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
 
     op.create_table('images',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -53,7 +53,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE images SET SCHEMA {SCHEMA};")
 
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -65,7 +65,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
 
     op.create_table('searches',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -76,7 +76,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE searches SET SCHEMA {SCHEMA};")
 
     op.create_table('replies',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -90,7 +90,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE replies SET SCHEMA {SCHEMA};")
 
     op.create_table('likes',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -101,7 +101,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 
