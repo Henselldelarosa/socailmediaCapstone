@@ -24,7 +24,4 @@ def user(id):
     """
     return user.to_dict()
 
-# @user_routes.route('/likes/<int:id>')
-# @login_required
-# def get_user_likes(id):
-#     user_likes = Like.query.filter(Like.userId =)
+

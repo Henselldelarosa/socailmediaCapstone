@@ -23,7 +23,8 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    userUrl = db.Column(db.String(255), nullable=True)
+    userUrl = db.Column(db.String(255), default='https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg', nullable=True)
+    profile_url = db.Column(db.String(255), default='https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg', nullable=True)
 
     posts = db.relationship('Post', back_populates='user')
     replies = db.relationship('Reply', back_populates='user')
@@ -54,6 +55,7 @@ class User(db.Model, UserMixin):
             'lastName': self.lastName,
             'email': self.email,
             'userUrl': self.userUrl,
+            'profile_url': self.profile_url,
             'followers': [{'userId': follower.id, 'firstName': follower.firstName, 'lastName': follower.lastName, 'userUrl': follower.userUrl} for follower in self.followers],
             'following': [{'userId': follower.id, 'firstName': follower.firstName, 'lastName': follower.lastName, 'userUrl': follower.userUrl} for follower in self.followers],
         }
