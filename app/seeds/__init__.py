@@ -5,6 +5,7 @@ from .replies import seed_replies, undo_replies
 from .likes import seed_likes, undo_likes
 from .searches import seed_searches, undo_search
 from .images import seed_images, undo_images
+# from .follows import seed_followers, undo_followers
 
 from app.models.db import db, environment, SCHEMA
 
@@ -26,8 +27,10 @@ def seed():
         undo_posts()
         undo_search()
         undo_images()
+        # undo_followers
         undo_users()
     seed_users()
+    # seed_followers
     seed_images()
     seed_searches()
     seed_posts()
@@ -55,6 +58,7 @@ def undo():
     undo_posts()
     undo_search()
     undo_images()
+    # undo_follows()
     undo_users()
     # Add other undo functions here
 
@@ -100,6 +104,15 @@ def undo_images():
         db.session.execute("DELETE FROM images")
 
      db.session.commit()
+
+
+# def undo_follow():
+#     if environment == "production":
+#         db.session.execute(f"TRUNCATE table {SCHEMA}.follows RESTART IDENTITY CASCADE;")
+#     else:
+#         db.session.execute("DELETE FROM users")
+
+#     db.session.commit()
 
 
 def undo_users():
