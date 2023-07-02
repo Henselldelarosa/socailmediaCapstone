@@ -4,11 +4,29 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     user1 = User(
-        firstName='Demo', lastName='Emo', email='demo@aa.io', password='password', userUrl='https://i.pinimg.com/736x/0a/bb/e5/0abbe546e479edc1eb62f5a8ccd66328.jpg')
+        firstName='Demo',
+        lastName='Emo',
+        email='demo@aa.io',
+        password='password',
+        userUrl='https://i.pinimg.com/736x/0a/bb/e5/0abbe546e479edc1eb62f5a8ccd66328.jpg',
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        )
     user2 = User(
-        firstName='Marnie', lastName='Rose', email='marnie@aa.io', password='password', userUrl='https://thumbs.dreamstime.com/b/funny-face-baby-27701492.jpg')
+        firstName='Marnie',
+        lastName='Rose',
+        email='marnie@aa.io',
+        password='password',
+        userUrl='https://thumbs.dreamstime.com/b/funny-face-baby-27701492.jpg',
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        )
     user3 = User(
-        firstName='Bobbie', lastName='Bob', email='bobbie@aa.io', password='password', userUrl='https://parade.com/.image/t_share/MTkwNTgxMTA1NjY0NDAyNTU3/funny-pictures.jpg')
+        firstName='Bobbie',
+        lastName='Bob',
+        email='bobbie@aa.io',
+        password='password',
+        userUrl='https://parade.com/.image/t_share/MTkwNTgxMTA1NjY0NDAyNTU3/funny-pictures.jpg',
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        )
 
     db.session.add(user1)
     db.session.add(user2)
@@ -36,7 +54,7 @@ def seed_users():
 def undo_users():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
-        
+
     else:
         db.session.execute("DELETE FROM users")
 
