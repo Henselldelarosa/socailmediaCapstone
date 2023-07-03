@@ -10,6 +10,7 @@ import { NavLink} from 'react-router-dom'
 
 // Components
 import PostModalRender from '../PostFormComponent/PostModalRender'
+import Login from '../../../pages/login/Login'
 
 
 function GetAllPost() {
@@ -72,7 +73,7 @@ dispatch(deletePost(id, postId))
       :<></>
     }else{
       profileView=(
-        <LoginFormPage/>
+        <Login/>
       )
     }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useParams } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -12,10 +12,14 @@ import PostDetail from "./components/Post/PostDetailComponent/PostDetail";
 import { getAllPosts, getPostById } from "./store/post";
 import { getTheUsers } from "./store/user";
 import SearchComponent from "./components/Search/SearchComponent";
+import Navbar from "./Components/navbar/Navbar";
+import Login from "./pages/login/Login";
+import Home from './pages/home/Home'
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const user = useSelector((state) => state.session.user)
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
     dispatch(getTheUsers())
@@ -25,12 +29,12 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navbar isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
 
           <Route path="/login">
-            <LoginFormPage />
+            <Login />
           </Route>
 
           <Route path="/signup">
@@ -42,7 +46,7 @@ function App() {
           </Route>
 
           <Route exact path='/'>
-            <GetAllPost/>
+            <Home user={user}/>
           </Route>
 
           <Route exact path='/searches/users/:searchQuery'>

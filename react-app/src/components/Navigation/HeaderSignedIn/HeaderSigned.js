@@ -5,10 +5,11 @@ import MenuItem from '@mui/material/MenuItem';
 import { Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionAction from '../../../store/session'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect, } from 'react-router-dom';
 
 export default function BasicMenuSignedIn() {
   const dispatch = useDispatch()
+  // const nav = useNavigate()
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -24,9 +25,9 @@ export default function BasicMenuSignedIn() {
     e.preventDefault()
     handleClose()
     dispatch(sessionAction.logout())
-    history.push('/')
-
+    history.push('/login')
   }
+
   return (
     <div>
       <Button
@@ -36,7 +37,7 @@ export default function BasicMenuSignedIn() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <Avatar src={sessionUser.userUrl}/>
+        <Avatar src={sessionUser?.userUrl}/>
       </Button>
       <Menu
         id="basic-menu"
