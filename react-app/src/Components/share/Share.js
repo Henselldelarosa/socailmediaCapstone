@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './Share.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPost } from '../../store/post'
+import ShareModalRender from '../shareModal/ShareModalRender'
 
 const Share = () => {
   const dispatch = useDispatch()
@@ -91,7 +92,7 @@ const Share = () => {
 
           <div className="shareOptions">
             <div className="shareOption">
-
+              <ShareModalRender/>
             </div>
           </div>
         </div>

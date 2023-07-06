@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import {addPost} from '../../../store/post'
+import { useDispatch, useSelector } from 'react-redux'
+import {addPost} from '../../store/post'
 import { Avatar } from '@mui/material'
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
+import ShareImageUpload from '../shareImageUpload/ShareImageUpload';
 
-const PostModal = () => {
+const ShareModal = ({setShowModal, user}) => {
   const dispatch = useDispatch()
   const [post, setPost] = useState('')
   const [postUrl, setPostUrl] = useState('')
@@ -75,7 +76,7 @@ const PostModal = () => {
         />
 
       </form>
-        <ImageUploadComponent setPostUrl={setPostUrl}/>
+        <ShareImageUpload setPostUrl={setPostUrl}/>
 
         <button onClick={handleSubmit} className='post_modal_button' type='submit'> Post </button>
     </div>
@@ -83,4 +84,4 @@ const PostModal = () => {
   )
 }
 
-export default PostModal
+export default ShareModal
