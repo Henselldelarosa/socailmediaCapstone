@@ -15,4 +15,30 @@
     font-weight: 700;
     font-size: 18px;
   }
+
+  &:hover{
+    background-color: #011631c9;
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 992px){
+  .menuLink{
+    display: block;
+
+    .menuLinkText{
+      display: none;
+    }
+
+    .menuLinkTextName{
+      display: none;
+    }
+
+    &:hover{
+      display: block;
+      background-color: #011631c9;
+      color: white;
+    }
+  }
+
 }
