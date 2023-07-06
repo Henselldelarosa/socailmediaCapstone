@@ -49,6 +49,11 @@ function App() {
             <Home user={user}/>
           </Route>
 
+          <Route exact path='profile'>
+            <Route path=':userId' />
+
+          </Route>
+
           <Route exact path='/searches/users/:searchQuery'>
             <SearchComponent/>
           </Route>
