@@ -25,6 +25,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     userUrl = db.Column(db.String(255), default='https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg', nullable=True)
     profile_url = db.Column(db.String(255), default='https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg', nullable=True)
+    phone_number = db.Column(db.String(255), default='N/A')
+    address = db.Column(db.String(255), default='N/A')
+    country = db.Column(db.String(255), default='N/A')
+    relationship = db.Column(db.string(255), default='Single')
 
     posts = db.relationship('Post', back_populates='user')
     replies = db.relationship('Reply', back_populates='user')
@@ -58,6 +62,18 @@ class User(db.Model, UserMixin):
             'profile_url': self.profile_url,
             'followers': [{'userId': follower.id, 'firstName': follower.firstName, 'lastName': follower.lastName, 'userUrl': follower.userUrl} for follower in self.followers],
             'following': [{'userId': follower.id, 'firstName': follower.firstName, 'lastName': follower.lastName, 'userUrl': follower.userUrl} for follower in self.followers],
+        }
+
+    def edit_user_dict(self):
+        return{
+            'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'email': self.email,
+            'phone_number': self.phone_number,
+            'address': self.address,
+            'country': self.country,
+            'relationship': self.relationship,
         }
 
     def follow(self, user):
