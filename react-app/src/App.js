@@ -15,6 +15,7 @@ import SearchComponent from "./components/Search/SearchComponent";
 import Navbar from "./Components/navbar/Navbar";
 import Login from "./pages/login/Login";
 import Home from './pages/home/Home'
+import Profile from './pages/profile/Profile'
 
 function App() {
   const dispatch = useDispatch();
@@ -45,18 +46,19 @@ function App() {
             <PostDetail/>
           </Route>
 
+          <Route exact path='/searches/users/:searchQuery'>
+            <SearchComponent/>
+          </Route>
+
+          <Route exact path='/profile/:id'>
+            {/* <Route path=':userId' element={<Profile/>}/> */}
+            <Profile/>
+          </Route>
+
           <Route exact path='/'>
             <Home user={user}/>
           </Route>
 
-          <Route exact path='profile'>
-            <Route path=':userId' />
-
-          </Route>
-
-          <Route exact path='/searches/users/:searchQuery'>
-            <SearchComponent/>
-          </Route>
         </Switch>
       )}
     </>

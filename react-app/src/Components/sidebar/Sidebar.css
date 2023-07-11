@@ -24,6 +24,10 @@
   }
 }
 
+.nameLink{
+  color: black;
+}
+
 
 ::-webkit-scrollbar{
   width: 5px;

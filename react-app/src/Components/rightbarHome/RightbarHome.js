@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {useSelector} from 'react-redux'
+import { NavLink, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 
 import './RightbarHome.css'
 import Following from '../following/Following'
@@ -29,7 +30,7 @@ console.log(user)
 
 {/* <img src="/assets/ads/adv.jpg" alt="" className="rightbarAdvert"/> */}
 
-<span className="rightbarTitle">Following</span>
+<h3 className="rightbarTitle">Following</h3>
 
 <ul className="rightbarFriendList">
   {/* {Usersonline.map((u) => {
@@ -41,7 +42,9 @@ console.log(user)
 
   {user?.following.map((f) => {
     return (
-      <Following key={f.id} following={f}/>
+      <NavLink style={{textDecoration:'none'}} to={`/profile/${f.userId}`}>
+        <Following key={f.id} following={f}/>
+      </NavLink>
     )
   })}
 </ul>

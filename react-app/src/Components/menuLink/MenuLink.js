@@ -7,7 +7,7 @@ const MenuLink = ({Icon, text}) => {
   return (
     <div className='menuLink'>
       {Icon}
-      <span className="menuLinkText">{text}</span>
+      <span style={{color:'black'}} className="menuLinkText">{text}</span>
       <span className="menuLinkTextName">{text==='Logout' && `${user?.firstName}`}</span>
     </div>
   )

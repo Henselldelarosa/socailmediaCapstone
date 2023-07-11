@@ -26,7 +26,7 @@ const UploadPicture = () => {
         }
         else {
             setImageLoading(false);
-            console.log("error")
+            // console.log("error")
         }
     }
 

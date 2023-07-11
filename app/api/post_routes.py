@@ -31,6 +31,7 @@ def get_all_post():
 
 # get post by Id
 @posts_routes.route("/<int:id>", methods=["GET"])
+@login_required
 def get_post_by_id(id):
     wanted_post = Post.query.get(id)
     return wanted_post.to_dict()

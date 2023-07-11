@@ -71,12 +71,14 @@ const Share = () => {
             className="shareInput"
             placeholder={`What's on your mind ${user?.firstName}?`}
             value={post}
+            size='35'
             onChange={updatePost}
             />
 
             <input
             type="text"
             className="shareInput"
+
             hidden
             value={postUrl}
             onChange={updatePostUrl}

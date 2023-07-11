@@ -7,7 +7,7 @@ import Share from '../share/Share'
 import Post from '../posts/Post'
 const Feed = () => {
   const posts = useSelector(state => Object.values(state.posts))
-  console.log(posts)
+
   return (
     <div className='feed'>
 

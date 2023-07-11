@@ -1,17 +1,17 @@
 const GET_USERS = "users/GET_USERS";
 const GET_USER = "users/GET_USER";
 
-const getUsers = (users) => {
+const gets = (users) => {
   return {
     type: GET_USERS,
-    payload: users,
+    users,
   };
 };
 
-const getUser = (user) => {
+const get = (user) => {
   return {
     type: GET_USERS,
-    payload: user,
+    user
   };
 };
 
@@ -20,33 +20,43 @@ export const getTheUsers = () => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(getUsers(data));
+    dispatch(gets(data.users));
     return data;
   }
 };
 
 export const getTheUser = (id) => async (dispatch) => {
   const response = await fetch(`/api/users/${id}`);
-
   if (response.ok) {
     const data = await response.json();
-    dispatch(getUser(data));
+    dispatch(get(data));
     return data;
   }
 };
 
 let initialState = {};
 const usersReducer = (state = initialState, action) => {
-  let newState;
+  // let newState;
   switch (action.type) {
-    case GET_USER:
-      newState = Object.assign({}, state);
-      newState.user = action.payload;
+    case GET_USERS:{
+      const newState = {}
+      action.users.forEach(user => {
+        newState[user.id] = user
+      })
       return newState;
-    case GET_USERS:
-      newState = Object.assign({}, state);
-      newState.user = action.payload;
-      return newState;
+
+    }
+
+    case GET_USER:{
+      return {
+        ...state,
+        [action.user.id] : action.user
+      }
+    }
+
+      // newState = Object.assign({}, state);
+      // newState.user = action.payload;
+      // return newState;
     default:
       return state;
   }

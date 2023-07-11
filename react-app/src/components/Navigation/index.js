@@ -28,7 +28,7 @@ function Navigation({isLoaded}) {
   const search = (e) => {
     e.preventDefault()
     dispatch(getTheSearch(searchQuery))
-		console.log(searchQuery)
+		// console.log(searchQuery)
 		history.push(`/searches/users/${searchQuery}`)
     setSearchQuery('')
   }

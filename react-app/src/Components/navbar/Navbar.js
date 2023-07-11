@@ -7,6 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import BasicMenuSignedIn from '../../components/Navigation/HeaderSignedIn/HeaderSigned';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Navbar = ({isLoaded}) => {
   const user = useSelector(state => state.session.user)
@@ -28,9 +29,9 @@ const Navbar = ({isLoaded}) => {
     sessionLinks =(
       <div className='navbarContainer'>
 
-      <div className="navbarLeft">
+      <NavLink to='/' className="navbarLeft" style={{textDecoration:'none'}}>
         <span className="logo">Sagebook</span>
-      </div>
+      </NavLink>
 
       <div className="navbarCenter">
 
