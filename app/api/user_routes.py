@@ -43,7 +43,7 @@ def user(id):
 @login_required
 def edit_user(id):
 
-    form = UserForm
+    form = UserForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -52,15 +52,16 @@ def edit_user(id):
             wanted_user.firstName = form.data['firstName']
             wanted_user.lastName = form.data['lastName']
             wanted_user.email = form.data['email']
-            wanted_user.userUrl = form.data['userUrl']
-            wanted_user.profile_url = form.data['profile_url']
+            # wanted_user.userUrl = form.data['userUrl']
+            # wanted_user.profile_url = form.data['profile_url']
             wanted_user.phone_number = form.data['phone_number']
             wanted_user.address = form.data['address']
             wanted_user.country = form.data['country']
             wanted_user.relationship = form.data['relationship']
 
             db.session.commit()
-            return wanted_user.edit_user_dict()
+            print(wanted_user, '---------------------------------------------')
+            return wanted_user.to_dict()
 
         else:
             return {'message': 'You are not allowed to edit this post'}

@@ -60,6 +60,10 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'userUrl': self.userUrl,
             'profile_url': self.profile_url,
+            'phone_number': self.phone_number,
+            'address': self.address,
+            'country': self.country,
+            'relationship': self.relationship,
             'followers': [{'userId': follower.id, 'firstName': follower.firstName, 'lastName': follower.lastName, 'userUrl': follower.userUrl} for follower in self.followers],
             'following': [{'userId': follower.id, 'firstName': follower.firstName, 'lastName': follower.lastName, 'userUrl': follower.userUrl} for follower in self.followers],
         }

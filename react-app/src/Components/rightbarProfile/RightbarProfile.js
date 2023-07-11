@@ -29,8 +29,8 @@ const RightbarProfile = () => {
       <div className="profileRightbarHeading">
         <span className="profileRightbarTitle">User Information</span>
 
-        {(user.id === sessionUser.id) && (
-        <NavLink to={`/user/${user.id}/edit`} style={{textDecoration:'none'}}>
+        {(user?.id === sessionUser?.id) && (
+        <NavLink to={`/users/${user.id}/edit`} style={{textDecoration:'none'}}>
         <span className="editButton">Edit Profile</span>
         </NavLink>
         )}
@@ -45,22 +45,22 @@ const RightbarProfile = () => {
 
         <div className="profileRightbarInfoItem">
           <span className="profileRightbarInfoKey">Phone Number: </span>
-          <span className="profileRightbarInfoVal"> +4 123 456 7890</span>
+          <span className="profileRightbarInfoVal"> {user?.phone_number}</span>
         </div>
 
         <div className="profileRightbarInfoItem">
           <span className="profileRightbarInfoKey">Address: </span>
-          <span className="profileRightbarInfoValue"> 123 something st, bronx, NY </span>
+          <span className="profileRightbarInfoValue"> {user?.address} </span>
         </div>
 
         <div className="profileRightbarInfoItem">
           <span className="profileRightbarInfoKey">Crountry: </span>
-          <span className="profileRightbarInfoVal"> United States</span>
+          <span className="profileRightbarInfoVal"> {user?.country}</span>
         </div>
 
         <div className="profileRightbarInfoItem">
           <span className="profileRightbarInfoKey">Relationship: </span>
-          <span className="profileRightbarInfoVal"> Single</span>
+          <span className="profileRightbarInfoVal"> {user?.relationship} </span>
         </div>
 
       </div>

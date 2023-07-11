@@ -32,7 +32,7 @@ export const getTheUsers = () => async (dispatch) => {
 };
 
 export const getTheUser = (id) => async (dispatch) => {
-  const response = await fetch(`/api/users/${id}`);
+  const response = await fetch(`/api/users/${id}/`);
   if (response.ok) {
     const data = await response.json();
     dispatch(get(data));
@@ -40,19 +40,20 @@ export const getTheUser = (id) => async (dispatch) => {
   }
 };
 
-export const editUser = (data) => async (dispatch) => {
-  const response = await fetch(`/api/users/${data.id}`, {
-    method:'put',
+export const editUser = (userData) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userData.id}`, {
+    method:'PUT',
     headers:{
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(userData)
   })
 
   if(response.ok){
-    const user = await response.json()
-    dispatch(edit(user))
-    return user
+    const data = await response.json()
+    dispatch(edit(data, userData.id))
+    console.log(data)
+    return data
   }
 }
 

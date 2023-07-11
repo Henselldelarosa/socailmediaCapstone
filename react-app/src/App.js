@@ -54,7 +54,7 @@ function App() {
             <Profile/>
           </Route>
 
-          <Route exact path='/user/:id/edit'>
+          <Route exact path='/users/:id/edit'>
             <EditUser/>
           </Route>
 
