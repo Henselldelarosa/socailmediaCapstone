@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 const RightbarProfile = () => {
   const {id} = useParams()
   const user = useSelector(state => state.users[id])
-  console.log(user?.following[0])
+  const sessionUser = useSelector(state => state.session.user)
 
   const mutualFollow = []
 
@@ -29,9 +29,11 @@ const RightbarProfile = () => {
       <div className="profileRightbarHeading">
         <span className="profileRightbarTitle">User Information</span>
 
-        {/* <NavLink to='/profile/userId/edit' style={{textDecoration:'none'}}>
+        {(user.id === sessionUser.id) && (
+        <NavLink to={`/user/${user.id}/edit`} style={{textDecoration:'none'}}>
         <span className="editButton">Edit Profile</span>
-        </NavLink> */}
+        </NavLink>
+        )}
       </div>
 
       <div className="profileRightbarInfo">

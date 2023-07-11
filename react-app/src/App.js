@@ -7,7 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllPost from "./components/Post/GetAllPostComponent/GetAllPost"
 import PostDetail from "./components/Post/PostDetailComponent/PostDetail";
-
+import EditUser from './pages/editUser/EditUser'
 // thunk
 import { getAllPosts, getPostById } from "./store/post";
 import { getTheUsers } from "./store/user";
@@ -51,9 +51,13 @@ function App() {
           </Route>
 
           <Route exact path='/profile/:id'>
-            {/* <Route path=':userId' element={<Profile/>}/> */}
             <Profile/>
           </Route>
+
+          <Route exact path='/user/:id/edit'>
+            <EditUser/>
+          </Route>
+
 
           <Route exact path='/'>
             <Home user={user}/>

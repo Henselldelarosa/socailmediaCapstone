@@ -1,5 +1,6 @@
 const GET_USERS = "users/GET_USERS";
 const GET_USER = "users/GET_USER";
+const EDIT_USER = 'users/EDIT_USER'
 
 const gets = (users) => {
   return {
@@ -7,6 +8,11 @@ const gets = (users) => {
     users,
   };
 };
+
+const edit = (user) =>({
+  type: EDIT_USER,
+  user
+})
 
 const get = (user) => {
   return {
@@ -34,6 +40,22 @@ export const getTheUser = (id) => async (dispatch) => {
   }
 };
 
+export const editUser = (data) => async (dispatch) => {
+  const response = await fetch(`/api/users/${data.id}`, {
+    method:'put',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if(response.ok){
+    const user = await response.json()
+    dispatch(edit(user))
+    return user
+  }
+}
+
 let initialState = {};
 const usersReducer = (state = initialState, action) => {
   // let newState;
@@ -47,6 +69,13 @@ const usersReducer = (state = initialState, action) => {
 
     }
 
+    case EDIT_USER:{
+      return{
+        ...state,
+        [action.user.id] : action.user
+      }
+    }
+
     case GET_USER:{
       return {
         ...state,
@@ -54,9 +83,7 @@ const usersReducer = (state = initialState, action) => {
       }
     }
 
-      // newState = Object.assign({}, state);
-      // newState.user = action.payload;
-      // return newState;
+
     default:
       return state;
   }
