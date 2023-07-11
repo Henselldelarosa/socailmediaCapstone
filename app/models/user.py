@@ -28,7 +28,7 @@ class User(db.Model, UserMixin):
     phone_number = db.Column(db.String(255), default='N/A')
     address = db.Column(db.String(255), default='N/A')
     country = db.Column(db.String(255), default='N/A')
-    relationship = db.Column(db.string(255), default='Single')
+    relationship = db.Column(db.String(255), default='Single')
 
     posts = db.relationship('Post', back_populates='user')
     replies = db.relationship('Reply', back_populates='user')
@@ -70,6 +70,8 @@ class User(db.Model, UserMixin):
             'firstName': self.firstName,
             'lastName': self.lastName,
             'email': self.email,
+            'userUrl': self.userUrl,
+            'profile_url': self.profile_url,
             'phone_number': self.phone_number,
             'address': self.address,
             'country': self.country,

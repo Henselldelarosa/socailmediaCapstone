@@ -60,7 +60,7 @@ def edit_user(id):
             wanted_user.relationship = form.data['relationship']
 
             db.session.commit()
-            return wanted_user.to_dict()
+            return wanted_user.edit_user_dict()
 
         else:
             return {'message': 'You are not allowed to edit this post'}

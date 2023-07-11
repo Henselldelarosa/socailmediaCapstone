@@ -9,7 +9,11 @@ def seed_users():
         email='demo@aa.io',
         password='password',
         userUrl='https://i.pinimg.com/736x/0a/bb/e5/0abbe546e479edc1eb62f5a8ccd66328.jpg',
-        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png',
+        phone_number = 'N/A',
+        address = 'N/A',
+        country = 'N/A',
+        relationship = 'N/A'
         )
     user2 = User(
         firstName='Marnie',
@@ -17,7 +21,11 @@ def seed_users():
         email='marnie@aa.io',
         password='password',
         userUrl='https://thumbs.dreamstime.com/b/funny-face-baby-27701492.jpg',
-        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png',
+        phone_number = 'N/A',
+        address = 'N/A',
+        country = 'N/A',
+        relationship = 'N/A'
         )
     user3 = User(
         firstName='Bobbie',
@@ -25,7 +33,11 @@ def seed_users():
         email='bobbie@aa.io',
         password='password',
         userUrl='https://parade.com/.image/t_share/MTkwNTgxMTA1NjY0NDAyNTU3/funny-pictures.jpg',
-        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png',
+        phone_number = 'N/A',
+        address = 'N/A',
+        country = 'N/A',
+        relationship = 'N/A'
         )
 
     db.session.add(user1)
