@@ -3,7 +3,7 @@ import React from 'react'
 import './Post.css'
 
 import { IconButton } from '@mui/material'
-import { ChatBubbleOutline, Favorite, FavoriteOutlined, MoreVert, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
+import { ChatBubbleOutline, MoreVert, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
 
 const Post = ({post}) => {
   return (

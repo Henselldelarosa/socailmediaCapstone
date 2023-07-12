@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
-import LoginFormPage from "./components/LoginFormPage";
+// import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
-import GetAllPost from "./components/Post/GetAllPostComponent/GetAllPost"
+// import Navigation from "./components/Navigation";
+// import GetAllPost from "./components/Post/GetAllPostComponent/GetAllPost"
 import PostDetail from "./components/Post/PostDetailComponent/PostDetail";
 import EditUser from './pages/editUser/EditUser'
 // thunk
-import { getAllPosts, getPostById } from "./store/post";
+import { getAllPosts} from "./store/post";
 import { getTheUsers } from "./store/user";
 import SearchComponent from "./components/Search/SearchComponent";
 import Navbar from "./Components/navbar/Navbar";

@@ -1,6 +1,6 @@
 import React from 'react'
 import './Friends.css'
-import { NavLink, useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { NavLink} from 'react-router-dom/cjs/react-router-dom.min'
 
 const Friends = ({friends}) => {
   return (

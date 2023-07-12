@@ -4,8 +4,10 @@ import './EditUser.css'
 import { editUser } from '../../store/user'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import ProfileImageUpload from '../../Components/profileImageUpload/ProfileImageUpload'
+// import { Button } from "@mui/material";
 
-import { DriveFolderUploadOutlined } from '@mui/icons-material'
+
 
 const EditUser = () => {
   const dispatch = useDispatch()
@@ -13,6 +15,13 @@ const EditUser = () => {
   const user = useSelector(state => state.users[id])
   const history = useHistory()
 
+  // if(user?.phone_number === null){
+  //   user.phone_number = 'N/A'
+  // }
+
+  // if(user?.profile_url === null){
+  //   user.profile_url = 'N/A'
+  // }
   const [firstName, setFirstName] = useState(user?.firstName)
   const [lastName, setLastName] = useState(user?.lastName)
   const [email, setEmail] = useState(user?.email)
@@ -24,10 +33,11 @@ const EditUser = () => {
   const [relationship, setRelationship] = useState(user?.relationship)
   const [errors, setErrors] = useState([])
 
+
   const updateFirstName = (e) => setFirstName(e.target.value)
   const updateLastName = (e) => setLastName(e.target.value)
   const updateEmail = (e) => setEmail(e.target.value)
-  const updateUserUrl = (e) => setUserUrl(e.target.value)
+  // const updateUserUrl = (e) => setUserUrl(e.target.value)
   const updateProfileUrl = (e) => setProfileUrl(e.target.value)
   const updatePhoneNumber = (e) => setPhoneNumber(e.target.value)
   const updateCountry = (e) => setCountry(e.target.value)
@@ -53,7 +63,7 @@ const EditUser = () => {
       address,
       relationship
     }
-    // First name is Required'
+
 
     if(!payload.firstName){
       error.push('First name is Required')
@@ -119,15 +129,12 @@ const EditUser = () => {
 
             <div className="bottom">
               <div className="left">
-                <img
-                src={user?.userUrl}
-                alt=""
-                className='editImg'/>
+                <ProfileImageUpload user={user} setUserUrl={setUserUrl}/>
               </div>
 
               <div className="right">
 
-              <form onSubmit={handleSubmit} className='editForm'>
+              <form  className='editForm'>
                 <ul>
                   {errors && errors.map((error,id) => <li key={id}>{error}</li>)}
                 </ul>
@@ -204,11 +211,11 @@ const EditUser = () => {
                   />
                 </div>
 
-                <button type="submit" className='updateButton'>
-                   Update Profile
-                </button>
 
               </form>
+                <button onClick={handleSubmit} type="submit" className='updateButton'>
+                   Update Profile
+                </button>
 
               </div>
             </div>
