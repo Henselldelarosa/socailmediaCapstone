@@ -30,6 +30,10 @@ const ShareModal = ({setShowModal, sessionUser}) => {
       error.push("Post field can't be empty")
     }
 
+    if(!payload.postUrl){
+      error.push('Image is required')
+    }
+
     if (payload.postUrl && payload.post) {
         dispatch(addPost(payload))
         setShowModal(false)

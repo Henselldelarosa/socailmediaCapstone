@@ -12,7 +12,7 @@ const ShareModalRender = () => {
 
   return (
     <>
-    <button style={{border:'none'}}onClick={() => setShowModal(true)}>
+    <button style={{border:'none', backgroundColor:'transparent'}}onClick={() => setShowModal(true)}>
 
     <div className="shareOption">
     <CollectionsIcon

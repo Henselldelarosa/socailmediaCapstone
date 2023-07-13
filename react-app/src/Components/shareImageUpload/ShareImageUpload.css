@@ -9,20 +9,31 @@
   object-fit: contain;
 
   .shareImageContainer{
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: space-evenly; */
+    justify-content: space-evenly;
 
     .sharePreviewImage{
-
+      height: 200px;
+      border-radius:5px ;
+      object-fit: contain;
     }
 
     .shareLoadingImage{
-
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--theme);
     }
 
     .shareImageSubmit{
-
+      background-color: var(--theme);
+      border:none;
+      font-weight: bolder;
+      color: white;
+      height: 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
     }
   }
 
@@ -46,6 +57,7 @@
       .shareImageCenter{
         margin-left: 150px;
         padding-top: 50px;
+        position: absolute;
       }
     }
 

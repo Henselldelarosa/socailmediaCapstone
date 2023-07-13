@@ -56,6 +56,11 @@
 
     .share_modal_form_input{
 
+      .share_modal_error{
+        margin-left: 15px;
+        color: var(--theme);
+      }
+
       .share_input{
         width:450px;
         border: none;
@@ -93,6 +98,8 @@
       border-radius: 6px;
       border: none;
       cursor: pointer;
+      object-fit: contain;
+      position: absolute;
     }
   }
 }
