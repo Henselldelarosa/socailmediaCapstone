@@ -9,11 +9,11 @@ const RightbarProfile = () => {
 
   const mutualFollow = []
 
-  for (let i = 0; i < user?.following.length; i++){
-    let follow = user?.following[i]
+  for (let i = 0; i < sessionUser?.following.length; i++){
+    let follow = sessionUser?.following[i]
 
-    for(let j = 0; j <user?.followers.length; j++){
-      let follower = user?.followers[j]
+    for(let j = 0; j <sessionUser?.followers.length; j++){
+      let follower = sessionUser?.followers[j]
 
       if((follow?.userId === follower?.userId) && (!mutualFollow.includes(follow?.userId))){
         mutualFollow.push(follow)
@@ -28,12 +28,12 @@ const RightbarProfile = () => {
 
       <div className="profileRightbarHeading">
         <span className="profileRightbarTitle">User Information</span>
-
+{/*
         {(user?.id === sessionUser?.id) && (
-        <NavLink to={`/users/${user.id}/edit`} style={{textDecoration:'none'}}>
+        <NavLink to={`/user/${user.id}/edit`} style={{textDecoration:'none'}}>
         <span className="editButton">Edit Profile</span>
         </NavLink>
-        )}
+        )} */}
       </div>
 
       <div className="profileRightbarInfo">

@@ -12,34 +12,28 @@ import { logout } from "../../store/session";
 // components
 import MenuLink from '../menuLink/MenuLink'
 import Friends from '../friends/Friends'
-import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import { NavLink, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch } from 'react-redux';
-const Sidebar = ({user}) => {
+const Sidebar = ({sessionUser}) => {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push('/login')
   };
   return (
     <div className='sidebar'>
 
       <div className="sidebarWrapper">
-        <MenuLink
-        Icon={<NavLink className='nameLink' to={`/profile/${user.id}`} ><Avatar src={user?.userUrl}/></NavLink>}
-        text=
-        {
-        <NavLink
-        style={{color:'black'}}
-        className='link'
-        to={`/profile/${user.id}`}>{user?.firstName}
-        </NavLink>
-        }
-        />
-        <MenuLink Icon={<Brightness4Icon/>} text={'Theme'}/>
+      <NavLink style={{textDecoration:'none', color:'black'}} className='nameLink' to={`/profile/${sessionUser?.id}`} >
+        <MenuLink Icon={<Avatar src={sessionUser?.userUrl}/>}text={sessionUser?.firstName}></MenuLink>
+      </NavLink>
 
-        <button style={{border:'none'}} onClick={handleLogout}>
-        <MenuLink Icon={<ExitToAppIcon/>} text='Logout'/>
+        <MenuLink Icon={<Brightness4Icon/>} text={'Theme'}/>
+        <button style={{border:'none', backgroundColor:'transparent'}} onClick={handleLogout}>
+        <MenuLink style={{textDecoration:'none'}} Icon={<ExitToAppIcon/>} text='Logout'/>
         </button>
 
 
@@ -47,7 +41,7 @@ const Sidebar = ({user}) => {
 
         <ul className="sidebarFriendList">
           <h3 className="followers">Followers</h3>
-          {user?.followers.map((f) => {
+          {sessionUser?.followers.map((f) => {
             return(
               <Friends key={f.id} friends={f}/>
             )

@@ -10,7 +10,7 @@ import BasicMenuSignedIn from '../../components/Navigation/HeaderSignedIn/Header
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Navbar = ({isLoaded}) => {
-  const user = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -25,7 +25,7 @@ const Navbar = ({isLoaded}) => {
 
   let sessionLinks;
 
-  if (user){
+  if (sessionUser){
     sessionLinks =(
       <div className='navbarContainer'>
 
@@ -35,23 +35,23 @@ const Navbar = ({isLoaded}) => {
 
       <div className="navbarCenter">
 
-        <div className="searchBar">
+        <form onSubmit={search} className="searchBar">
           <SearchIcon className='searchIcon'/>
           <input type="text"
            className="searchInput"
-           placeholder={`Search for friends ${user?.firstName}`}
+           placeholder={`Search for friends ${sessionUser?.firstName}`}
            value={searchQuery}
            onChange={ (e) => setSearchQuery(e.target.value)}
            />
-           <button hidden className="header_search_button" onClick={search}>hidden</button>
-        </div>
+           <button type='submit' hidden className="header_search_button">hidden</button>
+        </form>
       </div>
 
       <div className="navbarRight">
 
         <div className="navbarLinks">
           <span className="navbarLink">Profile</span>
-          <span className="navbarLink">{user?.firstName}</span>
+          <span className="navbarLink">{sessionUser?.firstName}</span>
         </div>
 
         <div className="navbarIcons">

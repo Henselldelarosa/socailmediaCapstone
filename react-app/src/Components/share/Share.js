@@ -6,7 +6,7 @@ import ShareModalRender from '../shareModal/ShareModalRender'
 
 const Share = () => {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user)
 
   const [error, setError] = useState([])
   const [post, setPost] = useState('')
@@ -20,7 +20,7 @@ const Share = () => {
     setError([])
 
     const payload ={
-      userId: user.id,
+      userId: sessionUser.id,
       post,
       postUrl
     }
@@ -59,7 +59,7 @@ const Share = () => {
 
         <div className="shareTop">
           <img
-          src={user?.userUrl}
+          src={sessionUser?.userUrl}
           alt=""
           className="shareProfileImg"
           />
@@ -69,7 +69,7 @@ const Share = () => {
             <input
             type="text"
             className="shareInput"
-            placeholder={`What's on your mind ${user?.firstName}?`}
+            placeholder={`What's on your mind ${sessionUser?.firstName}?`}
             value={post}
             size='35'
             onChange={updatePost}

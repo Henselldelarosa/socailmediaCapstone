@@ -8,8 +8,8 @@ import Following from '../following/Following'
 
 const RightbarHome = () => {
 
-  const user = useSelector(state => state.session.user)
-console.log(user)
+  const sessionUser = useSelector(state => state.session.user)
+
 
   return (
     <div className='rightbarHome'>
@@ -40,7 +40,7 @@ console.log(user)
   })} */}
 
 
-  {user?.following.map((f) => {
+  {sessionUser?.following.map((f) => {
     return (
       <NavLink style={{textDecoration:'none'}} to={`/profile/${f.userId}`}>
         <Following key={f.id} following={f}/>

@@ -2,7 +2,9 @@ import React,{useState} from 'react'
 import './ProfileImageUpload.css'
 import { Button } from "@mui/material";
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
-const ProfileImageUpload = ({setUserUrl, user}) => {
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+
+const ProfileImageUpload = ({setUserUrl, sessionUser}) => {
 
   const [image, setImage] = useState(null)
   const [imageLoading, setImageLoading] = useState(false);
@@ -77,10 +79,13 @@ const ProfileImageUpload = ({setUserUrl, user}) => {
           <div className="profile_image_center">
 
             <center>
+              <div className="img_container">
               <img
-              src={user?.userUrl}
+              src={sessionUser?.userUrl}
               alt=""
               className="profile_editImg" />
+              <CameraAltIcon className='userImgIcon'/>
+              </div>
             </center>
 
           </div>

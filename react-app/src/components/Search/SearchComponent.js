@@ -14,7 +14,6 @@ function SearchComponent() {
     return search
   })
 
-  console.log(allSearches)
 
   const dispatch = useDispatch()
 

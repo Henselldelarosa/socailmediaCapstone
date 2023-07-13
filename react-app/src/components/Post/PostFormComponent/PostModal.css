@@ -1,20 +1,21 @@
-.post_modal_form{
+/* .post_modal_form{
   background-color: #1c1e21;
   width: 500px;
   height: 525px;
   place-items: center;
   border-radius: 5px;
-}
+} */
 
 .post_modal_error{
   color: var(--theme);
   margin-top: 10px;
 }
-.post_modal_form_user_info{
+
+/* .post_modal_form_user_info{
   display: flex;
   margin-top: 15px;
   padding-left: 10px;
-}
+} */
 
 .uploaded_image_modal{
   width: 55%;
@@ -34,7 +35,7 @@ padding-left: 175px;
 }
 
 
-.modal_closing_button{
+/* .modal_closing_button{
   color: white;
   background-color: rgb(54, 54, 54);
   border-radius: 999px;
@@ -44,23 +45,23 @@ padding-left: 175px;
   height: 35px;
   margin-top: 10px;
   align-items: center;
-}
+} */
 
-.modal_closing_button:hover{
+/* .modal_closing_button:hover{
   background-color: rgb(98, 98, 98);
-}
+} */
 
-.modal_closing_title_div{
+/* .modal_closing_title_div{
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
+} */
 
 
-.post_modal_form_user_info > h3{
+/* .post_modal_form_user_info > h3{
   margin-left:10px;
   color:white;
-}
+} */
 
 hr{
   color: rgba(255, 255, 255, 0.05);
@@ -82,7 +83,7 @@ hr{
   background-color: rgb(54, 53, 53);
 }
 
-.post_input{
+/* .post_input{
   width:450px;
   border: none;
   background-color: transparent;
@@ -91,15 +92,15 @@ hr{
   font-size:16px;
   border-width: 0;
   margin-top: 20px;
-}
+} */
 
-.post_input::placeholder{
+/* .post_input::placeholder{
   color: lightgray;
   font-size:16px ;
   padding-top: 10px;
-}
+} */
 
-.post_modal_button{
+/* .post_modal_button{
   place-items: center;
   width: 450px;
   margin-top: 25px;
@@ -113,7 +114,7 @@ hr{
   cursor: pointer;
 
 
-}
+} */
 
 .image_modal_upload{
   display: flex;
@@ -136,8 +137,8 @@ hr{
   background-color:  rgba(68, 68, 68, 0.733);
 }
 
-.post_modal_form_input >textarea{
+/* .post_modal_form_input >textarea{
   overflow: hidden;
   resize: none;
   outline: none;
-}
+} */

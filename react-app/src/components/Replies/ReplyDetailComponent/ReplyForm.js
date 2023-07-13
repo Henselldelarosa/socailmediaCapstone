@@ -35,7 +35,7 @@ function ReplyForm({
   const sessionUser = useSelector(state => state.session.user)
   const likes = useSelector(state => state.likes[id])
 
-  console.log(likes)
+
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

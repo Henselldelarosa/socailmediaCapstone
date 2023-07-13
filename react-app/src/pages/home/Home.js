@@ -7,15 +7,17 @@ import Feed from '../../Components/feed/Feed'
 import Rightbar from '../../Components/rightbar/Rightbar'
 
 import Login from '../login/Login'
-const Home = ({user}) => {
+import { useSelector } from 'react-redux'
+const Home = ({sessionUser}) => {
+
 
   let content;
 
-  if (user){
+  if (sessionUser){
     content = (
       <div className='home'>
       <div className="homeContainer">
-        <Sidebar user={user}/>
+        <Sidebar sessionUser={sessionUser}/>
         <Feed/>
         <Rightbar/>
       </div>

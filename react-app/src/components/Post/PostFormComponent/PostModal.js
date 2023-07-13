@@ -8,7 +8,7 @@ import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import './PostModal.css'
 import ImageUploadComponent from './PostImageUpload';
 
-function PostModal({setShowModal, user}) {
+function PostModal({setShowModal, sessionUser}) {
   const dispatch = useDispatch()
 
   const [post, setPost] = useState('')
@@ -25,7 +25,7 @@ function PostModal({setShowModal, user}) {
     setErrorMessage([])
 
     const payload ={
-      userId:user.id,
+      userId:sessionUser.id,
       post,
       postUrl
     }
@@ -61,8 +61,8 @@ function PostModal({setShowModal, user}) {
 
       <div className='post_modal_form_user_info'>
 
-        <Avatar src={user.userUrl}/>
-        <h3>{user.firstName} {user.lastName}</h3>
+        <Avatar src={sessionUser.userUrl}/>
+        <h3>{sessionUser.firstName} {sessionUser.lastName}</h3>
 
       </div>
 
@@ -79,7 +79,7 @@ function PostModal({setShowModal, user}) {
           value={post}
           rows='4'
           onChange={updatePost}
-          placeholder={`Whats on your mind, ${user.firstName}?`}
+          placeholder={`Whats on your mind, ${sessionUser.firstName}?`}
           />
 
         </form>

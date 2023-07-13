@@ -12,7 +12,7 @@ function CreateReply() {
   const dispatch = useDispatch()
   const {id} = useParams()
 
-  const user = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user)
   // const actualId= parseInt(id)
   const post = useSelector(state => state.posts[id])
 
@@ -34,7 +34,7 @@ function CreateReply() {
 
 
     const payload ={
-      userId: user.id,
+      userId: sessionUser.id,
       postId: post.id,
       reply,
       replyUrl
@@ -66,7 +66,7 @@ function CreateReply() {
     <div className='reply_create_form'>
 
       <div className='reply_form_top'>
-      <Avatar src={user.userUrl}/>
+      <Avatar src={sessionUser.userUrl}/>
 
       <form  onSubmit={handleSubmit}>
 

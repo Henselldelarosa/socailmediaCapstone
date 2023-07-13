@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux'
 import Home from './home/Home';
 import Login from './login/Login';
 
-const RenderedPage = ({user}) => {
+const RenderedPage = ({sessionUser}) => {
   // const user = useSelector(state => state.session.user)
   let content;
 
-  if (user){
+  if (sessionUser){
     content = (
-      <Home user = {user}/>
+      <Home sessionUser = {sessionUser}/>
     )
   }else{
     content = (

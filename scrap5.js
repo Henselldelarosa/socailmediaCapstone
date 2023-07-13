@@ -16,7 +16,7 @@ const ImageUploadComponent = ({ setUrl }) => {
 
     while (setImageLoading === true ){
       setLoad(load += 1)
-      // console.log(load)
+
     }
 
     formData.append("image", image);
@@ -53,7 +53,7 @@ const ImageUploadComponent = ({ setUrl }) => {
           <button type="submit" className="upload-img-btn">Upload</button>
         </div>
         {imageLoading && <p>Loading...{load += 1}</p>}
-        {/* {console.log(load)} */}
+       
       </form>
       {uploadedImg && (
         <img src={prevImgUrl} alt="yours" className="prev_img" />

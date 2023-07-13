@@ -8,7 +8,7 @@ import './UpdatePost.css'
 
 function UpdatePost({hideForm}) {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user)
   const {id} = useParams()
   const currentPost = useSelector(state => state.posts[id])
 
@@ -70,8 +70,8 @@ function UpdatePost({hideForm}) {
       <center>
 
       <div className='updatePost_userInfo'>
-        <Avatar src={user.userUrl}/>
-        <h3>{user.firstName} {user.lastName}</h3>
+        <Avatar src={sessionUser.userUrl}/>
+        <h3>{sessionUser.firstName} {sessionUser.lastName}</h3>
 
 
       <div className='cancel_div'>

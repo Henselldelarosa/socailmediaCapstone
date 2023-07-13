@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {addPost} from '../../store/post'
 import { Avatar } from '@mui/material'
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import ShareImageUpload from '../shareImageUpload/ShareImageUpload';
+import './ShareModal.css'
 
-const ShareModal = ({setShowModal, user}) => {
+const ShareModal = ({setShowModal, sessionUser}) => {
   const dispatch = useDispatch()
   const [post, setPost] = useState('')
   const [postUrl, setPostUrl] = useState('')
@@ -18,7 +19,7 @@ const ShareModal = ({setShowModal, user}) => {
     setErrorMessage([])
 
     const payload ={
-      userId:user.id,
+      userId:sessionUser.id,
       post,
       postUrl
     }
@@ -42,43 +43,44 @@ const ShareModal = ({setShowModal, user}) => {
   }
 
   return (
-    <div className='post_modal_form'>
+    <div className='share_modal_form'>
 
     <center>
       <div className='modal_closing_title_div'>
-        <p className='post_form_modal_title'>Create a post</p>
-        <button className='modal_closing_button' onClick={() => setShowModal(false)}> <CloseSharpIcon/></button>
+        <p className='share_form_modal_title'>Create a post</p>
+        <button className='modal_closing_button' onClick={() => setShowModal(false)}> <CloseSharpIcon className='shareModalCLoseIcon'/></button>
       </div>
     </center>
 
 
-    <div className='post_modal_form_user_info'>
+    <div className='share_modal_form_user_info'>
 
-      <Avatar src={user.userUrl}/>
-      <h3>{user.firstName} {user.lastName}</h3>
+      <Avatar className='shareUserIcon' src={sessionUser.userUrl}/>
+      <h3 className='shareUserInfo'>{sessionUser.firstName} {sessionUser.lastName}</h3>
 
     </div>
 
-      <div className='modal_form'>
+      <div className='shareModalForm'>
 
-      <form className='post_modal_form_input'>
+      <form className='share_modal_form_input'>
 
-        <ul className='post_modal_error'>
+        <ul className='share_modal_error'>
           {errorMessage && errorMessage.map((error, id) => <li key={id}>{error}</li>)}
         </ul>
 
         <textarea
-        className='post_input'
+        className='share_input'
         value={post}
         rows='4'
+
         onChange={updatePost}
-        placeholder={`Whats on your mind, ${user.firstName}?`}
+        placeholder={`Whats on your mind, ${sessionUser.firstName}?`}
         />
 
       </form>
         <ShareImageUpload setPostUrl={setPostUrl}/>
 
-        <button onClick={handleSubmit} className='post_modal_button' type='submit'> Post </button>
+        <button onClick={handleSubmit} className='share_modal_button' type='submit'> Post </button>
     </div>
   </div>
   )

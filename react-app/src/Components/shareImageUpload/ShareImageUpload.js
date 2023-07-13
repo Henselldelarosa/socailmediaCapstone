@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { Button } from "@mui/material";
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+import './ShareImageUpload.css'
 
 const ShareImageUpload = ({setPostUrl}) => {
   const [image, setImage] = useState(null);
@@ -38,23 +39,23 @@ const ShareImageUpload = ({setPostUrl}) => {
 
 
   return (
-    <div className="file_upload_div">
+    <div className="shareFileUploadDiv">
       <form onSubmit={handleImageSubmit}>
 
       <input
       type='file'
       accept="image/*"
-      id='uti_upload'
+      id='shareUtiUpload'
       onChange={updateImage}
       hidden
       />
 
       {image? (
-        <div className="image_container">
+        <div className="shareImageContainer">
           <center>
 
           <img
-          className="previewImage"
+          className="sharePreviewImage"
           as='label'
           src={URL.createObjectURL(image)}
           alt='Image preview'
@@ -62,21 +63,21 @@ const ShareImageUpload = ({setPostUrl}) => {
           />
           {imageLoading && <p className="loading_image">...Loading</p>}
           </center>
-            <button className='image_submit' type='submit'>Upload</button>
+            <button className='shareImageSubmit' type='submit'>Upload</button>
         </div>
       ): <>
 
 
       <Button
       as='label'
-      htmlFor='uti_upload'
+      htmlFor='shareUtiUpload'
       cursor='pointer'
       mb={4}
       >
 
-        <div className="image_upload_div">
+        <div className="shareImageDiv">
 
-          <div className="image_center">
+          <div className="shareImageCenter">
 
             <center>
               <AddToPhotosIcon/>

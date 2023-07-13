@@ -79,50 +79,83 @@
 
         .right{
           flex: 2;
+          display: flex;
 
           .editForm{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            width: 300px;
+            align-items: center;
+
+            .formInput{
+              width: 70%;
+              margin-top: 10px;
+
+              .editLabel{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+              }
+
+              .icon{
+                cursor: pointer;
+              }
+
+              .editInput{
+                width: 100%;
+                font-size: 18px;
+                padding: 5px;
+                border: none;
+                border-bottom: 1px solid gray;
+                background-color: transparent;
+
+                &:focus{
+                  outline: none;
+                }
+              }
+
+            }
+          }
+          .cancelEditButtton{
+            background-color: transparent;
+            border: none;
+            margin-left: 200px;
+            cursor: pointer;
+            font-size: 50px;
+            display: flex;
+            align-items: center;
+            &:hover{
+              color: var(--theme);
+            }
           }
 
-          .formInput{
-            width: 70%;
-            margin-top: 10px;
+          .editFormButtons{
+            display: flex;
+            align-items: center;
 
-            .editLabel{
-              display: flex;
-              align-items: center;
-              gap: 5px;
-            }
-
-            .icon{
+            .updateButton{
+              width: 150px;
+              padding: 10px;
+              background-color: var(--theme);
+              color: white;
+              border: none;
+              font-weight: bold;
+              margin-top: 20px;
               cursor: pointer;
             }
 
-            .editInput{
-              width: 100%;
-              font-size: 18px;
-              padding: 5px;
+            .editCancelButton{
+              width: 150px;
+              padding: 10px;
+              background-color: rgb(161, 9, 9);
+              color: white;
               border: none;
-              border-bottom: 1px solid gray;
-              background-color: transparent;
-
-              &:focus{
-                outline: none;
-              }
+              font-weight: bold;
+              margin-top: 20px;
+              cursor: pointer;
+              margin-left: 20px;
             }
-
-          }
-          .updateButton{
-            width: 150px;
-            padding: 10px;
-            background-color: var(--theme);
-            color: white;
-            border: none;
-            font-weight: bold;
-            margin-top: 20px;
-            cursor: pointer;
           }
         }
       }

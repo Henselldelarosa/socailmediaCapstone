@@ -81,7 +81,7 @@ const Login = () => {
                 <button type='submit' className="loginButton">Log In</button>
 
                 <button className="loginRegisterButton">
-                <NavLink className='link' to='/signup'>Create new account </NavLink>
+                <NavLink style={{textDecoration:'none', color:'white'}} className='link' to='/signup'>Create new account </NavLink>
                 </button>
 
                 <button className='demoLogin' onClick={handleDemoLogin}>Demo Log In</button>

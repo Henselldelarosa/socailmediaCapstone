@@ -8,7 +8,7 @@ import './ShareModalRender.css'
 
 const ShareModalRender = () => {
   const [showModal, setShowModal] = useState(false)
-  const user = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user)
 
   return (
     <>
@@ -22,11 +22,11 @@ const ShareModalRender = () => {
     <span className="shareOptionText">Photos</span>
 
     </div>
-    
+
     </button>
     {showModal && (
       <Modal onClose={() => setShowModal(false)}>
-        <ShareModal setShowModal={setShowModal} user={user}/>
+        <ShareModal setShowModal={setShowModal} sessionUser={sessionUser}/>
       </Modal>
     )}
   </>

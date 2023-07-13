@@ -3,11 +3,11 @@ import React from 'react'
 import './Rightbar.css'
 import RightbarProfile from '../rightbarProfile/RightbarProfile'
 import RightbarHome from '../rightbarHome/RightbarHome'
-const Rightbar = ({profile, user}) => {
+const Rightbar = ({profile, sessionUser}) => {
   return (
     <div className='rightbar'>
       <div className="rightbarWrapper">
-        {profile? <RightbarProfile user={user}/> : <RightbarHome/>}
+        {profile? <RightbarProfile sessionUser={sessionUser}/> : <RightbarHome/>}
       </div>
     </div>
   )

@@ -8,7 +8,7 @@ import PostModal from './PostModal';
 
 function PostModalRender() {
   const [showModal, setShowModal] = useState(false)
-  const user = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user)
 
 
   return (
@@ -18,7 +18,7 @@ function PostModalRender() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <PostModal setShowModal={setShowModal} user={user}/>
+          <PostModal setShowModal={setShowModal} sessionUser={sessionUser}/>
         </Modal>
       )}
     </>

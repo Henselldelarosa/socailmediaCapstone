@@ -28,7 +28,7 @@ const addRemove = (like,id) => (
     }
   }
   export const addRemoveTheReplyLike = (id, userId) => async(dispatch) => {
-    console.log(id)
+  
     const response = await fetch(`/api/likes/replies/${id}`, {
       method: 'POST',
       headers: {

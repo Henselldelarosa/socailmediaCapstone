@@ -16,16 +16,18 @@ import Navbar from "./Components/navbar/Navbar";
 import Login from "./pages/login/Login";
 import Home from './pages/home/Home'
 import Profile from './pages/profile/Profile'
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
   const dispatch = useDispatch();
+  const {id} = useParams()
+  const user = useSelector(state => state.users[id])
   const [isLoaded, setIsLoaded] = useState(false);
-  const user = useSelector((state) => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user)
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
     dispatch(getTheUsers())
     dispatch(getAllPosts())
-
   }, [dispatch]);
 
   return (
@@ -54,13 +56,8 @@ function App() {
             <Profile/>
           </Route>
 
-          <Route exact path='/users/:id/edit'>
-            <EditUser/>
-          </Route>
-
-
           <Route exact path='/'>
-            <Home user={user}/>
+            <Home sessionUser={sessionUser}/>
           </Route>
 
         </Switch>

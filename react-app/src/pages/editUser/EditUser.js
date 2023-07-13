@@ -1,43 +1,38 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './EditUser.css'
-
-import { editUser } from '../../store/user'
+import { authenticate } from '../../store/session'
+import { editUser, getUserById } from '../../store/user'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { Redirect, useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import ProfileImageUpload from '../../Components/profileImageUpload/ProfileImageUpload'
 // import { Button } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 
 
-
-const EditUser = () => {
+const EditUser = ({hideForm}) => {
   const dispatch = useDispatch()
   const {id} = useParams()
   const user = useSelector(state => state.users[id])
+  const sessionUser = useSelector(state => state.session.user)
   const history = useHistory()
 
-  // if(user?.phone_number === null){
-  //   user.phone_number = 'N/A'
-  // }
 
-  // if(user?.profile_url === null){
-  //   user.profile_url = 'N/A'
-  // }
-  const [firstName, setFirstName] = useState(user?.firstName)
-  const [lastName, setLastName] = useState(user?.lastName)
-  const [email, setEmail] = useState(user?.email)
-  const [userUrl, setUserUrl] = useState(user?.userUrl)
-  const [profileUrl, setProfileUrl] = useState(user?.profile_url)
-  const [phoneNumber, setPhoneNumber] = useState(user?.phone_number)
-  const [country, setCountry] = useState(user?.country)
-  const [address, setAddress] = useState(user?.address)
-  const [relationship, setRelationship] = useState(user?.relationship)
+  const [firstName, setFirstName] = useState(sessionUser.firstName)
+  const [lastName, setLastName] = useState(sessionUser.lastName)
+  const [email, setEmail] = useState(sessionUser.email)
+  const [userUrl, setUserUrl] = useState(sessionUser?.userUrl)
+  const [profile_url, setProfileUrl] = useState(sessionUser.profile_url)
+  const [phone_number, setPhoneNumber] = useState(sessionUser.phone_number)
+  const [country, setCountry] = useState(sessionUser.country)
+  const [address, setAddress] = useState('')
+  const [relationship, setRelationship] = useState('')
   const [errors, setErrors] = useState([])
 
 
   const updateFirstName = (e) => setFirstName(e.target.value)
   const updateLastName = (e) => setLastName(e.target.value)
   const updateEmail = (e) => setEmail(e.target.value)
-  // const updateUserUrl = (e) => setUserUrl(e.target.value)
+  const updateUserUrl = (e) => setUserUrl(e.target.value)
   const updateProfileUrl = (e) => setProfileUrl(e.target.value)
   const updatePhoneNumber = (e) => setPhoneNumber(e.target.value)
   const updateCountry = (e) => setCountry(e.target.value)
@@ -45,20 +40,26 @@ const EditUser = () => {
   const updateRelationship = (e) => setRelationship(e.target.value)
 
 
-  const handleSubmit = (e) => {
+
+  const handleCancel = (e) => {
+    e.preventDefault()
+    hideForm()
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setErrors([])
 
     const error =[]
 
     const payload = {
-      id,
+      ...sessionUser,
       firstName,
       lastName,
       email,
       userUrl,
-      profileUrl,
-      phoneNumber,
+      profile_url,
+      phone_number,
       country,
       address,
       relationship
@@ -77,22 +78,17 @@ const EditUser = () => {
       error.push('Email is Required')
     }
 
+    if((!payload.phone_number.length === 10)){
+      error.push('Phone Number must be 10 digits long or set it to N/A')
+    }
+
     if(error.length === 0){
-      dispatch(editUser(payload))
-      setFirstName('')
-      setLastName('')
-      setEmail('')
-      setUserUrl('')
-      setProfileUrl('')
-      setPhoneNumber('')
-      setCountry('')
-      setAddress('')
-      setRelationship('')
-      history.push(`/profile/${user.id}`)
+      await dispatch(editUser(payload))
+      history.push(`/profile/${sessionUser.id}`)
     }else{
       setErrors(error)
     }
-
+    hideForm()
   }
 
   return (
@@ -105,19 +101,18 @@ const EditUser = () => {
 
             <div className="profileCover">
               <img
-              src={user?.profile_url}
+              src={sessionUser?.profile_url}
               alt=""
               className="profileCoverImg"/>
 
               <img
-              src={user?.userUrl}
+              src={sessionUser?.userUrl}
               alt=""
               className="profileUserImg"
               />
             </div>
-
             <div className="profileInfo">
-              <h4 className="prodileInfoName">{`${user?.firstName} ${user?.lastName}`}</h4>
+              <h4 className="prodileInfoName">{`${sessionUser?.firstName} ${sessionUser?.lastName}`}</h4>
               <span className="profileInfoDesc">Hi Friends!</span>
             </div>
           </div>
@@ -129,12 +124,13 @@ const EditUser = () => {
 
             <div className="bottom">
               <div className="left">
-                <ProfileImageUpload user={user} setUserUrl={setUserUrl}/>
+                <ProfileImageUpload sessionUser={sessionUser} setUserUrl={setUserUrl}/>
               </div>
 
               <div className="right">
 
-              <form  className='editForm'>
+              <form onSubmit={handleSubmit} className='editForm'>
+              
                 <ul>
                   {errors && errors.map((error,id) => <li key={id}>{error}</li>)}
                 </ul>
@@ -144,6 +140,7 @@ const EditUser = () => {
                   type="text"
                   className="editInput"
                   value={firstName}
+                  placeholder={`${sessionUser?.firstName}`}
                   onChange={updateFirstName}
                   />
                 </div>
@@ -154,6 +151,7 @@ const EditUser = () => {
                   type="text"
                   className="editInput"
                   value={lastName}
+                  placeholder={`${sessionUser?.lastName}`}
                   onChange={updateLastName}
                   />
                 </div>
@@ -165,6 +163,7 @@ const EditUser = () => {
                   type="email"
                   className="editInput"
                   value={email}
+                  placeholder={`${sessionUser?.email}`}
                   onChange={updateEmail}
                   />
                 </div>
@@ -175,7 +174,8 @@ const EditUser = () => {
                   <input
                   type="text"
                   className="editInput"
-                  value={phoneNumber}
+                  value={phone_number}
+                  placeholder={`${sessionUser?.phone_number}`}
                   onChange={updatePhoneNumber}
                   />
                 </div>
@@ -187,6 +187,7 @@ const EditUser = () => {
                   type="text"
                   className="editInput"
                   value={country}
+                  placeholder={`${sessionUser?.country}`}
                   onChange={updateCountry}
                   />
                 </div>
@@ -197,25 +198,33 @@ const EditUser = () => {
                   type="text"
                   className="editInput"
                   value={address}
+                  placeholder={`${sessionUser?.address}`}
                   onChange={updateAddress}
                   />
                 </div>
 
                 <div className="formInput">
                   <label className="editLabel">Relationship</label>
-                  <input
-                  type="text"
-                  className="editInput"
-                  value={relationship}
-                  onChange={updateRelationship}
-                  />
+
+                    <select className='selectInput'value={relationship} onChange={updateRelationship}>
+                      <option > N/A </option>
+                      <option > Single </option>
+                      <option >Married</option>
+                      <option >Divorce</option>
+                      <option >Is Complicated</option>
+                      <option >Open Relationship</option>
+                    </select>
                 </div>
 
 
-              </form>
-                <button onClick={handleSubmit} type="submit" className='updateButton'>
+              <div className="editFormButtons">
+                <button  type="submit" className='updateButton'>
                    Update Profile
                 </button>
+              </div>
+              </form>
+                <CloseIcon className='cancelEditButtton' onClick={handleCancel}/>
+
 
               </div>
             </div>
