@@ -69,7 +69,7 @@ const Profile = () => {
                           <div className="editUserDiv">
                             {(!showEditProfile) && (
                               <div className="editDiv">
-                                <button onClick={() => setShowEditProfile(true)}className="editButton">Edit Profile</button>
+                                <button onClick={() => setShowEditProfile(true)} className="editButton">Edit Profile</button>
                               </div>
                             )}
                             </div>

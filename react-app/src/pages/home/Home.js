@@ -8,7 +8,9 @@ import Rightbar from '../../Components/rightbar/Rightbar'
 
 import Login from '../login/Login'
 import { useSelector } from 'react-redux'
-const Home = ({sessionUser}) => {
+const Home = () => {
+
+  const sessionUser = useSelector(state => state.session.user)
 
 
   let content;

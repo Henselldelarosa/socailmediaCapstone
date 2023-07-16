@@ -15,11 +15,13 @@ import MenuLink from '../menuLink/MenuLink'
 import Friends from '../friends/Friends'
 import { NavLink, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-import { useDispatch } from 'react-redux';
-const Sidebar = ({sessionUser}) => {
+import { useDispatch, useSelector } from 'react-redux';
+const Sidebar = () => {
   const dispatch = useDispatch()
+  const sessionUser = useSelector(state => state.session.user)
 
   const {send} = useContext(DarkModeContext)
+  const {darkMode} = useContext(DarkModeContext)
   const history = useHistory()
 
   const handleLogout = (e) => {
@@ -40,7 +42,7 @@ const Sidebar = ({sessionUser}) => {
         <MenuLink Icon={<Brightness4Icon/>} text={'Theme'}/>
       </span>
 
-        <button style={{border:'none', backgroundColor:'transparent'}} onClick={handleLogout}>
+        <button className={darkMode? 'sidebarLogoutButton dark' : 'sidebarLogoutButton'} onClick={handleLogout}>
         <MenuLink style={{textDecoration:'none'}} Icon={<ExitToAppIcon/>} text='Logout'/>
         </button>
 
@@ -48,7 +50,7 @@ const Sidebar = ({sessionUser}) => {
         <hr className="sidebarHr" />
 
         <ul className="sidebarFriendList">
-          <h3 className="followers">Followers</h3>
+          <h3 className={darkMode? 'followers dark' : 'followers'}>Followers</h3>
           {sessionUser?.followers.map((f) => {
             return(
               <Friends key={f.id} friends={f}/>

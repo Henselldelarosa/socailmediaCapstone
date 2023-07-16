@@ -7,6 +7,18 @@
 
   .sidebarWrapper{
     padding: 20px;
+
+    .sidebarLogoutButton{
+      border: none;
+      background-color: transparent;
+      color: black;
+    }
+
+    .sidebarLogoutButton.dark{
+      border: none;
+      background-color: transparent;
+      color: rgb(156,156,156);
+    }
   }
 
   .sidebarHr{
@@ -20,6 +32,10 @@
 
     .followers{
       color: black;
+    }
+
+    .followers.dark{
+      color: rgb(156,156,156);
     }
   }
 }

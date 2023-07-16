@@ -26,7 +26,7 @@ function App() {
 
 
   const [isLoaded, setIsLoaded] = useState(false);
-  const sessionUser = useSelector((state) => state.session.user)
+  // const sessionUser = useSelector((state) => state.session.user)
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
     dispatch(getTheUsers())
@@ -61,7 +61,7 @@ function App() {
           </Route>
 
           <Route exact path='/'>
-            <Home sessionUser={sessionUser}/>
+            <Home/>
           </Route>
 
         </Switch>

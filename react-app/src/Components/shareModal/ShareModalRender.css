@@ -3,14 +3,24 @@
   margin-right:10px;
 }
 
-.shareOptionText{
+/* .shareOptionText{
   font-size: 14px;
   font-weight: 600;
-}
+  color: rgb(156,156,156);
+} */
 
 .shareOption{
   display: flex;
   align-items: center;
   margin-right: 20px;
   cursor: pointer;
+
+  .shareOptionText{
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .shareOptionText.dark{
+    color: rgb(156,156,156);
+  }
 }

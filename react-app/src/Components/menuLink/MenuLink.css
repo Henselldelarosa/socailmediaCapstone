@@ -11,10 +11,24 @@
     margin-right: 5px;
   }
 
+  .menuLinkText.dark{
+    color: rgb(156,156,156);
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+
+
   .menuLinkTextName{
     font-weight: 700;
     font-size: 18px;
   }
+
+  .menuLinkTextName.dark{
+    color: rgb(156,156,156);
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+
 
   &:hover{
     background-color: #011631c9;

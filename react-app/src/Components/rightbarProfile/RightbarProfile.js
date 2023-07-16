@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { NavLink, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import './RightbarProfile.css'
 import { useSelector } from 'react-redux'
+import { DarkModeContext } from '../../context/darkMode/darkModeContext'
 const RightbarProfile = () => {
+  const {darkMode} = useContext(DarkModeContext)
   const {id} = useParams()
   const user = useSelector(state => state.users[id])
   const sessionUser = useSelector(state => state.session.user)
@@ -70,7 +72,8 @@ const RightbarProfile = () => {
       {mutualFollow.map((f) => {
         return (
         <div key={f.id} className="profileRightbarFollowings">
-            <NavLink className="profileRightbarFollowing" to={`/profile/${f.userId}`} style={{textDecoration:'none'}}>
+            <NavLink className={darkMode ? "profileRightbarFollowing dark" :'profileRightbarFollowing'} to={`/profile/${f.userId}`}>
+            {/* // className={darkMode? 'followers dark' : 'followers' */}
               <img
               src={f?.userUrl}
               alt=""

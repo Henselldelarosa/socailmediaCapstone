@@ -25,7 +25,7 @@ const EditUser = ({hideForm}) => {
   const [phone_number, setPhoneNumber] = useState(sessionUser.phone_number)
   const [country, setCountry] = useState(sessionUser.country)
   const [address, setAddress] = useState('')
-  const [relationship, setRelationship] = useState('')
+  const [relationship, setRelationship] = useState(sessionUser.relationship)
   const [errors, setErrors] = useState([])
 
 

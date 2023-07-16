@@ -49,6 +49,16 @@
           cursor: pointer;
         }
 
+        .editButton.dark{
+          background-color:  rgb(156,156,156);
+          color:  #000000;;
+          font-weight: 600;
+          font-size: 16px;
+          border: none;
+          width: 100px;
+          cursor: pointer;
+        }
+
         .profileInfoDesc{
           font-weight: 300;
         }

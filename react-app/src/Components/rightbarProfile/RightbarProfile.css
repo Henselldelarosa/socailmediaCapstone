@@ -46,10 +46,13 @@
     justify-content: space-between;
     margin-top: 20px;
 
+
     .profileRightbarFollowing{
       display: flex;
       flex-direction: column;
       margin-bottom: 20px;
+      text-decoration: none;
+      color: black;
       cursor: pointer;
 
       .profileRightbarFollowingImg{
@@ -64,6 +67,11 @@
         margin-top: 5px;
       }
     }
+  }
+
+  .profileRightbarFollowing.dark{
+    color : rgb(156,156,156);
+    text-decoration: none;
   }
 }
 

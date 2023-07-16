@@ -14,3 +14,5 @@ const Rightbar = ({profile, sessionUser}) => {
 }
 
 export default Rightbar
+
+
