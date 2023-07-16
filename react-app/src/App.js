@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch} from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
@@ -16,12 +16,15 @@ import Navbar from "./Components/navbar/Navbar";
 import Login from "./pages/login/Login";
 import Home from './pages/home/Home'
 import Profile from './pages/profile/Profile'
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+
+import {DarkModeContext} from './context/darkMode/darkModeContext'
+import './style/dark.css'
 
 function App() {
+  const {darkMode} = useContext(DarkModeContext)
   const dispatch = useDispatch();
-  const {id} = useParams()
-  const user = useSelector(state => state.users[id])
+
+
   const [isLoaded, setIsLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.session.user)
   useEffect(() => {
@@ -30,8 +33,9 @@ function App() {
     dispatch(getAllPosts())
   }, [dispatch]);
 
+
   return (
-    <>
+    <div className={darkMode ? 'app dark': 'app'}>
       <Navbar isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -62,7 +66,7 @@ function App() {
 
         </Switch>
       )}
-    </>
+    </div>
   );
 }
 

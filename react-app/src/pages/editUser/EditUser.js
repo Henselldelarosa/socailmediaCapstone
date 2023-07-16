@@ -130,7 +130,7 @@ const EditUser = ({hideForm}) => {
               <div className="right">
 
               <form onSubmit={handleSubmit} className='editForm'>
-              
+
                 <ul>
                   {errors && errors.map((error,id) => <li key={id}>{error}</li>)}
                 </ul>
@@ -207,12 +207,12 @@ const EditUser = ({hideForm}) => {
                   <label className="editLabel">Relationship</label>
 
                     <select className='selectInput'value={relationship} onChange={updateRelationship}>
-                      <option > N/A </option>
-                      <option > Single </option>
-                      <option >Married</option>
-                      <option >Divorce</option>
-                      <option >Is Complicated</option>
-                      <option >Open Relationship</option>
+                      <option className='selectInputOption'> N/A </option>
+                      <option className='selectInputOption'> Single </option>
+                      <option className='selectInputOption'>Married</option>
+                      <option className='selectInputOption'>Divorce</option>
+                      <option className='selectInputOption'>Is Complicated</option>
+                      <option className='selectInputOption'>Open Relationship</option>
                     </select>
                 </div>
 

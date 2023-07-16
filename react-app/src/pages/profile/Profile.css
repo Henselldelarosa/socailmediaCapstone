@@ -39,7 +39,7 @@
           font-size: 24px;
         }
 
-        .editUserForm{
+        .editButton{
           background-color: var(--theme);
           color: white;
           font-weight: 600;
