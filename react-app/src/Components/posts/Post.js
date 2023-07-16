@@ -5,6 +5,7 @@ import './Post.css'
 import { IconButton } from '@mui/material'
 import { ChatBubbleOutline, MoreVert, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
 
+
 const Post = ({post}) => {
   return (
     <div className='post'>

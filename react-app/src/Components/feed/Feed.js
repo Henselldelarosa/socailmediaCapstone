@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux'
 import './Feed.css'
 import Share from '../share/Share'
 import Post from '../posts/Post'
+
+import { getAllReplies } from '../../store/reply'
 const Feed = () => {
   const posts = useSelector(state => Object.values(state.posts))
 

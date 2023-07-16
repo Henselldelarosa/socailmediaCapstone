@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import * as postActions from '../../../store/post'
 import PostCard from '../GetAllPostComponent/PostCard'
 import UpdatePost from '../UpdatePostComponent/UpdatePost'
-import { getAllReplies } from '../../../store/reply'
+// import { getAllReplies } from '../../../store/reply'
 import './PostDetail.css'
 
 
@@ -21,10 +21,10 @@ function PostDetail() {
   const [showEditPostForm, setShowEditPostForm] = useState(false)
 
 
-  useEffect(() =>{
-    dispatch(postActions.getPostById(id))
-    dispatch(getAllReplies(id))
-  },[dispatch, id])
+  // useEffect(() =>{
+  //   dispatch(postActions.getPostById(id))
+  //   dispatch(getAllReplies(id))
+  // },[dispatch, id])
 
 
 

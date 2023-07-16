@@ -13,7 +13,6 @@ function CreateReply() {
   const {id} = useParams()
 
   const sessionUser = useSelector(state => state.session.user)
-  // const actualId= parseInt(id)
   const post = useSelector(state => state.posts[id])
 
   const [errorMesaage , setErrorMesaage] = useState([])
