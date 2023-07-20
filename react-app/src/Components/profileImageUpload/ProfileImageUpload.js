@@ -25,7 +25,6 @@ const ProfileImageUpload = ({setUserUrl, sessionUser}) => {
       const img_url = await res.json();
       setImageLoading(false);
       setUserUrl(img_url.url);
-      // setProfileUrl(img_url.url)
       setUploadImg(true);
       setPrevImgUrl(img_url.url);
     } else {
@@ -37,6 +36,7 @@ const ProfileImageUpload = ({setUserUrl, sessionUser}) => {
     if(e.target.files && e.target.files.length > 0)
     setImage(e.target.files[0])
   };
+  
   return (
     <div className="profile_file_upload_div">
       <form onSubmit={handleSubmit}>

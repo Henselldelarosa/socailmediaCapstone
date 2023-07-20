@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: bf11cd94cfe0
+Revision ID: 08c49ff8367f
 Revises:
-Create Date: 2023-07-12 02:30:53.888740
+Create Date: 2023-07-19 19:27:46.523569
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = 'bf11cd94cfe0'
+revision = '08c49ff8367f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -47,7 +48,7 @@ def upgrade():
     sa.UniqueConstraint('follower_id', 'followed_id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
 
     op.create_table('images',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -81,7 +82,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE searches SET SCHEMA {SCHEMA};")
-
+        
     op.create_table('replies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('reply', sa.String(length=2000), nullable=False),

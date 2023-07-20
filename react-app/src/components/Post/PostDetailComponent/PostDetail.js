@@ -21,13 +21,6 @@ function PostDetail() {
   const [showEditPostForm, setShowEditPostForm] = useState(false)
 
 
-  // useEffect(() =>{
-  //   dispatch(postActions.getPostById(id))
-  //   dispatch(getAllReplies(id))
-  // },[dispatch, id])
-
-
-
   let content = null
   if(showEditPostForm){
     content = (

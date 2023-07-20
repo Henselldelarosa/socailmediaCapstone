@@ -1,25 +1,50 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './Post.css'
 
 import { IconButton } from '@mui/material'
-import { ChatBubbleOutline, MoreVert, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
+import { ChatBubbleOutline, More, MoreVert, Replay, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
+
+import { getAllReplies } from '../../store/reply'
+import { useDispatch, useSelector } from 'react-redux'
+import Replies from '../replies/Replies'
+
+const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) => {
+  const replies = useSelector(state => Object.values(state.replies))
+  const posts = useSelector(state => state.posts[id])
+  const singleReply = []
+
+    replies.map((reply) =>{
+    if((reply.postId) === id){
+      singleReply.push(reply)
+    }
+    return singleReply
+  })
 
 
-const Post = ({post}) => {
-  return (
-    <div className='post'>
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllReplies(id))
+  },[dispatch,id])
+
+  let content;
+
+  if (posts){
+    content = (
+      <div className='post'>
 
       <div className="postWrapper">
 
         <div className="postTop">
 
           <div className="postTopLeft">
-            <img src={post?.user.userUrl}
+            <img src={userUrl}
             alt=""
             className="postProfileImg" />
-            <span className="postUsername">{`${post?.user.firstName} ${post?.user.lastName}`}</span>
-            <span className="postDate">{post?.dateCreated}</span>
+            <span className="postUsername">{`${firstName} ${lastName}`}</span>
+            <span className="postDate">{dateCreated}</span>
           </div>
 
           <div className="postTopRight">
@@ -30,8 +55,8 @@ const Post = ({post}) => {
         </div>
 
         <div className="postCenter">
-          <span className="postText">{post?.post}</span>
-          <img src={post?.postUrl} alt="" className="postImg" />
+          <span className="postText">{post}</span>
+          <img src={postUrl} alt="" className="postImg" />
         </div>
 
       <div className="postBottom">
@@ -66,12 +91,28 @@ const Post = ({post}) => {
             <ShareOutlined className='footerIcon'/>
             <span className="footerText">Share</span>
           </div>
-
+        </div>
       </div>
-      </div>
+          {singleReply && singleReply.map((reply) => {
+             return(
+              <div key={reply.id}>
+                <Replies
+                  reply={reply?.reply}
+                  replyUrl={reply?.replyUrl}
+                  dateCreated={reply?.dateCreated}
+                  postId={id}
+                  userUrl={reply?.user?.userUrl}
+                  firstName={reply?.user?.firstName}
+                  lastName={reply?.user?.lastName}
+                />
+              </div>
+            )
+          })}
 
     </div>
-  )
+    )
+  }
+  return (content)
 }
 
 export default Post
