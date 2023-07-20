@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 
 import './Post.css'
 
@@ -13,6 +13,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
   const replies = useSelector(state => Object.values(state.replies))
   const posts = useSelector(state => state.posts[id])
   const singleReply = []
+  const sessionUser = useSelector(state => state.session.user)
 
     replies.map((reply) =>{
     if((reply.postId) === id){
@@ -21,6 +22,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
     return singleReply
   })
 
+  const [showReply, setShowReply] = useState(false)
 
 
   const dispatch = useDispatch()
@@ -28,6 +30,16 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
   useEffect(() => {
     dispatch(getAllReplies(id))
   },[dispatch,id])
+
+  const handleShow = (e) =>{
+    e.preventDefault()
+
+    if(showReply){
+      setShowReply(false)
+    }else{
+      setShowReply(true)
+    }
+  }
 
   let content;
 
@@ -68,7 +80,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
 
         <div className="postBottomRight">
             <span className="postCommentText">
-              comments · share
+              comments: { singleReply.length } · share
             </span>
           </div>
         </div>
@@ -84,7 +96,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
 
           <div className="postBottomFooterItem">
             <ChatBubbleOutline className='footerIcon'/>
-            <span className="footerText">Comment</span>
+            <span onClick={handleShow} className="footerText">Comment</span>
           </div>
 
           <div className="postBottomFooterItem">
@@ -93,11 +105,15 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
           </div>
         </div>
       </div>
-          {singleReply && singleReply.map((reply) => {
+      <hr className="posthr" />
+      {showReply && (
+        <>
+          {singleReply && singleReply.reverse().map((reply) => {
              return(
               <div key={reply.id}>
                 <Replies
                   reply={reply?.reply}
+                  id={reply?.id}
                   replyUrl={reply?.replyUrl}
                   dateCreated={reply?.dateCreated}
                   postId={id}
@@ -108,6 +124,8 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
               </div>
             )
           })}
+        </>
+      )}
 
     </div>
     )

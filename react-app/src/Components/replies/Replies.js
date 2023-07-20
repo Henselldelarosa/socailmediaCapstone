@@ -4,7 +4,7 @@ import { DarkModeContext } from '../../context/darkMode/darkModeContext';
 import './Replies.css'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { updateReplies, deleteReplies, getAllReplies } from '../../store/reply'
+import { updateReplies, deleteReplies } from '../../store/reply'
 import {getAllReplyLikes, addRemoveTheReplyLike} from '../../store/reply'
 
 import Button from '@mui/material/Button';
@@ -31,6 +31,32 @@ const Replies = ({
   const dispatch = useDispatch()
   const replies = useSelector(state => Object.values(state.replies))
 
+  const [showButton, setShowButton] = useState(false)
+
+  const handleShow = (e) => {
+    e.preventDefault()
+
+    if(showButton) {
+      setShowButton(false)
+    }else{
+      setShowButton(true)
+    }
+  }
+
+  const handleClose =() =>{
+    setShowButton(false)
+  }
+
+  const handleDelete = (e) => {
+    e.preventDefault()
+    dispatch(deleteReplies(id))
+    handleClose()
+  }
+
+  const handleEdit = (e) => {
+    e.preventDefault()
+
+  }
 
   return (
     <div className='reply'>
@@ -50,7 +76,12 @@ const Replies = ({
 
                 <div className="replyTopRight">
                   <IconButton>
-                    <MoreVert className='replyVertButton'/>
+                    <MoreVert onClick={handleShow} className='replyVertButton'/>
+                    {showButton && (
+                      <div>
+                        <button onClick={handleDelete}>delete</button>
+                      </div>
+                    )}
                   </IconButton>
                 </div>
               </div>
