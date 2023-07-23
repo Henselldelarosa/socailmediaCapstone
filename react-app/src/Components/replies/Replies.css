@@ -47,6 +47,13 @@ background-color: transparent;
       font-size: 30px;
       color: #333;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+
+    }
+    .replyActionButton{
+      display: flex;
+      flex-direction: column;
     }
   }
 }

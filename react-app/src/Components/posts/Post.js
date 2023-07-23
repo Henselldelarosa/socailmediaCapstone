@@ -117,6 +117,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
                   replyUrl={reply?.replyUrl}
                   dateCreated={reply?.dateCreated}
                   postId={id}
+                  userId = {reply?.user.id}
                   userUrl={reply?.user?.userUrl}
                   firstName={reply?.user?.firstName}
                   lastName={reply?.user?.lastName}
