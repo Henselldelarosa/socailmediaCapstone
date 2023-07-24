@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateReplies } from '../../store/reply'
 
+import './ReplyEdit.css'
 const ReplyEdit = ({firstName, lastName, reply, replyUrl, setShowEdit, id}) => {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
@@ -45,6 +46,11 @@ const ReplyEdit = ({firstName, lastName, reply, replyUrl, setShowEdit, id}) => {
           />
 
           <span className="editReplyName">{`${firstName} ${lastName}`}</span>
+        </div>
+
+        <hr className="editReplyHr" />
+
+        <div className="editReplyBottom">
 
           <form onSubmit={handleEdit} className="editReplyForm">
 
@@ -55,10 +61,20 @@ const ReplyEdit = ({firstName, lastName, reply, replyUrl, setShowEdit, id}) => {
             onChange={updateReply}
             />
 
+            {editReplyUrl &&(
+              <div>
+                <img
+                src={URL.createObjectURL(editReplyUrl)}
+                alt=""
+                className="editPreviewImg"
+                />
+              </div>
+            )}
+
             <button type="submit" className="ediReplyButton">Edit</button>
             <button onClick={handleCancel} className="cancelEditButton">Cancel</button>
           </form>
-        </div>
+          </div>
 
        </div>
     </div>

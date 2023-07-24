@@ -1,0 +1,38 @@
+.createReply{
+  width: 100%;
+  height: 170px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
+  box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+
+  .createReplyWrapper{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .createReplyTop{
+      display: flex;
+      align-items: center;
+
+      .createReplyUserImg{
+        width: 50px;
+        height: 50px;
+        border-radius:50%;
+        margin-right: 10px;
+        object-fit: cover;
+      }
+
+      .formReplyInput{
+        border: none;
+        background-color: transparent;
+        font-size: 16px;
+        width: 80%;
+
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+  }
+}

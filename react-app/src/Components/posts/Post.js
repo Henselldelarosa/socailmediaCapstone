@@ -3,11 +3,12 @@ import React, { useEffect,useState } from 'react'
 import './Post.css'
 
 import { IconButton } from '@mui/material'
-import { ChatBubbleOutline, More, MoreVert, Replay, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
+import { ChatBubbleOutline, Create, More, MoreVert, Replay, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
 
 import { getAllReplies } from '../../store/reply'
 import { useDispatch, useSelector } from 'react-redux'
 import Replies from '../replies/Replies'
+import CreateReply from '../createReply/CreateReply'
 
 const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) => {
   const replies = useSelector(state => Object.values(state.replies))
@@ -108,6 +109,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
       <hr className="posthr" />
       {showReply && (
         <>
+        <CreateReply postId={id}/>
           {singleReply && singleReply.reverse().map((reply) => {
              return(
               <div key={reply.id}>

@@ -1,0 +1,60 @@
+.editReply{
+  display: flex;
+  margin: 10px 0;
+  width: 90%;
+  height: 170%;
+  background-color: transparent;
+
+  .editReplyWrapper{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .editReplyTop{
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid lightgray;
+
+
+      .editReplyUserImg{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .editReplyName{
+        font-weight: 500;
+        margin-left: 10px;
+      }
+    }
+
+    .editReplyBottom{
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+
+      .editReplyForm{
+
+        .editReplyInput{
+          border: none;
+          background-color: transparent;
+          font-size: 16px;
+          width: 80%;
+
+          &:focus{
+            outline: none;
+          }
+
+          &::placeholder:focus{
+            display: none;
+          }
+        }
+
+        .editPreviewImg{
+
+        }
+      }
+    }
+  }
+}
