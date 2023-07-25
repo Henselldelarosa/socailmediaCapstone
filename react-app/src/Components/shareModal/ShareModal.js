@@ -76,7 +76,6 @@ const ShareModal = ({setShowModal, sessionUser}) => {
         className='share_input'
         value={post}
         rows='4'
-
         onChange={updatePost}
         placeholder={`Whats on your mind, ${sessionUser.firstName}?`}
         />

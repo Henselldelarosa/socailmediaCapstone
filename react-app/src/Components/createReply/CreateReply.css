@@ -34,5 +34,13 @@
         }
       }
     }
+
+    .createReplyHr{
+      margin: 20px;
+    }
+
+    .createReplyBottom{
+      
+    }
   }
 }

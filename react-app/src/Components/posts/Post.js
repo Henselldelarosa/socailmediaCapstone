@@ -109,9 +109,8 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
       <hr className="posthr" />
       {showReply && (
         <>
-        <CreateReply postId={id}/>
           {singleReply && singleReply.reverse().map((reply) => {
-             return(
+            return(
               <div key={reply.id}>
                 <Replies
                   reply={reply?.reply}
@@ -127,6 +126,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
               </div>
             )
           })}
+          <CreateReply postId={id}/>
         </>
       )}
 

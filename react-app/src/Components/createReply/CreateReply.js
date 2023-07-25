@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as replyActions from '../../store/reply'
 
 import './CreateReply.css'
+import ReplyModalRender from '../replyModal/ReplyModalRender'
 const CreateReply = ({postId}) => {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
@@ -23,10 +24,10 @@ const CreateReply = ({postId}) => {
       reply,
       replyUrl
     }
+    let error =[]
 
     dispatch(replyActions.addAReply(payload, postId))
 
-    let error =[]
     setReply('')
   }
 
@@ -43,10 +44,9 @@ const CreateReply = ({postId}) => {
           />
 
         <form onSubmit={handleSubmit} className="createReplyForm">
-
             <ul>
               {errors && errors.map((error) => {
-                <li key={error.id}>{error}</li>
+                <li classNamekey='createReplyModalError' key={error.id}>{error}</li>
               })}
             </ul>
 
@@ -76,7 +76,7 @@ const CreateReply = ({postId}) => {
           <div className="createReplyOptions">
 
             <div className="createReplyOption">
-              
+              <ReplyModalRender postId={postId}/>
             </div>
           </div>
         </div>

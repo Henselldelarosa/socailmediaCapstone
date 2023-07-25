@@ -1,0 +1,154 @@
+.creteReplyForm{
+  background-color: rgba(255, 255, 255, 0.708);
+  width: 500px;
+  height: 525px;
+  place-items: center;
+  border-radius: 5px;
+  position: relative;
+  position: sticky;
+  bottom:0;
+  overflow-y: scroll;
+
+  .creteReplyModalClosingTitleDiv{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    .creteReplyModaTitle{
+      font-size: 25px;
+      font-weight: 600;
+      place-items: center;
+      padding-top: 10px;
+      padding-bottom: 15px;
+      color: var(--theme);
+      padding-left: 150px;
+    }
+
+    .createReplyClosingButton{
+      color: var(--theme);
+      background-color: transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      border: none;
+      margin-right: 10px;
+      height: 35px;
+      margin-top: 10px;
+      align-items: center;
+
+      .replyModalCLoseIcon{
+        font-size: 40px;
+
+        &:hover{
+          color: white;
+        }
+      }
+    }
+  }
+
+  .createReplyModalUserInfo{
+    display: flex;
+    margin-top: 15px;
+    padding-left: 10px;
+    align-items: center;
+
+    .createReplyUserIcon{
+      border: 2px solid var(--theme);
+    }
+    .createReplyUserInfo{
+      margin-left:10px;
+      color: var(--theme);
+    }
+  }
+
+  .createReplyModalForm{
+
+    .createReplyModalFormInput{
+
+        .createReplyModalError{
+          list-style-type: none;
+          object-fit: contain;
+          margin-left: 25px;
+          justify-content: center;
+          color: var(--theme);
+        }
+
+      .createReplyModalInput{
+        width: 450px;
+        /* border: 1px solid lightgray; */
+        background-color: transparent;
+        margin-left: 10px;
+        color: black;
+        font-size: 16px;
+        border-width: 0;
+        padding-left: 10px;
+        margin-top: 20px;
+        resize: none;
+        outline: none;
+
+        &::placeholder{
+          color: rgb(68, 68, 68);
+        }
+
+        &:focus::placeholder{
+          color: transparent;
+        }
+      }
+    }
+    .createReplyModalButton{
+      /* object-fit: contain; */
+      align-items: center;
+      width: 450px;
+      margin-top: 25px;
+      margin-left: 20px;
+      color: white;
+      background-color: var(--theme);
+      font-weight: 600;
+      height: 35px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      object-fit: contain;
+      position: relative;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.creteReplyForm.dark{
+  background-color:  #111111;
+
+  .creteReplyModalClosingTitleDiv.dark{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    .creteReplyModaTitle.dark{
+      color: rgb(156,156,156);
+    }
+
+    .createReplyClosingButton{
+      color: rgb(156,156,156);
+    }
+  }
+
+  .createReplyUserIcon.dark{
+    border: solid rgb(156,156,156);
+  }
+
+  .createReplyUserInfo{
+    color: rgb(156,156,156);
+  }
+
+  .createReplyModalError.dark{
+    color: rgb(156,156,156)
+  }
+
+  .createReplyModalInput.dark{
+    color: white;
+  }
+
+  .createReplyModalButton{
+    /* background-color: rgb(156,156,156); */
+    background-color: #000000;
+    color: rgb(156,156,156);
+  }
+
+}
