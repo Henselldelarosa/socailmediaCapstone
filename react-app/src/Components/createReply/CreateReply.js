@@ -24,11 +24,21 @@ const CreateReply = ({postId}) => {
       reply,
       replyUrl
     }
+
     let error =[]
+    if(!payload.reply){
+      error.push("Can't submit an empty reply")
+    }
 
-    dispatch(replyActions.addAReply(payload, postId))
+    if(error.length){
+      // setErrors(error)
+      alert(`${error}`)
+    }else{
+      dispatch(replyActions.addAReply(payload, postId))
+      setReply('')
+      setReplyUrl('')
+    }
 
-    setReply('')
   }
 
   return (
@@ -45,8 +55,8 @@ const CreateReply = ({postId}) => {
 
         <form onSubmit={handleSubmit} className="createReplyForm">
             <ul>
-              {errors && errors.map((error) => {
-                <li classNamekey='createReplyModalError' key={error.id}>{error}</li>
+              {errors && errors.map((error,id) => {
+                <li className='createReplyError' key={id}>{error}</li>
               })}
             </ul>
 

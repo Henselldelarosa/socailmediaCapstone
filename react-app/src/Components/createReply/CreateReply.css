@@ -23,6 +23,10 @@
         object-fit: cover;
       }
 
+      .createReplyError{
+        color: var(--theme);
+      }
+
       .formReplyInput{
         border: none;
         background-color: transparent;
@@ -40,7 +44,18 @@
     }
 
     .createReplyBottom{
-      
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .createReplyOptions{
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        justify-content: space-around;
+        width: 90%;
+      }
+
     }
   }
 }

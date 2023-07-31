@@ -23,7 +23,6 @@ const RightbarProfile = () => {
     }
   }
 
-  console.log(mutualFollow)
 
   return (
     <div className='profileRightbar'>

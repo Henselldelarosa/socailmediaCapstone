@@ -16,9 +16,6 @@ const Profile = () => {
   const dispatch = useDispatch()
 
 
-
-
-  console.log(user)
   const [isLoaded, setIsLoaded] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false)
 
@@ -33,7 +30,8 @@ const Profile = () => {
 
   if(showEditProfile){
     content = (
-      <EditUser sessionUser={sessionUser}
+      <EditUser
+      sessionUser={sessionUser}
       hideForm={() => setShowEditProfile(false)}
       />
     )

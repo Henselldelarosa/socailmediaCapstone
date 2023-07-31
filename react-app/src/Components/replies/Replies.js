@@ -5,16 +5,21 @@ import './Replies.css'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { updateReplies, deleteReplies } from '../../store/reply'
-import {getAllReplyLikes, addRemoveTheReplyLike} from '../../store/reply'
+import ReplyEditImageUpload from '../replyEditImageUpload/ReplyEditImageUpload';
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import { IconButton } from '@mui/material'
-import { ChatBubbleOutline, More, MoreVert, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
+import { ChatBubbleOutline, Favorite, FavoriteOutlined, More, MoreVert, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
 import ReplyEdit from '../replyEdit/ReplyEdit';
 
+import {addRemoveTheReplyLike, getAllReplyLikes} from '../../store/like'
+
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import ReplyLike from '../replyLike/ReplyLike';
 const Replies = ({
   id,
   user,
@@ -32,10 +37,15 @@ const Replies = ({
   const dispatch = useDispatch()
   const replies = useSelector(state => Object.values(state.replies))
   const sessionUser = useSelector(state => state.session.user)
+  const likes = useSelector(state => state.likes[id])
 
-  console.log(replies)
+  console.log(likes)
   const [showButton, setShowButton] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
+
+  useEffect(() => {
+    dispatch(getAllReplyLikes(id))
+  },[dispatch,id])
 
   const handleShow = (e) => {
     e.preventDefault()
@@ -62,11 +72,16 @@ const Replies = ({
     {showEdit ? (
       <div>
         <ReplyEdit
-        setShowEdit={setShowEdit}
+        id={id}
+        // setShowEdit={setShowEdit}
         firstName={firstName}
         lastName={lastName}
         reply={reply}
+        replyUrl={replyUrl}
+        dateCreated={dateCreated}
+        hideForm={() => setShowEdit(false)}
         />
+         {/* <ReplyEditImageUpload replyUrl={replyUrl} setReplyUrl={setReplyData}/> */}
       </div>
 
     ):(<div className="replyWrapper">
@@ -91,7 +106,9 @@ const Replies = ({
                     {showButton && (
                       <div className='replyActionButton'>
                         <button onClick={handleDelete}>Delete</button>
-                        <button onClick={() => (setShowEdit(true))}>Edit</button>
+                        <button onClick={() =>
+                         { setShowEdit(true)
+                         handleClose()}}>Edit</button>
                       </div>
                     )}
                     </>
@@ -102,18 +119,29 @@ const Replies = ({
 
               <div className="replyCenter">
                 <span className="replyText">{reply}</span>
+                {replyUrl ?
+                <>
                 <img
                 src={replyUrl}
                 alt=""
+                width={400}
+                height={400}
                 className="replyImg"
                 />
+
+                </>
+                :<></>}
               </div>
+
+              <hr className="replyHr" />
 
               <div className="replyBottom">
 
-                <div className="replyBottomLeft">
-                  <ThumbUp className='replyButtomLeftIcon'/>
-                </div>
+                <ReplyLike
+                id={id}
+                likes={likes}
+                />
+
               </div>
           </div>)}
     </div>

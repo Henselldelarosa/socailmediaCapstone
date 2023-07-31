@@ -81,7 +81,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
 
         <div className="postBottomRight">
             <span className="postCommentText">
-              comments: { singleReply.length } · share
+            { singleReply.length } comments · share
             </span>
           </div>
         </div>

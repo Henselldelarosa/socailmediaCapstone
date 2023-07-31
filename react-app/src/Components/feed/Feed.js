@@ -10,7 +10,6 @@ const Feed = () => {
   const posts = useSelector(state => Object.values(state.posts))
   const replies = useSelector(state => Object.values(state.replies))
 
-  console.log(replies)
   return (
     <div className='feed'>
 
