@@ -39,7 +39,6 @@ const Replies = ({
   const sessionUser = useSelector(state => state.session.user)
   const likes = useSelector(state => state.likes[id])
 
-  console.log(likes)
   const [showButton, setShowButton] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
 
