@@ -123,8 +123,7 @@ const Replies = ({
                 <img
                 src={replyUrl}
                 alt=""
-                width={400}
-                height={400}
+                style={{height:'400px'}}
                 className="replyImg"
                 />
 

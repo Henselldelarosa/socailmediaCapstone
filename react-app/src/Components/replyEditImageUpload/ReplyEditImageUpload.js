@@ -85,6 +85,7 @@ const ReplyEditImageUpload = ({setReplyUrl, replyUrl}) => {
                 <img
                 src={replyUrl}
                 alt=""
+                style={{height:'400px'}}
                 className="replyEditEditImg" />
                 <CameraAltIcon className='replyEditImgIcon'/>
               </div>
