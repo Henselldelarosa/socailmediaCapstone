@@ -21,6 +21,7 @@ def seed():
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
         undo_likes()
         undo_replies()
         undo_posts()
@@ -33,6 +34,7 @@ def seed():
     seed_posts()
     seed_replies()
     seed_likes()
+    db.session.commit()
     # Add other seed functions here
 
 #     db.session.execute(
