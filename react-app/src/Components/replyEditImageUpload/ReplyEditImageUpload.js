@@ -55,47 +55,57 @@ const ReplyEditImageUpload = ({setReplyUrl, replyUrl}) => {
           <center>
 
           <img
+          // style={
+          //   {height:'50vh',
+          //   // position:'abolute',
+          //   width:'85%'
+          // }}
           className="replyEditImgPreview"
           as='label'
           src={URL.createObjectURL(image)}
           alt='Image preview'
-          // width={'350px'}
-          // height={'400'}
+
           />
           {imageLoading && <p className="replyEditLoadingImg">...Loading</p>}
           </center>
             <button className='replyEditImgSubmit' type='submit'>Upload</button>
         </div>
-      ): <>
+      )
+      :
+      <div className='editReplyDivContainer'>
 
+      <img
+      src={replyUrl}
+      alt=""
+      className="replyEditEditImg"
+      />
 
       <Button
       as='label'
       htmlFor='replyEditUtiUpload'
       cursor='pointer'
+      className='overlay'
       mb={4}
       >
 
-        <div className="replyEditImgUploadDiv">
+        {/* <div className="replyEditImgUploadDiv"> */}
 
-          <div className="replyEditImgCenter">
+          {/* <div className="replyEditImgCenter"> */}
 
-            <center>
-              <div className="replyEditImgContainerBefore">
-                <img
-                src={replyUrl}
-                alt=""
-                style={{height:'400px'}}
-                className="replyEditEditImg" />
+            {/* <center> */}
+              {/* <div className="replyEditImgContainerBefore"> */}
+
+                {/* <div className="overlay"> */}
                 <CameraAltIcon className='replyEditImgIcon'/>
-              </div>
-            </center>
+                {/* </div> */}
+              {/* </div> */}
+            {/* </center> */}
 
-          </div>
+          {/* </div> */}
 
-        </div>
+        {/* </div> */}
       </Button>
-      </>}
+      </div>}
       </form>
     </div>
   );

@@ -7,7 +7,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import BasicMenuSignedIn from '../../components/Navigation/HeaderSignedIn/HeaderSigned';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
+import { NavLink, Link } from 'react-router-dom/cjs/react-router-dom.min'
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Navbar = ({isLoaded}) => {
   const sessionUser = useSelector(state => state.session.user)
@@ -50,8 +52,24 @@ const Navbar = ({isLoaded}) => {
       <div className="navbarRight">
 
         <div className="navbarLinks">
-          <span className="navbarLink">Profile</span>
-          <span className="navbarLink">{sessionUser?.firstName}</span>
+
+          <span title='Linkedin' className="navbarLink">
+          <a
+          className='link'
+          target='to_blank'
+          href='https://www.linkedin.com/in/hensell-delarosa/'>
+            <LinkedInIcon className='linkedinLink'/>
+          </a>
+          </span>
+
+          <span title='Github' className="navbarLink">
+            <a
+            className='link'
+            target='to_blank'
+            href='https://github.com/Henselldelarosa'>
+              <GitHubIcon className='githubLink'/>
+              </a>
+            </span>
         </div>
 
         <div className="navbarIcons">

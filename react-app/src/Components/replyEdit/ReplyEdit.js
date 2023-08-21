@@ -83,7 +83,7 @@ const ReplyEdit = ({firstName, lastName, reply, replyUrl, hideForm, id, dateCrea
               {errors && errors.map((error,id) => <li className='editReplyError' key={id}>{error}</li>)}
             </ul>
 
-            <input
+            <textarea
             type="text"
             className='editReplyInput'
             value={replyData}
@@ -100,7 +100,7 @@ const ReplyEdit = ({firstName, lastName, reply, replyUrl, hideForm, id, dateCrea
             <button onClick={handleEdit} type="submit" className="ediReplyButton">Update</button>
           </div>
 
-       </div>
+        </div>
     </div>
   )
 }

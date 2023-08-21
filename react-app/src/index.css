@@ -8,7 +8,9 @@
   --theme: #1877f2;
 }
 
-
+.link{
+  text-decoration: none;
+}
 
 body{
   margin: 0;

@@ -69,10 +69,9 @@ const Replies = ({
   return (
     <div className='reply'>
     {showEdit ? (
-      <div>
+      <>
         <ReplyEdit
         id={id}
-        // setShowEdit={setShowEdit}
         firstName={firstName}
         lastName={lastName}
         reply={reply}
@@ -81,7 +80,7 @@ const Replies = ({
         hideForm={() => setShowEdit(false)}
         />
          {/* <ReplyEditImageUpload replyUrl={replyUrl} setReplyUrl={setReplyData}/> */}
-      </div>
+      </>
 
     ):(<div className="replyWrapper">
 

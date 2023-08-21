@@ -62,6 +62,26 @@
       margin-left: 20px;
       font-size:14px;
       cursor: pointer;
+
+      .linkedinLink{
+        color:black;
+        opacity: .7;
+        transition: .3s ease;
+
+        &:hover{
+          color: lightgray;
+        }
+      }
+
+      .githubLink{
+        color: black;
+        /* opacity: 1; */
+        transition: .3s ease;
+
+        &:hover{
+          color: lightgray;
+        }
+      }
     }
 
     .navbarIcons{
