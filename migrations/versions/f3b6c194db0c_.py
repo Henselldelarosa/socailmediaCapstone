@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/204b3acac976_.py
-Revision ID: 204b3acac976
+Revision ID: f3b6c194db0c
 Revises:
-Create Date: 2023-08-23 13:57:20.301372
-========
-Revision ID: 08c49ff8367f
-Revises:
-Create Date: 2023-07-19 19:27:46.523569
->>>>>>>> newStyle:migrations/versions/08c49ff8367f_.py
+Create Date: 2023-08-23 15:21:12.706381
 
 """
 from alembic import op
@@ -19,11 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/204b3acac976_.py
-revision = '204b3acac976'
-========
-revision = '08c49ff8367f'
->>>>>>>> newStyle:migrations/versions/08c49ff8367f_.py
+revision = 'f3b6c194db0c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -91,7 +81,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE searches SET SCHEMA {SCHEMA};")
-        
+
     op.create_table('replies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('reply', sa.String(length=2000), nullable=False),
@@ -116,7 +106,6 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 

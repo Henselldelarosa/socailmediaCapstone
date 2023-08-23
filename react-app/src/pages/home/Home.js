@@ -20,7 +20,7 @@ const Home = () => {
       <div className='home'>
       <div className="homeContainer">
         <Sidebar sessionUser={sessionUser}/>
-        <Feed/>
+        {/* <Feed/> */}
         <Rightbar/>
       </div>
     </div>
