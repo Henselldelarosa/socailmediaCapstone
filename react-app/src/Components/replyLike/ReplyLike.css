@@ -1,0 +1,17 @@
+.userLiked{
+  color: var(--theme);
+  margin-top: 5px;
+
+  .userLikedIcon{
+    font-size: 30px;
+  }
+}
+
+.userNotLiked{
+  color: var(--theme);
+  margin-top: 5px;
+
+  .userNotLikedIcon{
+    font-size: 30px;
+  }
+}

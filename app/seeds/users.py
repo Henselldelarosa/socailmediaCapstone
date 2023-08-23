@@ -3,16 +3,57 @@ from app.models import db, User, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        firstName='Demo', lastName='Emo', email='demo@aa.io', password='password', userUrl='https://i.pinimg.com/736x/0a/bb/e5/0abbe546e479edc1eb62f5a8ccd66328.jpg')
-    marnie = User(
-        firstName='Marnie', lastName='Rose', email='marnie@aa.io', password='password', userUrl='https://thumbs.dreamstime.com/b/funny-face-baby-27701492.jpg')
-    bobbie = User(
-        firstName='Bobbie', lastName='Bob', email='bobbie@aa.io', password='password', userUrl='https://parade.com/.image/t_share/MTkwNTgxMTA1NjY0NDAyNTU3/funny-pictures.jpg')
+    user1 = User(
+        firstName='Demo',
+        lastName='Emo',
+        email='demo@aa.io',
+        password='password',
+        userUrl='https://i.pinimg.com/736x/0a/bb/e5/0abbe546e479edc1eb62f5a8ccd66328.jpg',
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png',
+        phone_number = 'N/A',
+        address = 'N/A',
+        country = 'N/A',
+        relationship = 'N/A'
+        )
+    user2 = User(
+        firstName='Marnie',
+        lastName='Rose',
+        email='marnie@aa.io',
+        password='password',
+        userUrl='https://thumbs.dreamstime.com/b/funny-face-baby-27701492.jpg',
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png',
+        phone_number = 'N/A',
+        address = 'N/A',
+        country = 'N/A',
+        relationship = 'N/A'
+        )
+    user3 = User(
+        firstName='Bobbie',
+        lastName='Bob',
+        email='bobbie@aa.io',
+        password='password',
+        userUrl='https://parade.com/.image/t_share/MTkwNTgxMTA1NjY0NDAyNTU3/funny-pictures.jpg',
+        profile_url= 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png',
+        phone_number = 'N/A',
+        address = 'N/A',
+        country = 'N/A',
+        relationship = 'N/A'
+        )
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(user1)
+    db.session.add(user2)
+    db.session.add(user3)
+    db.session.commit()
+
+    user2.follow(user1)
+    user3.follow(user1)
+    user1.follow(user2)
+    user3.follow(user2)
+    user1.follow(user3)
+
+    db.session.add(user1)
+    db.session.add(user2)
+    db.session.add(user3)
     db.session.commit()
 
 
@@ -25,6 +66,7 @@ def seed_users():
 def undo_users():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+
     else:
         db.session.execute("DELETE FROM users")
 

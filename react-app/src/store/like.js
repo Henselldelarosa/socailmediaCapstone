@@ -1,9 +1,9 @@
-const GET_LIKES = 'like/GET_LIKE'
-const ADD_REMOVE_LIKE = 'reactions/ADD_REMOVE_LIKE'
+const GET_REPLY_LIKES = 'like/GET_REPLY_LIKES'
+const ADD_REMOVE_REPLY_LIKE = 'reactions/ADD_REMOVE_REPLY_LIKE'
 
 const gets = (likes, id) => (
   {
-    type: GET_LIKES,
+    type: GET_REPLY_LIKES,
     likes,
     id
   }
@@ -11,14 +11,14 @@ const gets = (likes, id) => (
 
 const addRemove = (like,id) => (
   {
-    type:ADD_REMOVE_LIKE,
+    type:ADD_REMOVE_REPLY_LIKE,
     like,
     id
   }
   )
 
 
-  export const getAllLikes = (id) => async(dispatch) =>{
+  export const getAllReplyLikes = (id) => async(dispatch) =>{
     const response = await fetch(`/api/likes/replies/${id}`)
 
     if (response.ok){
@@ -28,7 +28,7 @@ const addRemove = (like,id) => (
     }
   }
   export const addRemoveTheReplyLike = (id, userId) => async(dispatch) => {
-    console.log(id)
+
     const response = await fetch(`/api/likes/replies/${id}`, {
       method: 'POST',
       headers: {
@@ -53,7 +53,7 @@ let initialState = {}
 const likeReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case GET_LIKES: {
+    case GET_REPLY_LIKES: {
       const newState = {}
       action.likes.likes.forEach((like) => {
         newState[like.replyId] = like
@@ -61,7 +61,7 @@ const likeReducer = (state = initialState, action) => {
       return newState
     }
 
-    case ADD_REMOVE_LIKE: {
+    case ADD_REMOVE_REPLY_LIKE: {
       const newState = { ...state }
       if (newState[action.like.replyId]) {
         delete newState[action.like.replyId]

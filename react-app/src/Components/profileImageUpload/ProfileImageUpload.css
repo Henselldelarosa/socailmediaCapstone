@@ -1,0 +1,54 @@
+.image_container{
+  display: flex;
+  align-items: center;
+  position: absolute;
+
+  .profile_profilePreviewImage{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+  }
+
+  .loading_image{
+    color: var(--theme);
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .profile_image_submit{
+    background-color: var(--theme);
+    border: none;
+    color: white;
+    font-weight: 600;
+    width: 80px;
+    font-size: 15px;
+    margin-left: 10px;
+    height: 30px;
+    cursor: pointer;
+  }
+}
+
+.img_container{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  cursor: pointer;
+
+  .profile_editImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+  }
+
+  .userImgIcon{
+    color: gray;
+    font-size: 40px;
+    margin-left: 120px;
+    margin-top: 100px;
+    position: absolute;
+  }
+}

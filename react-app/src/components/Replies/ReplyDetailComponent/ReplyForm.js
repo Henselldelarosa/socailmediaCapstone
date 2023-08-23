@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 // thunk
 import {updateReplies, deleteReplies} from '../../../store/reply'
-import { addRemoveTheReplyLike, getAllLikes } from '../../../store/like'
+// import { addRemoveTheReplyLike, getAllLikes } from '../../../store/like'
 // handle drop down
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -35,7 +35,7 @@ function ReplyForm({
   const sessionUser = useSelector(state => state.session.user)
   const likes = useSelector(state => state.likes[id])
 
-  console.log(likes)
+
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -45,10 +45,6 @@ function ReplyForm({
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  useEffect(() =>{
-    dispatch(getAllLikes(id))
-  },[dispatch,id])
 
   const [editReply, setEditReply] = useState(false)
   const [replyData, setReplyData] = useState(reply)
@@ -104,8 +100,9 @@ function ReplyForm({
     handleClose()
   }
 
-  return (<> {
-    editReply ? (
+  return (
+  <>
+  {editReply ? (
     <div className='reply_update_form'>
       <center>
 
@@ -231,7 +228,7 @@ function ReplyForm({
               <FavoriteIcon
               onClick={(e) => {
                 e.preventDefault()
-                dispatch(addRemoveTheReplyLike(id))
+                // dispatch(addRemoveTheReplyLike(id))
               }}/>
             </div>
           )
@@ -240,7 +237,7 @@ function ReplyForm({
             <FavoriteBorderOutlinedIcon
             onClick={(e) => {
               e.preventDefault()
-              dispatch(addRemoveTheReplyLike(id, sessionUser.id))
+              // dispatch(addRemoveTheReplyLike(id, sessionUser.id))
             }}/>
           </div>)}
         </div>

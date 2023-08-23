@@ -80,7 +80,7 @@ const replyReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case GET_REPLIES: {
-        const newState = {}
+        const newState = {...state}
         action.replies.replies.forEach((reply) => {
           newState[reply.id] = reply
         })

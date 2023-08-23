@@ -1,0 +1,104 @@
+.sidebar{
+  flex: 3;
+  height: calc(100vh - 50px);
+  position: sticky;
+  top: 50px;
+  overflow-y:scroll ;
+
+  .sidebarWrapper{
+    padding: 20px;
+
+    .sidebarLogoutButton{
+      border: none;
+      background-color: transparent;
+      color: black;
+    }
+
+    .sidebarLogoutButton.dark{
+      border: none;
+      background-color: transparent;
+      color: rgb(156,156,156);
+    }
+  }
+
+  .sidebarHr{
+    margin: 10px 0;
+  }
+
+  .sidebarFriendList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    .followers{
+      color: black;
+    }
+
+    .followers.dark{
+      color: rgb(156,156,156);
+    }
+  }
+}
+
+.nameLink{
+  color: black;
+}
+
+
+::-webkit-scrollbar{
+  width: 5px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: #f1f1f1;
+}
+
+
+::-webkit-scrollbar-thumb{
+  background-color: gray;
+}
+
+
+@media only screen and (max-width:992px){
+  .sidebar{
+    flex: 1;
+
+    .sidebarWrapper{
+      padding: 17px;
+
+      .sidebarHr{
+        display: none;
+      }
+
+    }
+  }
+
+    ::-webkit-scrollbar{
+      display: none;
+    }
+
+    ::-webkit-scrollbar-track{
+      display: none;
+    }
+
+
+    ::-webkit-scrollbar-thumb{
+      display: none;
+    }
+}
+
+@media only screen and (max-width:768px){
+  .sidebar{
+    display: block;
+
+    .sidebarWrapper{
+      padding: 3px;
+    }
+  }
+}
+
+@media only screen and (max-width:576px){
+  .sidebar{
+    display: none;
+  }
+}

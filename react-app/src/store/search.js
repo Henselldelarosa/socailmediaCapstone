@@ -38,7 +38,7 @@ export const getTheSearch = (searchQuery) => async (dispatch) =>{
     return data
   }else{
     const data = await response.json()
-    console.log(data)
+
   }
 }
 
@@ -120,7 +120,7 @@ export default searchReducer
 // const searchReducer = (state = initialState, action ) => {
 //   switch (action.type) {
 //     case GET_SEARCHES:{
-//       console.log(action.searches.search.length)
+//      
 //       if(action.searches.search?.length === 1){
 //           return {
 

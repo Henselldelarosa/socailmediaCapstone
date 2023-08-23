@@ -8,7 +8,7 @@ import { Avatar } from '@mui/material'
 
 function PostForm() {
 const dispatch = useDispatch()
-const user = useSelector(state => state.session.user)
+const sessionUser = useSelector(state => state.session.user)
 
 const [error, setError] = useState([])
 const [post, setPost] = useState('')
@@ -33,7 +33,7 @@ const handleSubmit =  (e) =>{
   setError([])
 
   const payload ={
-    userId: user.id,
+    userId: sessionUser.id,
     post,
     postUrl
   }
@@ -68,7 +68,7 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
 
       <div className='post_form_top'>
 
-        <Avatar src={user.userUrl}/>
+        <Avatar src={sessionUser.userUrl}/>
 
         <form ref={formRef} onSubmit={handleSubmit}>
 
@@ -79,7 +79,7 @@ let validImage = ['.png' , '.jpg' , '.jpeg' , '.gif' , '.bmp' , '.tif' , '.tiff'
           <input
           type='text'
           className='form_post_poster'
-          placeholder={`whats on your mind, ${user.firstName}?`}
+          placeholder={`whats on your mind, ${sessionUser.firstName}?`}
           value={post}
           onChange={updatePost}
           />

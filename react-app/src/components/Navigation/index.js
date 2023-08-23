@@ -21,7 +21,6 @@ function Navigation({isLoaded}) {
   const dispatch = useDispatch()
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user);
-	const users = useSelector(state => Object.values(state.users))
   let sessionLinks;
 
   const [searchQuery, setSearchQuery] = useState('')
@@ -29,7 +28,7 @@ function Navigation({isLoaded}) {
   const search = (e) => {
     e.preventDefault()
     dispatch(getTheSearch(searchQuery))
-		console.log(searchQuery)
+		
 		history.push(`/searches/users/${searchQuery}`)
     setSearchQuery('')
   }

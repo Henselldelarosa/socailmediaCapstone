@@ -1,0 +1,365 @@
+.editReply{
+  height: auto;
+  width: 100%;
+  /* margin-left: 80px; */
+  /* margin-top: 20px; */
+  align-items: center;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.47);
+  box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+  background-color: transparent;
+  /* display: inline-block; */
+
+
+  .editReplyWrapper{
+    padding: 20px;
+
+    .editReplyTop{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .replyTopLeft{
+        display: flex;
+        align-items: center;
+
+        .editReplyUserImg{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .editReplyName{
+          font-size: 15px;
+          font-weight: 500;
+          margin: 0 10px;
+        }
+
+        .editReplyDate{
+          font-size: 14px;
+        }
+      }
+
+      .editReplyTopRight{
+
+        .editReplyCancelButton{
+          font-size: 30px;
+          color: #333;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .editReplyCenter{
+    /* margin: 2rem 0; */
+
+    .editReplyInput{
+      display: flex;
+      width: 80%;
+      height: 3rem;
+      margin-left: 10%;
+      padding-left: 1%;
+      background-color: transparent;
+      outline: none;
+      border-width: 0;
+      resize: none;
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.47);
+      box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+      font-size: 16px;
+      align-items: center;
+    }
+  }
+}
+
+
+/* .editReply{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.editReplyWrapper{
+  padding: 20px;
+
+  .editReplyTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .replyTopLeft{
+      display: flex;
+      align-items: center;
+
+      .editReplyUserImg{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .editReplyName{
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0 10px;
+      }
+
+      .editReplyDate{
+        font-size: 14px;
+      }
+    }
+    .editReplyTopRight{
+      .editReplyCancelButton{
+        font-size: 30px;
+        color: #333;
+        cursor: pointer;
+
+        &:hover{
+          color: var(--theme);
+        }
+      }
+    }
+
+  }
+  .editReplyCenter{
+    margin: 20px 0;
+
+    .editReplyForm{
+
+      .editReplyError{
+        color: var(--theme);
+        list-style-type: decimal;
+        object-fit: contain;
+        margin-left: 5%;
+        justify-content: center;
+        margin-bottom: 5%;
+      }
+
+      .editReplyInput{
+        width: 100%;
+        background-color: transparent;
+        align-items: center;
+        color: black;
+        font-size: 16px;
+        border-width: 0;
+        padding-left: 5px;
+        outline: none;
+
+        &::placeholder{
+          color: rgb(68, 68, 68);
+        }
+
+        &:focus::placeholder{
+          color: transparent;
+        }
+      }
+    }
+
+  }
+
+  .editReplyBottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    .ediReplyButton{
+      width: 50%;
+      color: white;
+      background-color: var(--theme);
+      font-weight: 600;
+      height: 35px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      object-fit: contain;
+      margin-top: 10px;
+
+    }
+  }
+
+} */
+
+
+/* .editReply{ */
+  /* width: 75%;
+  margin-left: 80px;
+  margin-top: 20px;
+  align-items: center; */
+
+  /* .editReplyUserImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  } */
+/* } */
+
+/* .editReply{
+  width: 75%;
+  margin-left: 80px;
+  margin-top: 20px;
+  align-items: center;
+  border-radius: 10px;
+  background-color: transparent;
+
+  .editReplyWrapper{
+    padding: 20px;
+
+    .editReplyTop{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0;
+
+      .replyTopLeft{
+        display: flex;
+        align-items: center;
+
+        .editReplyUserImg{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .editReplyName{
+          font-size: 15px;
+          font-weight: 500;
+          margin: 0 10px;
+        }
+
+        .editReplyDate{
+          font-size: 14px;
+        }
+      }
+
+      .editReplyTopRight{
+
+        .editReplyCancelButton{
+          font-size: 30px;
+          color: #333;
+          cursor: pointer;
+
+          &:hover{
+            color: var(--theme);
+          }
+        }
+      }
+    }
+
+    .editReplyHr{
+
+    }
+
+    .editReplyBottom{
+
+
+      .editReplyForm{
+
+        .editReplyError{
+          list-style-type: none;
+          object-fit: contain;
+          margin-left: 25px;
+          margin-bottom: 20px;
+          justify-content: center;
+          color: var(--theme);
+        }
+
+        .editReplyInput{
+          width: 100%;
+          background-color: transparent;
+          margin-left: 10px;
+          color: black;
+          font-size: 16px;
+          border-width: 0;
+          padding-left: 10px;
+          outline: none;
+        }
+
+      }
+    }
+    .ediReplyButton{
+      align-items: center;
+      width: 50%;
+      margin-left: 20px;
+      color: white;
+      background-color: var(--theme);
+      font-weight: 600;
+      height: 35px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      object-fit: contain;
+    }
+  }
+}
+
+ */
+
+/* .editReply{
+  display: flex;
+  margin: 10px 0;
+  width: 90%;
+  height: 170%;
+  background-color: transparent;
+
+  .editReplyWrapper{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .editReplyTop{
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid lightgray;
+
+
+      .editReplyUserImg{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .editReplyName{
+        font-weight: 500;
+        margin-left: 10px;
+      }
+    }
+
+    .editReplyBottom{
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+
+      .editReplyForm{
+
+        .editReplyInput{
+          border: none;
+          background-color: transparent;
+          font-size: 16px;
+          width: 80%;
+
+          &:focus{
+            outline: none;
+          }
+
+          &::placeholder:focus{
+            display: none;
+          }
+        }
+
+        .editPreviewImg{
+          height: 400px;
+        }
+      }
+    }
+  }
+} */
+
+
+/* .editReply{
+
+} */

@@ -1,0 +1,96 @@
+.reply{
+width: 75%;
+margin-left: 80px;
+margin-top: 20px;
+align-items: center;
+border-radius: 10px;
+-webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,.47);
+box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+background-color: transparent;
+/* overflow: wrap; */
+/* display: inline-block; */
+position: relative;
+
+
+
+.replyWrapper{
+  padding: 20px;
+
+  .replyTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .replyTopLeft{
+      display: flex;
+      align-items: center;
+
+      .replyProfileImg{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        /* cursor: pointer; */
+      }
+
+      .replyUsername{
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0 10px;
+        /* cursor: pointer; */
+      }
+
+      .replyDate{
+        font-size: 14px;
+      }
+    }
+    .replyTopRight{
+
+      .replyVertButton{
+        font-size: 30px;
+        color: #333;
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
+.replyCenter{
+  margin: 20px 0;
+  /* width: 90%; */
+  text-overflow: clip;
+
+  .replyText{
+    text-align: center;
+    overflow-wrap: break-word;
+    width: 80%;
+  }
+
+  .replyImg{
+    width: 100%;
+    max-height: 400px;
+    /* height: 400px; */
+    object-fit: contain;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+}
+
+.replyBottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .replyBottomLeft{
+    font-size: 30px;
+    cursor: pointer;
+
+    .replyButtomLeftIcon{
+      font-size: 30px;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
+}

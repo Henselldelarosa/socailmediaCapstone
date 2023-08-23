@@ -1,0 +1,105 @@
+.share_modal_form{
+  background-color: #1c1e21;
+  width: 500px;
+  height: 525px;
+  place-items: center;
+  border-radius: 5px;
+
+  .modal_closing_title_div{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    .share_form_modal_title{
+      font-size: 25px;
+      font-weight: 600;
+      place-items: center;
+      padding-top: 10px;
+      padding-bottom: 15px;
+      color: white;
+      padding-left: 175px;
+    }
+
+    .modal_closing_button{
+      color: white;
+      background-color: transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      border: none;
+      margin-right: 10px;
+      height: 35px;
+      margin-top: 10px;
+      align-items: center;
+
+      .shareModalCLoseIcon{
+        font-size: 40px;
+        &:hover{
+          color: var(--theme);
+        }
+      }
+    }
+  }
+
+  .share_modal_form_user_info{
+    display: flex;
+    margin-top: 15px;
+    padding-left: 10px;
+    align-items: center;
+
+    .shareUserInfo{
+      margin-left:10px;
+      color:white;
+    }
+  }
+
+  .shareModalForm{
+
+    .share_modal_form_input{
+
+      .share_modal_error{
+        margin-left: 15px;
+        color: var(--theme);
+      }
+
+      .share_input{
+        width:450px;
+        border: none;
+        background-color: transparent;
+        margin-left: 20px;
+        color:white;
+        font-size:16px;
+        border-width: 0;
+        padding-top: 20px;
+        overflow: hidden;
+        resize: none;
+        outline: none;
+
+        &::placeholder{
+          color: lightgray;
+          font-size:16px ;
+        }
+
+
+        &:focus::placeholder{
+          color: transparent;
+        }
+      }
+    }
+
+    .share_modal_button{
+      place-items: center;
+      width: 450px;
+      margin-top: 25px;
+      margin-left: 20px;
+      color: white;
+      background-color: var(--theme);
+      font-weight: 600;
+      height: 35px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      object-fit: contain;
+      position: absolute;
+    }
+  }
+}

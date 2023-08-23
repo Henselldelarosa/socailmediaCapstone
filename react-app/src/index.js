@@ -10,7 +10,7 @@ import App from "./App";
 
 import "./index.css";
 
-
+import { DarkModeContextProvider } from "./context/darkMode/darkModeContext";
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
@@ -26,8 +26,9 @@ function Root() {
 		<ModalProvider>
 			<Provider store={store}>
 				<BrowserRouter>
-					<App />
-					{/* <Modal /> */}
+					<DarkModeContextProvider>
+						<App />
+					</DarkModeContextProvider>
 				</BrowserRouter>
 			</Provider>
 		</ModalProvider>
