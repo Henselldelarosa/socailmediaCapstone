@@ -27,3 +27,11 @@ class Post(db.Model):
           'userId':self.userId,
           'user':self.user.to_post_dict(),
         }
+
+    def to_like_post_dict(self):
+        return{
+            'id':self.id,
+            'post':self.post,
+            'postUrl':self.postUrl,
+            'userId':self.userId
+        }

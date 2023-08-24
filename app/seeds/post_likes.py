@@ -1,0 +1,56 @@
+from app.models import db, PostLike, environment, SCHEMA
+
+def seed_post_likes():
+    post_like1 = PostLike(user_id = 1, post_id = 1)
+    post_like2 = PostLike(user_id = 1, post_id = 2)
+    post_like3 = PostLike(user_id = 1, post_id = 3)
+    post_like4 = PostLike(user_id = 1, post_id = 4)
+    post_like5 = PostLike(user_id = 1, post_id = 5)
+    post_like6 = PostLike(user_id = 1, post_id = 6)
+    post_like7 = PostLike(user_id = 1, post_id = 7)
+    post_like8 = PostLike(user_id = 2, post_id = 1)
+    post_like9 = PostLike(user_id = 2, post_id = 2)
+    post_like10 = PostLike(user_id = 2, post_id = 3)
+    post_like11 = PostLike(user_id = 2, post_id = 4)
+    post_like12 = PostLike(user_id = 2, post_id = 5)
+    post_like13 = PostLike(user_id = 2, post_id = 6)
+    post_like14 = PostLike(user_id = 2, post_id = 7)
+    post_like15 = PostLike(user_id = 3, post_id = 1)
+    post_like16 = PostLike(user_id = 3, post_id = 2)
+    post_like17 = PostLike(user_id = 3, post_id = 3)
+    post_like18 = PostLike(user_id = 3, post_id = 4)
+    post_like19 = PostLike(user_id = 3, post_id = 5)
+    post_like20 = PostLike(user_id = 3, post_id = 6)
+    post_like21 = PostLike(user_id = 3, post_id = 7)
+
+    db.session.add(post_like1)
+    db.session.add(post_like2)
+    db.session.add(post_like3)
+    db.session.add(post_like4)
+    db.session.add(post_like5)
+    db.session.add(post_like6)
+    db.session.add(post_like7)
+    db.session.add(post_like8)
+    db.session.add(post_like9)
+    db.session.add(post_like10)
+    db.session.add(post_like11)
+    db.session.add(post_like12)
+    db.session.add(post_like13)
+    db.session.add(post_like14)
+    db.session.add(post_like15)
+    db.session.add(post_like16)
+    db.session.add(post_like17)
+    db.session.add(post_like18)
+    db.session.add(post_like19)
+    db.session.add(post_like20)
+    db.session.add(post_like21)
+    db.session.commit()
+
+def undo_post_likes():
+        if environment == "production":
+          db.session.execute(
+            f"TRUNCATE table {SCHEMA}.post_likes RESTART IDENTITY CASCADE;")
+        else:
+          db.session.execute("DELETE FROM post_likes")
+
+        db.session.commit()

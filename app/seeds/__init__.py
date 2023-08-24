@@ -5,6 +5,8 @@ from .replies import seed_replies, undo_replies
 from .likes import seed_likes, undo_likes
 from .searches import seed_searches, undo_search
 from .images import seed_images, undo_images
+from .post_likes import seed_post_likes, undo_post_likes
+
 # from .follows import seed_followers, undo_followers
 
 from app.models.db import db, environment, SCHEMA
@@ -23,6 +25,7 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_likes()
+        undo_post_likes()
         undo_replies()
         undo_posts()
         undo_search()
@@ -35,6 +38,7 @@ def seed():
     seed_searches()
     seed_posts()
     seed_replies()
+    seed_post_likes()
     seed_likes()
     # Add other seed functions here
 
@@ -55,6 +59,7 @@ def seed():
 def undo():
     undo_likes()
     undo_replies()
+    undo_post_likes()
     undo_posts()
     undo_search()
     undo_images()
@@ -68,6 +73,14 @@ def undo_likes():
         db.session.execute(f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM likes")
+
+    db.session.commit()
+
+def undo_post_likes():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.post_likes RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM post_likes")
 
     db.session.commit()
 
