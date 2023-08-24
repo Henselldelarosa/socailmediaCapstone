@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Home.css'
+import './Home.scss'
 
 import Sidebar from '../../Components/sidebar/Sidebar'
 import Feed from '../../Components/feed/Feed'

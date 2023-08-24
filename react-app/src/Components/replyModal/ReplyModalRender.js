@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import './ReplyModalRender.css'
+import './ReplyModalRender.scss'
 
 import { Modal } from '../../context/Modal'
 import { useSelector } from 'react-redux'

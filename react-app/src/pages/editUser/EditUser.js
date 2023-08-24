@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './EditUser.css'
+import './EditUser.scss'
 import { authenticate } from '../../store/session'
 import { editUser, getUserById } from '../../store/user'
 import { useDispatch, useSelector } from 'react-redux'

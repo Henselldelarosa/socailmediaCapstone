@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import CollectionsIcon from '@mui/icons-material/Collections';
 import ShareModal from './ShareModal';
 
-import './ShareModalRender.css'
+import './ShareModalRender.scss'
 
 import { DarkModeContext } from '../../context/darkMode/darkModeContext';
 

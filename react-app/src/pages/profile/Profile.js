@@ -6,7 +6,7 @@ import Rightbar from '../../Components/rightbar/Rightbar'
 import { getUserById } from '../../store/user'
 import { useDispatch, useSelector } from 'react-redux'
 
-import './Profile.css'
+import './Profile.scss'
 import EditUser from '../editUser/EditUser'
 import { authenticate } from '../../store/session'
 const Profile = () => {

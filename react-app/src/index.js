@@ -8,7 +8,7 @@ import configureStore from "./store";
 import * as sessionActions from "./store/session";
 import App from "./App";
 
-import "./index.scss";
+import "./index.css";
 
 import { DarkModeContextProvider } from "./context/darkMode/darkModeContext";
 const store = configureStore();

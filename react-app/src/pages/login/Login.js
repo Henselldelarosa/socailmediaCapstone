@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './Login.css'
+import './Login.scss'
 
 import { login } from '../../store/session'
 import { useDispatch, useSelector } from 'react-redux'
