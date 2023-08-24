@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import { NavLink, useParams } from 'react-router-dom/cjs/react-router-dom.min'
-import './RightbarProfile.css'
+import './RightbarProfile.scss'
 import { useSelector } from 'react-redux'
 import { DarkModeContext } from '../../context/darkMode/darkModeContext'
 const RightbarProfile = () => {

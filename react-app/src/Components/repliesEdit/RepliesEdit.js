@@ -1,5 +1,5 @@
 import React from 'react'
-import './RepliesEdit.css'
+import './RepliesEdit.scss'
 import { useDispatch, useSelector } from 'react-redux'
 
 const RepliesEdit = () => {

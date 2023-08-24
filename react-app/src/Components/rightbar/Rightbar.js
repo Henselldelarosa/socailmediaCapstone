@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Rightbar.css'
+import './Rightbar.scss'
 import RightbarProfile from '../rightbarProfile/RightbarProfile'
 import RightbarHome from '../rightbarHome/RightbarHome'
 const Rightbar = ({profile, sessionUser}) => {
@@ -14,5 +14,3 @@ const Rightbar = ({profile, sessionUser}) => {
 }
 
 export default Rightbar
-
-

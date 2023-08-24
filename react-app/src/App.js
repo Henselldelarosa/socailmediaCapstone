@@ -18,7 +18,7 @@ import Home from './pages/home/Home'
 import Profile from './pages/profile/Profile'
 
 import {DarkModeContext} from './context/darkMode/darkModeContext'
-import './style/dark.css'
+import './style/dark.scss'
 
 function App() {
   const {darkMode} = useContext(DarkModeContext)

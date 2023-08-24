@@ -4,7 +4,7 @@ import {addPost} from '../../store/post'
 import { Avatar } from '@mui/material'
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import ShareImageUpload from '../shareImageUpload/ShareImageUpload';
-import './ShareModal.css'
+import './ShareModal.scss'
 
 const ShareModal = ({setShowModal, sessionUser}) => {
   const dispatch = useDispatch()

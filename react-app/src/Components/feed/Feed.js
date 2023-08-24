@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 
 import { useSelector } from 'react-redux'
 
-import './Feed.css'
+import './Feed.scss'
 import Share from '../share/Share'
 import Post from '../posts/Post'
 import Replies from '../replies/Replies'

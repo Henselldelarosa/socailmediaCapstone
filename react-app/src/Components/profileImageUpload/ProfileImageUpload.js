@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import './ProfileImageUpload.css'
+import './ProfileImageUpload.scss'
 import { Button } from "@mui/material";
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
@@ -36,7 +36,7 @@ const ProfileImageUpload = ({setUserUrl, sessionUser}) => {
     if(e.target.files && e.target.files.length > 0)
     setImage(e.target.files[0])
   };
-  
+
   return (
     <div className="profile_file_upload_div">
       <form onSubmit={handleSubmit}>

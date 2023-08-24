@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { Button } from "@mui/material";
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
-import './ShareImageUpload.css'
+import './ShareImageUpload.scss'
 
 const ShareImageUpload = ({setPostUrl}) => {
   const [image, setImage] = useState(null);

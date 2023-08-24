@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 
-import './Post.css'
+import './Post.scss'
 
 import { IconButton } from '@mui/material'
 import { ChatBubbleOutline, Create, More, MoreVert, Replay, ShareOutlined, ThumbUp, ThumbUpOutlined } from '@mui/icons-material'

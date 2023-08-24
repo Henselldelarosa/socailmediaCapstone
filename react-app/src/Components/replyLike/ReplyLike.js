@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThumbUp, ThumbUpOutlined } from '@mui/icons-material'
 import { addRemoveTheReplyLike } from '../../store/like'
-import './ReplyLike.css'
+import './ReplyLike.scss'
 
 const ReplyLike = ({id, likes}) => {
   const sessionUser = useSelector(state => state.session.user)

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as replyActions from '../../store/reply'
 
-import './CreateReply.css'
+import './CreateReply.scss'
 import ReplyModalRender from '../replyModal/ReplyModalRender'
 const CreateReply = ({postId}) => {
   const dispatch = useDispatch()

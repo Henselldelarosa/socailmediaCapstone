@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 
 import { getTheSearch } from '../../store/search';
-import './Navbar.css'
+import './Navbar.scss'
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import { useDispatch, useSelector } from 'react-redux';

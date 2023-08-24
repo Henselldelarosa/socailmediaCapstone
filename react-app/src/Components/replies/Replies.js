@@ -1,7 +1,7 @@
 import React,{useEffect, useState, useContext} from 'react'
 import { DarkModeContext } from '../../context/darkMode/darkModeContext';
 
-import './Replies.css'
+import './Replies.scss'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { updateReplies, deleteReplies } from '../../store/reply'

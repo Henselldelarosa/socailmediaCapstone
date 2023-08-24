@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import './MenuLink.css'
+import './MenuLink.scss'
 import { DarkModeContext } from '../../context/darkMode/darkModeContext'
 import { useSelector } from 'react-redux'
 

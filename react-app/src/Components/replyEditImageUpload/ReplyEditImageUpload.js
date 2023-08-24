@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from '@mui/material'
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import './ReplyEditImageUpload.css'
+import './ReplyEditImageUpload.scss'
 
 
 const ReplyEditImageUpload = ({setReplyUrl, replyUrl}) => {

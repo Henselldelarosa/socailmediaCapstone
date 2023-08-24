@@ -1,5 +1,5 @@
 import React from 'react'
-import './Friends.css'
+import './Friends.scss'
 import { NavLink} from 'react-router-dom/cjs/react-router-dom.min'
 
 const Friends = ({friends}) => {

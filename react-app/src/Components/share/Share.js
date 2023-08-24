@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './Share.css'
+import './Share.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPost } from '../../store/post'
 import ShareModalRender from '../shareModal/ShareModalRender'

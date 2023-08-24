@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateReplies } from '../../store/reply'
 
-import './ReplyEdit.css'
+import './ReplyEdit.scss'
 import ReplyEditImageUpload from '../replyEditImageUpload/ReplyEditImageUpload'
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import './ReplyModal.css'
+import './ReplyModal.scss'
 import { useDispatch } from 'react-redux'
 import { addAReply } from '../../store/reply'
 import { Avatar } from '@mui/material'
