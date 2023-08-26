@@ -17,7 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-@post_likes_routes.route('/posts/<int:id>', methods=['GET'])
+@post_likes_routes.route('/<int:id>', methods=['GET'])
 @login_required
 def get_post_likes(id):
 
@@ -30,7 +30,7 @@ def get_post_likes(id):
         return {'message': 'No reations'}
 
 
-@post_likes_routes.route('/replies/<int:id>', methods=['POST'])
+@post_likes_routes.route('/<int:id>', methods=['POST'])
 @login_required
 def post_upvote_likes(id):
 

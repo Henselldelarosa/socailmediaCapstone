@@ -1,5 +1,5 @@
-const GET_REPLY_LIKES = 'like/GET_REPLY_LIKES'
-const ADD_REMOVE_REPLY_LIKE = 'reactions/ADD_REMOVE_REPLY_LIKE'
+const GET_REPLY_LIKES = 'replyLikes/GET_REPLY_LIKES'
+const ADD_REMOVE_REPLY_LIKE = 'AddRemoveReplyLike/ADD_REMOVE_REPLY_LIKE'
 
 const gets = (likes, id) => (
   {
