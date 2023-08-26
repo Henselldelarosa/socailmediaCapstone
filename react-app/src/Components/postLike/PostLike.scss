@@ -1,0 +1,22 @@
+.postUserLiked{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  &__Icon{
+    color: var(--theme);
+  }
+}
+
+.postUserNotLiked{
+  display: flex;
+  align-items: center;
+
+  &__Icon{
+    color: var(--theme);
+  }
+
+}
+
+.postLikeSpam{
+  margin-left: 10%;
+}

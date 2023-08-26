@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
-        
+
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(40), nullable=False)
     lastName = db.Column(db.String(40), nullable=False)
@@ -33,6 +33,7 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', back_populates='user')
     replies = db.relationship('Reply', back_populates='user')
     likes = db.relationship('Like', back_populates='user')
+    post_likes = db.relationship('PostLike', back_populates='user')
     searches = db.relationship('Search', back_populates='user')
     images = db.relationship('Image', back_populates='user')
     followed = db.relationship(
@@ -113,6 +114,14 @@ class User(db.Model, UserMixin):
         }
 
     def to_like_dict(self):
+        return{
+            'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'userUrl': self.userUrl
+        }
+
+    def to_post_like_dict(self):
         return{
             'id': self.id,
             'firstName': self.firstName,

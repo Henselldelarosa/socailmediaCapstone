@@ -9,13 +9,17 @@ import { getAllReplies } from '../../store/reply'
 import { useDispatch, useSelector } from 'react-redux'
 import Replies from '../replies/Replies'
 import CreateReply from '../createReply/CreateReply'
+import { getAllPostLikes } from '../../store/postLike'
+import PostLike from '../postLike/PostLike'
 
 const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) => {
   const replies = useSelector(state => Object.values(state.replies))
   const posts = useSelector(state => state.posts[id])
   const singleReply = []
+  const postLike = useSelector(state => state.postLike[id])
   const sessionUser = useSelector(state => state.session.user)
 
+  console.log(postLike)
     replies.map((reply) =>{
     if((reply.postId) === id){
       singleReply.push(reply)
@@ -30,6 +34,7 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
 
   useEffect(() => {
     dispatch(getAllReplies(id))
+    dispatch(getAllPostLikes(id))
   },[dispatch,id])
 
   const handleShow = (e) =>{
@@ -91,8 +96,12 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
         <div className="postBottomFooter">
 
           <div className="postBottomFooterItem">
-            <ThumbUpOutlined className='footerIcon'/>
-            <span className="footerText">Like</span>
+            {/* <ThumbUpOutlined className='footerIcon'/> */}
+            <PostLike
+            id={id}
+            postLike={postLike}
+            />
+            {/* <span className="footerText">Like</span> */}
           </div>
 
           <div className="postBottomFooterItem">

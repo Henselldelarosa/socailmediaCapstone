@@ -20,5 +20,6 @@ class PostLike(db.Model):
         'user_id': self.user_id,
         'post_id': self.post_id,
         'dateCreated':self.dateCreated,
-        'post': self.posts.to_like_post_dict()
+        'post': self.posts.to_like_post_dict(),
+        'user':self.user.to_post_like_dict()
       }

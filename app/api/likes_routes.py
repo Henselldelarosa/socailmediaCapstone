@@ -43,7 +43,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @likes_routes.route('/replies/<int:id>', methods=['POST'])
 @login_required
-def post_upvote_likes(id):
+def reply_upvote_likes(id):
 
     reaction_check = Like.query.filter(
         Like.replyId ==id,

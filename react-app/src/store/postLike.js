@@ -19,7 +19,7 @@ const addRemovePost = (postLike, id) => (
 )
 
 export const getAllPostLikes = (id) => async(dispatch) =>{
-  const response = await fetch(`/api/post_likes/${id}`)
+  const response = await fetch(`/api/postlikes/posts/${id}`)
 
   if (response.ok){
     const data = await response.json()
@@ -28,8 +28,8 @@ export const getAllPostLikes = (id) => async(dispatch) =>{
   }
 }
 
-export const addRemoveThePostLike = (id, userId) => async(dispatch) =>{
-   const response = await fetch(`/api/post_likes/${id}`, {
+export const addRemoveThePostLike = (id, user_id) => async(dispatch) =>{
+   const response = await fetch(`/api/postlikes/posts/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export const addRemoveThePostLike = (id, userId) => async(dispatch) =>{
 
     body:JSON.stringify({
       post_id:id,
-      user_id:userId
+      user_id:user_id
     })
    })
 
@@ -55,8 +55,8 @@ const postLikeReducer = (state = initialState, action) => {
 
     case GET_POST_LIKES: {
       const newState = {}
-      action.postLikes.postLikes.forEach((like) => {
-        newState[like.post_id] = like
+      action.postLikes.post_likes.forEach((postLike) => {
+        newState[postLike.post_id] = postLike
       })
       return newState
     }
@@ -65,7 +65,6 @@ const postLikeReducer = (state = initialState, action) => {
       const newState = {...state}
       if(newState[action.postLike.post_id]){
         delete newState[action.postLike.post_id]
-
       }else{
         newState[action.postLike.post_id] = action.postLike
       }
