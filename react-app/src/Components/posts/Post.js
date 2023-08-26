@@ -11,15 +11,16 @@ import Replies from '../replies/Replies'
 import CreateReply from '../createReply/CreateReply'
 import { getAllPostLikes } from '../../store/postLike'
 import PostLike from '../postLike/PostLike'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) => {
+const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated, userId}) => {
   const replies = useSelector(state => Object.values(state.replies))
   const posts = useSelector(state => state.posts[id])
   const singleReply = []
   const postLike = useSelector(state => state.postLike[id])
   const sessionUser = useSelector(state => state.session.user)
 
-  console.log(postLike)
     replies.map((reply) =>{
     if((reply.postId) === id){
       singleReply.push(reply)
@@ -28,7 +29,8 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
   })
 
   const [showReply, setShowReply] = useState(false)
-
+  const [showEdit, setShowEdit] = useState(false)
+  const [showButton, setShowButton] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -66,8 +68,18 @@ const Post = ({id ,post ,postUrl, userUrl, firstName, lastName, dateCreated}) =>
           </div>
 
           <div className="postTopRight">
+
             <IconButton>
-              <MoreVert className='postVertButton'/>
+              {userId === sessionUser.id && (
+                <>
+                  <MoreVert className='postVertButton' onClick={handleShow}/>
+                  {showButton && (
+                    <div className="postActionButton">
+                      
+                    </div>
+                  )}
+                </>
+              )}
             </IconButton>
           </div>
         </div>

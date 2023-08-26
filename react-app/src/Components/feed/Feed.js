@@ -21,6 +21,7 @@ const Feed = () => {
           <div key={post.id}>
             <Post
             id={post.id}
+            userId={post?.userId}
             post={post?.post}
             postUrl={post?.postUrl}
             userUrl={post?.user.userUrl}
