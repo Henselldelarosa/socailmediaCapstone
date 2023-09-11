@@ -60,7 +60,6 @@ def edit_user(id):
             wanted_user.relationship = form.data['relationship']
 
             db.session.commit()
-            print(wanted_user, '---------------------------------------------')
             return wanted_user.to_dict()
 
         else:

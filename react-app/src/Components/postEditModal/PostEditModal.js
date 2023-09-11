@@ -24,8 +24,7 @@ const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, 
     dispatch(postActions.getPostById(id))
   },[dispatch])
 
-  console.log(id)
-  console.log(currentPost)
+
   const handleSubmit = async(e) => {
     e.preventDefault()
     setErrorMessage([])

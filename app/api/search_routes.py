@@ -20,7 +20,6 @@ def validation_errors_to_error_messages(validation_errors):
 @search_routes.route('/users/<query>', methods=['GET'])
 @login_required
 def get_searches(query):
-    print(query)
     if current_user.is_authenticated:
         wanted_search = Search(search = query, userId = current_user.id)
 
@@ -29,7 +28,7 @@ def get_searches(query):
 
     # results = User.query.filter(query in User.firstName or query in User.lastName)
     results = User.query.filter(User.firstName.contains(query.lower())).all()
-    print(results, '-------------------------')
+
     if not results:
         return {'message': 'No results found'}
     else:

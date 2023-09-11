@@ -2,13 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch} from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
-// import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-// import Navigation from "./components/Navigation";
-// import GetAllPost from "./components/Post/GetAllPostComponent/GetAllPost"
 import PostDetail from "./components/Post/PostDetailComponent/PostDetail";
 import EditUser from './pages/editUser/EditUser'
-// thunk
 import { getAllPosts} from "./store/post";
 import { getTheUsers } from "./store/user";
 import SearchComponent from "./components/Search/SearchComponent";
@@ -26,7 +22,6 @@ function App() {
 
 
   const [isLoaded, setIsLoaded] = useState(false);
-  // const sessionUser = useSelector((state) => state.session.user)
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
     dispatch(getTheUsers())

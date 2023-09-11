@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllPosts, deletePost} from '../../../store/post'
-// import { Avatar } from '@mui/material'
 import LoginFormPage from '../../LoginFormPage'
 import './GetAllPost.css'
 import PostCard from './PostCard'

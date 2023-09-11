@@ -9,7 +9,6 @@ import { useHistory, Redirect, } from 'react-router-dom';
 
 export default function BasicMenuSignedIn() {
   const dispatch = useDispatch()
-  // const nav = useNavigate()
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
   const [anchorEl, setAnchorEl] = React.useState(null);
