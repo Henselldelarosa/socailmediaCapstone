@@ -23,6 +23,7 @@ import PostLike from '../postLike/PostLike'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {deletePost} from '../../store/post'
+import PostEditModalRender from '../postEditModal/PostEditModalRender'
 
 const Post = ({
   id,
@@ -64,11 +65,19 @@ const Post = ({
 
   const handleShow = (e) => {
     e.preventDefault()
-
     if (showReply) {
       setShowReply(false)
     } else {
       setShowReply(true)
+    }
+  }
+
+  const handleShowButton = (e) =>{
+    e.preventDefault()
+    if(showButton){
+      setShowButton(false)
+    }else{
+      setShowButton(true)
     }
   }
 
@@ -102,29 +111,36 @@ const Post = ({
 
             <div className="postTopRight">
 
-              <IconButton> {
-                userId === sessionUser.id && (
+                {userId === sessionUser.id && (
+              <IconButton>
                   <>
                     <MoreVert className='postVertButton'
-                      onClick={handleShow}/> {
+                      onClick={handleShowButton}/> {
                     showButton && (
                       <div className="postActionButton">
                         <span onClick={handleDelete}
                           className="postActionButton__delete">Delete
-                          <DeleteIcon/></span>
-                        <span className="postActionButton__edit"
+                          <DeleteIcon/>
+                          </span>
+                          <PostEditModalRender
+                          id={posts?.id}
+                          post={posts?.post}
+                          postUrl={postUrl}
+                          />
+                        {/* <span className="postActionButton__edit"
                           onClick={
                             () => {
                               setShowEdit(true)
                               handleClose()
                             }
-                        }>Edit</span>
+                        }>Edit</span> */}
 
                       </div>
                     )
                   } </>
+              </IconButton>
                 )
-              } </IconButton>
+              }
             </div>
           </div>
 
@@ -182,34 +198,17 @@ const Post = ({
           <> {
             singleReply && singleReply.reverse().map((reply) => {
               return (
-                <div key={
-                  reply.id
-                }>
-                  <Replies reply={
-                      reply ?. reply
-                    }
-                    id={
-                      reply ?. id
-                    }
-                    replyUrl={
-                      reply ?. replyUrl
-                    }
-                    dateCreated={
-                      reply ?. dateCreated
-                    }
+                <div key={reply.id}>
+                  <Replies reply={reply?.reply}
+                    id={reply?.id}
+                    replyUrl={reply?.replyUrl}
+                    dateCreated={reply?.dateCreated}
                     postId={id}
-                    userId={
-                      reply ?. user.id
-                    }
-                    userUrl={
-                      reply ?. user ?. userUrl
-                    }
-                    firstName={
-                      reply ?. user ?. firstName
-                    }
-                    lastName={
-                      reply ?. user ?. lastName
-                    }/>
+                    userId={reply?.user.id}
+                    userUrl={reply?.user?.userUrl}
+                    firstName={reply?.user?.firstName}
+                    lastName={reply?.user?.lastName}
+                    />
                 </div>
               )
             })

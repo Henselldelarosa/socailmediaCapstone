@@ -47,9 +47,9 @@
 
   .createReplyModalUserInfo{
     display: flex;
+    align-items: center;
     margin-top: 15px;
     padding-left: 10px;
-    align-items: center;
 
     .createReplyUserIcon{
       border: 2px solid var(--theme);

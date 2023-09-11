@@ -1,0 +1,109 @@
+.postEditFileUploadDiv{
+  height: auto;
+  width:450px;
+  align-items: center;
+  margin-left: 20px;
+  background-color: transparent;
+  border-radius: 5px;
+  object-fit: contain;
+  position: relative;
+
+  .postEditImageContainer{
+    display: flex;
+    border:  1px solid rgba(0, 0, 0, 0.203);
+    height: 400px;
+    color: white;
+    width: 430px;
+    margin-left: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+
+    .postEditPreviewImage{
+      width: 425px;
+      height: 100%;
+      position: absolute;
+      padding: 5px;
+    }
+
+    .loading_image{
+      font-weight: 800;
+      font-size: 20px;
+      color: black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 5;
+    }
+
+    .postEditImageSubmit{
+      z-index: 4;
+      position: absolute;
+      top: 5px;
+      left: 15px;
+      background-color: transparent;
+      border: none;
+      font-size: 40px;
+      background-color: transparent;
+
+      .postEditUploadIcon{
+        font-size: 40px;
+        color: var(--theme);
+        cursor: pointer;
+
+        &:hover{
+          color: green;
+        }
+      }
+    }
+  }
+
+  .postEditImageDiv{
+    display: flex;
+    border:  1px solid rgba(0, 0, 0, 0.203);
+    height: 400px;
+    color: white;
+    width: 430px;
+    margin-left: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor:pointer;
+
+    .postEditImageCenter{
+      margin-left: 150px;
+      position: relative;
+
+      .postEditBlankContainer{
+        height: 100%;
+        width: 425px;
+        background-color: rgba(58, 58, 58, 0.733);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-35%, -50%);
+        z-index: 5;
+        opacity: 0;
+        border-radius: 4px;
+
+        &:hover{
+          opacity: 1;
+        }
+
+        .postEditAddIcon{
+          margin-top: 150px;
+          object-fit: contain;
+        }
+      }
+
+      .postEditEditImg{
+        width: 425px;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-35%, -50%);
+        border-radius: 20px;
+        padding: 10px;
+      }
+    }
+  }
+}

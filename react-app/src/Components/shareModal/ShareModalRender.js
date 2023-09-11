@@ -29,7 +29,9 @@ const ShareModalRender = () => {
     </button>
     {showModal && (
       <Modal onClose={() => setShowModal(false)}>
-        <ShareModal setShowModal={setShowModal} sessionUser={sessionUser}/>
+        <ShareModal
+        setShowModal={setShowModal}
+        sessionUser={sessionUser}/>
       </Modal>
     )}
   </div>

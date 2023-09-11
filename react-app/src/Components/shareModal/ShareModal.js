@@ -37,7 +37,6 @@ const ShareModal = ({setShowModal, sessionUser}) => {
     if (payload.postUrl && payload.post) {
         dispatch(addPost(payload))
         setShowModal(false)
-
     }
 
 

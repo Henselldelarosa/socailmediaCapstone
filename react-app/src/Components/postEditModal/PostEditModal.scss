@@ -1,0 +1,103 @@
+.postEdit{
+  background-color: rgba(255, 255, 255, 0.708);
+  width: 500px;
+  height: auto;
+  place-items: center;
+  border-radius: 5px;
+  position: relative;
+  overflow-y: scroll;
+
+  &__div{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.203);
+  }
+
+  &__title{
+    font-size: 25px;
+    font-weight: 600;
+    place-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 150px;
+  }
+
+  &__button__close{
+    color: var(--theme);
+    background-color: transparent;
+    border-radius: 999px;
+    cursor: pointer;
+    border: none;
+    margin-right: 1px;
+    height: 35px;
+    margin-top: 10px;
+    align-items: center;
+  }
+
+  &__button__icon{
+    font-size: 40px;
+    &:hover{
+      color: white;
+    }
+  }
+
+  &__form__userInfo{
+    display: flex;
+    align-items:center;
+    margin-top: 5px;
+    padding-left: 10px;
+
+    &__icon{
+      border: 2px solid var(--theme);
+    }
+
+    &__name{
+      margin-left: 10px;
+    }
+  }
+
+  // &__input{
+
+  //   &__field{
+  //     width: 45rem
+  //   }
+  // }
+
+  &__form__input__field{
+    width: 430px;
+    border: 1px solid lightgray;
+    background-color: transparent;
+    margin-left: 10px;
+    color: black;
+    font-size: 16px;
+    border-width: 0;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 30px;
+    resize: none;
+    outline: none;
+
+    &:focus,
+    &:active{
+      border: .5px solid rgba(0, 0, 0, 0.203);
+
+    }
+  }
+
+  &__button--submit{
+    align-items: center;
+      width: 450px;
+      margin-top: 25px;
+      margin-left: 20px;
+      color: white;
+      background-color: var(--theme);
+      font-weight: 600;
+      height: 35px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      object-fit: contain;
+      position: relative;
+      margin-bottom: 20px;
+  }
+}
