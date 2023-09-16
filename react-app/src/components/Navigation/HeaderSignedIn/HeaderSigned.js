@@ -6,6 +6,8 @@ import { Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionAction from '../../../store/session'
 import { useHistory, Redirect, } from 'react-router-dom';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import './HeaderSigned.scss'
 
 export default function BasicMenuSignedIn() {
   const dispatch = useDispatch()
@@ -47,7 +49,7 @@ export default function BasicMenuSignedIn() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+        <MenuItem className='headerSigned--logout'onClick={handleLogOut}><ExitToAppIcon className='headerSigned--logout--icon'/><p className='headerSigned--logout--text'>Logout</p></MenuItem>
       </Menu>
     </div>
   );
