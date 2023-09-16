@@ -1,17 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import './Post.scss'
-import {IconButton} from '@mui/material'
 import EditDeleteDrop from '../editDeleteDrop/EditDeleteDrop'
 
 import {
   ChatBubbleOutline,
-  Create,
-  More,
-  MoreVert,
-  Replay,
   ShareOutlined,
   ThumbUp,
-  ThumbUpOutlined
 } from '@mui/icons-material'
 
 import {getAllReplies} from '../../store/reply'
@@ -20,10 +14,8 @@ import Replies from '../replies/Replies'
 import CreateReply from '../createReply/CreateReply'
 import {getAllPostLikes} from '../../store/postLike'
 import PostLike from '../postLike/PostLike'
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import {deletePost} from '../../store/post'
-import PostEditModalRender from '../postEditModal/PostEditModalRender'
+
 
 const Post = ({
   id,
@@ -33,7 +25,6 @@ const Post = ({
   firstName,
   lastName,
   dateCreated,
-  userId
 }) => {
   const replies = useSelector(state => Object.values(state.replies))
   const posts = useSelector(state => state.posts[id])
@@ -49,7 +40,6 @@ const Post = ({
   })
 
   const [showReply, setShowReply] = useState(false)
-  const [showButton, setShowButton] = useState(false)
 
 
   const dispatch = useDispatch()
@@ -69,15 +59,6 @@ const Post = ({
       setShowReply(true)
     }
   }
-
-  // const handleShowButton = (e) =>{
-  //   e.preventDefault()
-  //   if(showButton){
-  //     setShowButton(false)
-  //   }else{
-  //     setShowButton(true)
-  //   }
-  // }
 
   const handleDelete = (e) => {
     e.preventDefault()
@@ -107,7 +88,6 @@ const Post = ({
             </div>
 
             <div className="postTopRight">
-              {/* <span onClick={handleClose}> */}
 
               <EditDeleteDrop
               handleDelete={handleDelete}
@@ -115,38 +95,6 @@ const Post = ({
               post={posts?.post}
               postUrl={postUrl}
               />
-              {/* </span> */}
-                {/* {userId === sessionUser.id && (
-                  <IconButton className='postActionDropDown'>
-                  <div >
-                    <MoreVert className='postVertButton'
-                      onClick={handleShowButton}/> {
-                    showButton && (
-                      <div className="postActionButton">
-
-                        <div className="deleteDiv">
-
-                          <button
-                            onClick={handleDelete}
-                            className="postActionButton__delete">
-                            <DeleteIcon className='postActionButton__delete__icon'/>
-                              Delete
-                          </button>
-
-                        </div>
-                          <PostEditModalRender
-                          id={posts?.id}
-                          post={posts?.post}
-                          postUrl={postUrl}
-                          onClick={() => setShowButton(false)}
-                          />
-
-                      </div>
-                    )
-                  } </div>
-              </IconButton>
-                )
-              } */}
             </div>
           </div>
 
