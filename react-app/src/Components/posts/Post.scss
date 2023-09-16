@@ -41,10 +41,43 @@
 
       .postTopRight{
 
+        .postActionDropDown:focus{
+          &:hover{
+            background-color: transparent;
+          }
+        }
+
         .postVertButton{
           font-size: 30px;
           color: #333;
           cursor: pointer;
+        }
+
+        .postActionButton{
+          display: flex;
+          flex-direction: column;
+        }
+
+        .postActionButton__delete{
+          display: flex;
+          align-items: center;
+          border: none;
+          font-weight: 600;
+          cursor: pointer;
+          background-color: transparent;
+          font-size: 16px;
+          &:hover{
+            background-color: lightblue;
+          }
+
+          &__icon{
+            color: #bb0000f2;
+          }
+        }
+
+        .deleteDiv{
+          display: flex;
+          color: red;
         }
       }
     }

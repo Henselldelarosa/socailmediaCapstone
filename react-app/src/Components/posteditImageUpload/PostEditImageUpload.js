@@ -4,6 +4,12 @@ import {Button} from '@mui/material'
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import UploadIcon from '@mui/icons-material/Upload';
+import {
+  Close,
+  EmojiEmotions,
+  PermMedia,
+  VideoCameraFront,
+} from "@mui/icons-material";
 
 const PostEditImageUpload = ({setPostUrl, postUrl, hideForm}) => {
   const [image, setImage] = useState(null);
@@ -11,6 +17,10 @@ const PostEditImageUpload = ({setPostUrl, postUrl, hideForm}) => {
   const [uploadedImg, setUploadImg] = useState(false);
   const [prevImgUrl, setPrevImgUrl] = useState("");
 
+  const deleteImage = (e) => {
+    e.preventDefault()
+    setPostUrl(false)
+  }
 
   const handleImageSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +42,8 @@ const PostEditImageUpload = ({setPostUrl, postUrl, hideForm}) => {
       setImageLoading(false);
     }
   };
+
+
 
   const updateImage = (e) => {
     if(e.target.files && e.target.files.length > 0)
@@ -81,6 +93,9 @@ const PostEditImageUpload = ({setPostUrl, postUrl, hideForm}) => {
           <div className="postEditImageCenter">
 
             <center>
+
+              {postUrl ?
+              <>
               <div className='postEditBlankContainer'>
 
                 <center>
@@ -90,11 +105,31 @@ const PostEditImageUpload = ({setPostUrl, postUrl, hideForm}) => {
                 </center>
 
               </div>
-
-              <img
+               <img
               src={postUrl}
               alt=""
               className="postEditEditImg" />
+              {/* <Close
+              className='postEditImageDeleteIcon'
+              onClick={deleteImage}
+              /> */}
+              </>
+              :
+              <>
+
+              <div className='postEditBlankNoImageContainer'>
+              <div className="postEditNoImage">
+              <AddToPhotosIcon className='postEditNoImageIcon'/>
+              <p>Add Photo</p>
+              </div>
+
+              </div>
+              </>}
+              {/* <img
+              src={postUrl}
+              alt=""
+              className="postEditEditImg" /> */}
+
             </center>
 
           </div>

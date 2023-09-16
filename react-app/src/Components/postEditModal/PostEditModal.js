@@ -24,6 +24,10 @@ const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, 
     dispatch(postActions.getPostById(id))
   },[dispatch])
 
+  const removeImage = (e) => {
+    e.preventDefault()
+    setPostUrlData(null)
+  }
 
   const handleSubmit = async(e) => {
     e.preventDefault()
@@ -42,7 +46,7 @@ const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, 
 
     if(!error.length){
       setErrorMessage([])
-      hideForm()
+      // hideForm()
       dispatch(postActions.updateAPost(payload, id))
     }
 

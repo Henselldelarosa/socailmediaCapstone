@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-
 import './Post.scss'
-
 import {IconButton} from '@mui/material'
+import EditDeleteDrop from '../editDeleteDrop/EditDeleteDrop'
+
 import {
   ChatBubbleOutline,
   Create,
@@ -49,8 +49,8 @@ const Post = ({
   })
 
   const [showReply, setShowReply] = useState(false)
-  const [showEdit, setShowEdit] = useState(false)
   const [showButton, setShowButton] = useState(false)
+
 
   const dispatch = useDispatch()
 
@@ -59,9 +59,7 @@ const Post = ({
     dispatch(getAllPostLikes(id))
   }, [dispatch, id])
 
-  const handleClose = () => {
-    setShowButton(false)
-  }
+
 
   const handleShow = (e) => {
     e.preventDefault()
@@ -72,19 +70,18 @@ const Post = ({
     }
   }
 
-  const handleShowButton = (e) =>{
-    e.preventDefault()
-    if(showButton){
-      setShowButton(false)
-    }else{
-      setShowButton(true)
-    }
-  }
+  // const handleShowButton = (e) =>{
+  //   e.preventDefault()
+  //   if(showButton){
+  //     setShowButton(false)
+  //   }else{
+  //     setShowButton(true)
+  //   }
+  // }
 
   const handleDelete = (e) => {
     e.preventDefault()
     dispatch(deletePost(id))
-    handleClose()
   }
 
   let content;
@@ -110,37 +107,46 @@ const Post = ({
             </div>
 
             <div className="postTopRight">
+              {/* <span onClick={handleClose}> */}
 
-                {userId === sessionUser.id && (
-              <IconButton>
-                  <>
+              <EditDeleteDrop
+              handleDelete={handleDelete}
+              id={posts?.id}
+              post={posts?.post}
+              postUrl={postUrl}
+              />
+              {/* </span> */}
+                {/* {userId === sessionUser.id && (
+                  <IconButton className='postActionDropDown'>
+                  <div >
                     <MoreVert className='postVertButton'
                       onClick={handleShowButton}/> {
                     showButton && (
                       <div className="postActionButton">
-                        <span onClick={handleDelete}
-                          className="postActionButton__delete">Delete
-                          <DeleteIcon/>
-                          </span>
+
+                        <div className="deleteDiv">
+
+                          <button
+                            onClick={handleDelete}
+                            className="postActionButton__delete">
+                            <DeleteIcon className='postActionButton__delete__icon'/>
+                              Delete
+                          </button>
+
+                        </div>
                           <PostEditModalRender
                           id={posts?.id}
                           post={posts?.post}
                           postUrl={postUrl}
+                          onClick={() => setShowButton(false)}
                           />
-                        {/* <span className="postActionButton__edit"
-                          onClick={
-                            () => {
-                              setShowEdit(true)
-                              handleClose()
-                            }
-                        }>Edit</span> */}
 
                       </div>
                     )
-                  } </>
+                  } </div>
               </IconButton>
                 )
-              }
+              } */}
             </div>
           </div>
 

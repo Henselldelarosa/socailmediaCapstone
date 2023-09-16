@@ -3,10 +3,16 @@ import {Modal} from '../../context/Modal'
 import {useSelector} from 'react-redux'
 import EditIcon from '@mui/icons-material/Edit';
 import PostEditModal from './PostEditModal';
+import './PostEditModalRender.scss'
 import ShareImageUpload from '../shareImageUpload/ShareImageUpload';
 const PostEditModalRender = ({post, postUrl,id}) => {
   const [showModal, setShowModal] = useState(false)
   const sessionUser = useSelector(state => state.session.user)
+  // const [setHide, setHide] = useState(false)
+  const handleModel = (e) =>{
+    e.preventDefault()
+    setShowModal(true)
+  }
 
   return (
     <div>
@@ -17,21 +23,25 @@ const PostEditModalRender = ({post, postUrl,id}) => {
             backgroundColor: 'transparent'
           }
         }
-        onClick={
-          () => setShowModal(true)
-      }>
-        Edit
-        <EditIcon className="shareEditIcon"
+        onClick={handleModel}
+        className='postEditModalButton'
+      >
+        <EditIcon
+        className="shareEditIcon"
+
           style={
-            {color: "#bb0000f2"}
+            {color: "#FAD02C"}
           }/>
+        <span className="postEditButtonText">Edit</span>
       </button>
 
       {
       showModal && (
-        <Modal onClose={
+        <Modal
+        onClose={
           () => setShowModal(false)
-        }>
+        }
+        >
           <PostEditModal
           setShowModal={setShowModal}
           id={id}
@@ -41,7 +51,7 @@ const PostEditModalRender = ({post, postUrl,id}) => {
           userUrl={sessionUser ?. userUrl}
           post={post}
           postUrl={postUrl}
-          hideForm={() => setShowModal(false)}
+          // hideForm={() => setShowModal(false)}
           />
           {/* <ShareImageUpload setPostUrl={setPostUrl}/> */}
         </Modal>

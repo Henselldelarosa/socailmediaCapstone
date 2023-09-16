@@ -1,0 +1,11 @@
+.postEditModalButton{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+
+  .postEditButtonText{
+    font-weight: 600;
+    margin-left: 4px;
+  }
+}

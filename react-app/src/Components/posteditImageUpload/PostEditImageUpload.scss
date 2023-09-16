@@ -7,6 +7,7 @@
   border-radius: 5px;
   object-fit: contain;
   position: relative;
+  // box-shadow: 2px 4px 10px 1px rgba(108, 108, 108, 0.47);
 
   .postEditImageContainer{
     display: flex;
@@ -104,6 +105,51 @@
         border-radius: 20px;
         padding: 10px;
       }
+
+      .postEditImageDeleteIcon{
+        z-index: 25;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--theme);
+        &:hover{
+          color: white;
+        }
+      }
+
+      .postEditBlankNoImageContainer{
+        height: 95%;
+        background-color: white;
+        width: 420px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-34.5%, -50%);
+        border-radius: 4px;
+
+        &:hover{
+          background-color: rgb(230, 230, 230);
+          .postEditNoImage{
+            color:rgb(191, 191, 191)
+          }
+        }
+
+        .postEditNoImage{
+          margin-top: 160px;
+          color: var(--theme);
+        }
+      }
+      // .postEditNoImage{
+      //   // margin-top: 160px;
+      //   text-align: center;
+      //   // margin-right: 200px;
+      //   // width: 425px;
+      //   // height: 200px;
+
+      //   &:hover{
+      //     background-color: lightblue;
+      //   }
+      // }
     }
   }
 }
