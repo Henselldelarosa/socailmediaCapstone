@@ -2,17 +2,12 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Redirect, } from 'react-router-dom';
 import {MoreVert}  from '@mui/icons-material'
 import PostEditModalRender from '../postEditModal/PostEditModalRender';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './EditDeleteDrop.scss'
 
-export default function EditDeleteDrop({handleEdit, handleDelete, id, post, postUrl}) {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const sessionUser = useSelector(state => state.session.user)
+export default function EditDeleteDrop({handleDelete, id, post, postUrl}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
