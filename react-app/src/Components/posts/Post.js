@@ -25,6 +25,7 @@ const Post = ({
   firstName,
   lastName,
   dateCreated,
+  userId
 }) => {
   const replies = useSelector(state => Object.values(state.replies))
   const posts = useSelector(state => state.posts[id])
@@ -88,20 +89,22 @@ const Post = ({
             </div>
 
             <div className="postTopRight">
-
+              {userId === sessionUser.id &&
               <EditDeleteDrop
               handleDelete={handleDelete}
               id={posts?.id}
               post={posts?.post}
               postUrl={postUrl}
               />
+              }
             </div>
           </div>
 
           <div className="postCenter">
             <span className="postText">
               {post}</span>
-            <img src={postUrl}
+            <img
+              src={postUrl}
               alt=""
               className="postImg"/>
           </div>
@@ -153,7 +156,8 @@ const Post = ({
             singleReply && singleReply.reverse().map((reply) => {
               return (
                 <div key={reply.id}>
-                  <Replies reply={reply?.reply}
+                  <Replies
+                    reply={reply?.reply}
                     id={reply?.id}
                     replyUrl={reply?.replyUrl}
                     dateCreated={reply?.dateCreated}

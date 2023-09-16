@@ -7,6 +7,7 @@ import ShareImageUpload from '../shareImageUpload/ShareImageUpload'
 import './PostEditModal.scss'
 import ReplyEditImageUpload from '../replyEditImageUpload/ReplyEditImageUpload'
 import PostEditImageUpload from '../posteditImageUpload/PostEditImageUpload'
+
 const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, firstName, lastName, userUrl}) => {
   const dispatch = useDispatch()
   const currentPost = useSelector(state => state.posts[id])

@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Profile.scss'
 import EditUser from '../editUser/EditUser'
 import { authenticate } from '../../store/session'
+import CoverImageUpload from '../../Components/coverImageUpload/CoverImageUpload'
+
 const Profile = () => {
   let {id} = useParams()
   const user = useSelector(state => state.users[id])
@@ -49,6 +51,7 @@ const Profile = () => {
                    <div className="profileRightTop">
 
                      <div className="profileCover">
+                       {/* <CoverImageUpload sessionUser={sessionUser}/> */}
                        <img
                        src={user?.profile_url}
                        alt=""
@@ -124,7 +127,6 @@ const Profile = () => {
                 </div>
               </div>
     )
-    // :<></>
   }
 
   return (isLoaded, content)

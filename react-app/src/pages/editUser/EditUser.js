@@ -7,6 +7,7 @@ import { Redirect, useHistory, useParams } from 'react-router-dom/cjs/react-rout
 import ProfileImageUpload from '../../Components/profileImageUpload/ProfileImageUpload'
 // import { Button } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import CoverImageUpload from '../../Components/coverImageUpload/CoverImageUpload'
 
 
 const EditUser = ({hideForm}) => {
@@ -100,10 +101,11 @@ const EditUser = ({hideForm}) => {
           <div className="profileRightTop">
 
             <div className="profileCover">
-              <img
+              <CoverImageUpload sessionUser={sessionUser} setCoverUrl={setProfileUrl}/>
+              {/* <img
               src={sessionUser?.profile_url}
               alt=""
-              className="profileCoverImg"/>
+              className="profileCoverImg"/> */}
 
               <img
               src={sessionUser?.userUrl}

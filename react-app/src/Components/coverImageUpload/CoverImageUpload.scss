@@ -1,0 +1,65 @@
+.profileCoverImg__selectContainer{
+  height: 320px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &--currentImg{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &--icon{
+    z-index: 20;
+    font-size: 40rem;
+    position: absolute;
+    bottom: 20%;
+    right: 1%;
+    color: gray;
+    cursor: pointer;
+
+    &:hover{
+      color: var(--theme);
+    }
+  }
+}
+
+.profileCoverImg__container{
+  height: 320px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &--previewImg{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &--submit{
+    z-index: 20;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 20%;
+    right: 1%;
+    color: gray;
+    cursor: pointer;
+
+    &--icon{
+      color: var(--theme);
+      font-size: 40px;
+
+      &:hover{
+        color: green;
+      }
+    }
+  }
+}
