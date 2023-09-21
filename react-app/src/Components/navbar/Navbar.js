@@ -21,7 +21,7 @@ const Navbar = ({isLoaded}) => {
   const search = (e) => {
     e.preventDefault()
     dispatch(getTheSearch(searchQuery))
-    history.push(`/search/user/${searchQuery}`)
+    history.push(`/searches/users/${searchQuery}`)
     setSearchQuery('')
   }
 

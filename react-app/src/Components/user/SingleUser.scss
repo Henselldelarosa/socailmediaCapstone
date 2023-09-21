@@ -1,0 +1,61 @@
+.user_container{
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-right: 10px;
+  background-color: lightgray;
+  border-radius: 4px;
+
+  &:hover{
+    background-color: var(--theme);
+    cursor: pointer;
+    &__address{
+      color: black;
+    }
+  }
+
+  .singleUserInfo{
+    display: flex;
+    padding: 10px;
+
+    &__address{
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    &__country{
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    &__followers{
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    &__following{
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    &__phoneNumber{
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    &__relationship{
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    .singleUserInfo__text{
+      padding-right: 5px;
+    }
+
+  }
+}
