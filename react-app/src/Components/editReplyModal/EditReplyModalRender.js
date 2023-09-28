@@ -2,11 +2,11 @@ import React, {useState, useContext} from 'react'
 import {Modal} from '../../context/Modal'
 import {useSelector} from 'react-redux'
 import EditIcon from '@mui/icons-material/Edit';
-import PostEditModal from './PostEditModal';
-import './PostEditModalRender.scss'
-import ShareImageUpload from '../shareImageUpload/ShareImageUpload';
+import EditReplyModal from './EditReplyModal';
+import ReplyEditImageUpload from '../replyEditImageUpload/ReplyEditImageUpload';
+import './EditReplyModalRender.scss'
 
-const PostEditModalRender = ({post, postUrl,id}) => {
+const EditReplyModalRender = ({reply, replyUrl, id}) => {
   const [showModal, setShowModal] = useState(false)
   const sessionUser = useSelector(state => state.session.user)
   const handleModel = (e) =>{
@@ -42,21 +42,20 @@ const PostEditModalRender = ({post, postUrl,id}) => {
           () => setShowModal(false)
         }
         >
-          <PostEditModal
-          setShowModal={setShowModal}
-          id={id}
-          sessionUser={sessionUser}
-          firstName={sessionUser ?. firstName}
-          lastName={sessionUser ?. lastName}
-          userUrl={sessionUser ?. userUrl}
-          post={post}
-          postUrl={postUrl}
-          />
-
+         <EditReplyModal
+         setShowModal={setShowModal}
+         id={id}
+         sessionUser={sessionUser}
+         firstName={sessionUser?.firstName}
+         lastName={sessionUser?.lastName}
+         userUrl={sessionUser?.userUrl}
+         reply={reply}
+         replyUrl={replyUrl}
+         />
         </Modal>
       )
     } </div>
   )
 }
 
-export default PostEditModalRender
+export default EditReplyModalRender

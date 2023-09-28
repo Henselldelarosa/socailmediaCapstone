@@ -109,10 +109,6 @@ const PostEditImageUpload = ({setPostUrl, postUrl, hideForm}) => {
               src={postUrl}
               alt=""
               className="postEditEditImg" />
-              {/* <Close
-              className='postEditImageDeleteIcon'
-              onClick={deleteImage}
-              /> */}
               </>
               :
               <>
@@ -125,10 +121,7 @@ const PostEditImageUpload = ({setPostUrl, postUrl, hideForm}) => {
 
               </div>
               </>}
-              {/* <img
-              src={postUrl}
-              alt=""
-              className="postEditEditImg" /> */}
+
 
             </center>
 

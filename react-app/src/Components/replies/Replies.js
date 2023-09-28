@@ -20,6 +20,8 @@ import {addRemoveTheReplyLike, getAllReplyLikes} from '../../store/like'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ReplyLike from '../replyLike/ReplyLike';
+import EditReplyModalRender from '../editReplyModal/EditReplyModalRender';
+import ReplyEditDeleteDrop from '../replyEditDeleteDrop/ReplyEditDeleteDrop';
 const Replies = ({
   id,
   user,
@@ -70,7 +72,13 @@ const Replies = ({
     <div className='reply'>
     {showEdit ? (
       <>
-        <ReplyEdit
+      {/* <EditReplyModalRender
+      id={id}
+      reply={reply}
+      replyUrl={replyUrl}
+      sessionUser={sessionUser}
+      /> */}
+        {/* <ReplyEdit
         id={id}
         firstName={firstName}
         lastName={lastName}
@@ -78,7 +86,7 @@ const Replies = ({
         replyUrl={replyUrl}
         dateCreated={dateCreated}
         hideForm={() => setShowEdit(false)}
-        />
+        /> */}
          {/* <ReplyEditImageUpload replyUrl={replyUrl} setReplyUrl={setReplyData}/> */}
       </>
 
@@ -97,7 +105,14 @@ const Replies = ({
                 </div>
 
                 <div className="replyTopRight">
-                  <IconButton>
+                  <ReplyEditDeleteDrop
+                  handleDelete={handleDelete}
+                  reply={reply}
+                  replyUrl={replyUrl}
+                  id={id}
+                  setShowModal={handleClose}
+                  />
+                  {/* <IconButton>
                     {userId === sessionUser.id &&(
                       <>
                     <MoreVert onClick={handleShow} className='replyVertButton'/>
@@ -111,7 +126,7 @@ const Replies = ({
                     )}
                     </>
                     )}
-                  </IconButton>
+                  </IconButton> */}
                 </div>
               </div>
 

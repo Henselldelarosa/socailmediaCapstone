@@ -1,49 +1,122 @@
 .replyEditFileUploadDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: auto;
+  width:450px;
   align-items: center;
-}
-
-.overlay{
-  height: 100%;
-  width: 100%;
-  opacity: .3s;
-  transition: .3s ease;
+  margin-left: 20px;
   background-color: transparent;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-
-.editReplyDivContainer{
+  border-radius: 5px;
+  object-fit: contain;
   position: relative;
-  height: 100%;
-  width: 100%;
-  max-width: 400px;
-}
 
-.overlay:hover{
-  opacity: .7;
-}
+  .replyEditImageContainer{
+    display: flex;
+    border:  1px solid rgba(0, 0, 0, 0.203);
+    height: 400px;
+    color: white;
+    width: 430px;
+    margin-left: 10px;
+    background-color: transparent;
+    border-radius: 5px;
 
-.replyEditEditImg{
-  width: 100%;
-  height: 100%;
-  margin-top: 20px;
-  /* align-items: center; */
-}
+    .replyEditPreviewImage{
+      width: 425px;
+      height: 100%;
+      position: absolute;
+      padding: 5px;
+    }
 
+    .replyEditImageSubmit{
+      z-index: 4;
+      position: absolute;
+      top: 5px;
+      left: 15px;
+      background-color: transparent;
+      border: none;
+      font-size: 40px;
+      background-color: transparent;
 
+      .replyEditUploadIcon{
+        font-size: 40px;
+        color: var(--theme);
+        cursor: pointer;
 
+        &:hover{
+          color: green;
+        }
+      }
+    }
+  }
 
-.replyEditImgIcon{
-  cursor: pointer;
-  font-size: 1000px;
-  z-index: 20;
-  position: absolute;
-  left: 50%;
-  bottom: 80%;
+  .replyEditImageDiv{
+    display: flex;
+    border:  1px solid rgba(0, 0, 0, 0.203);
+    height: 400px;
+    color: white;
+    width: 430px;
+    margin-left: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor:pointer;
+
+    .replyEditImageCenter{
+      margin-left: 150px;
+      position: relative;
+
+      .replyEditBlankContainer{
+        height: 100%;
+        width: 425px;
+        background-color: rgba(58, 58, 58, 0.733);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-35%, -50%);
+        z-index: 5;
+        opacity: 0;
+        border-radius: 4px;
+
+        &:hover{
+          opacity: 1;
+        }
+
+        .replyEditAddIcon{
+          margin-top: 150px;
+          object-fit: contain;
+        }
+      }
+
+      .replyEditEditImg{
+        width: 425px;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-35%, -50%);
+        border-radius: 20px;
+        padding: 10px;
+      }
+
+      .replyEditBlankNoImageContainer{
+        height: 95%;
+        background-color: white;
+        width: 420px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-34.5%, -50%);
+        border-radius: 4px;
+
+        &:hover{
+          background-color: rgb(230, 230, 230);
+          .replyEditNoImage{
+            color:rgb(191, 191, 191)
+          }
+        }
+
+        .replyEditNoImage{
+          margin-top: 160px;
+          color: var(--theme);
+        }
+      }
+    }
+  }
 }

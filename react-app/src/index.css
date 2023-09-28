@@ -23,3 +23,13 @@ ul{
   color: red;
   font-weight: bolder;
 }
+
+.loading_image{
+  font-weight: 800;
+  font-size: 20px;
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+}

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Button } from '@mui/material'
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import './ReplyEditImageUpload.scss'
-
+import UploadIcon from '@mui/icons-material/Upload';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 
 const ReplyEditImageUpload = ({setReplyUrl, replyUrl}) => {
 
@@ -11,7 +12,7 @@ const ReplyEditImageUpload = ({setReplyUrl, replyUrl}) => {
   const [uploadedImg, setUploadImg] = useState(false);
   const [prevImgUrl, setPrevImgUrl] = useState("");
 
-  const editReplyImageSubmit = async (e) => {
+  const handleImageSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     setImageLoading(true);
@@ -40,7 +41,7 @@ const ReplyEditImageUpload = ({setReplyUrl, replyUrl}) => {
 
   return (
     <div className="replyEditFileUploadDiv">
-      <form onSubmit={editReplyImageSubmit}>
+      <form onSubmit={handleImageSubmit}>
 
       <input
       type='file'
@@ -51,61 +52,72 @@ const ReplyEditImageUpload = ({setReplyUrl, replyUrl}) => {
       />
 
       {image? (
-        <div className="replyEditImgContainer">
+        <div className="replyEditImageContainer">
           <center>
 
           <img
-          // style={
-          //   {height:'50vh',
-          //   // position:'abolute',
-          //   width:'85%'
-          // }}
-          className="replyEditImgPreview"
+          className="replyEditPreviewImage"
           as='label'
           src={URL.createObjectURL(image)}
           alt='Image preview'
-
+          // width={'350px'}
           />
-          {imageLoading && <p className="replyEditLoadingImg">...Loading</p>}
+          {imageLoading && <p className="loading_image">...Loading</p>}
           </center>
-            <button className='replyEditImgSubmit' type='submit'>Upload</button>
+            <button title ='Upload Image' className='replyEditImageSubmit' type='submit'><UploadIcon className='replyEditUploadIcon'/></button>
         </div>
-      )
-      :
-      <div className='editReplyDivContainer'>
+      ): <>
 
-      <img
-      src={replyUrl}
-      alt=""
-      className="replyEditEditImg"
-      />
 
       <Button
       as='label'
       htmlFor='replyEditUtiUpload'
       cursor='pointer'
-      className='overlay'
       mb={4}
       >
 
-        {/* <div className="replyEditImgUploadDiv"> */}
+        <div className="replyEditImageDiv">
 
-          {/* <div className="replyEditImgCenter"> */}
+          <div className="replyEditImageCenter">
 
-            {/* <center> */}
-              {/* <div className="replyEditImgContainerBefore"> */}
+            <center>
 
-                {/* <div className="overlay"> */}
-                <CameraAltIcon className='replyEditImgIcon'/>
-                {/* </div> */}
-              {/* </div> */}
-            {/* </center> */}
+              {replyUrl ?
+              <>
+              <div className='replyEditBlankContainer'>
 
-          {/* </div> */}
+                <center>
+                  <div className="replyEditBlank"></div>
+                  <AddToPhotosIcon className='replyEditAddIcon'/>
+                  <p className="replyEditAddImageText">Edit Image</p>
+                </center>
 
-        {/* </div> */}
+              </div>
+               <img
+              src={replyUrl}
+              alt=""
+              className="replyEditEditImg" />
+              </>
+              :
+              <>
+
+              <div className='replyEditBlankNoImageContainer'>
+              <div className="replyEditNoImage">
+              <AddToPhotosIcon className='replyEditNoImageIcon'/>
+              <p>Add Photo</p>
+              </div>
+
+              </div>
+              </>}
+
+
+            </center>
+
+          </div>
+
+        </div>
       </Button>
-      </div>}
+      </>}
       </form>
     </div>
   );

@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as postActions from '../../store/post'
 import CloseShapIcon from '@mui/icons-material/CloseSharp'
 import { Avatar } from '@mui/material'
-import ShareImageUpload from '../shareImageUpload/ShareImageUpload'
+// import ShareImageUpload from '../shareImageUpload/ShareImageUpload'
 import './PostEditModal.scss'
-import ReplyEditImageUpload from '../replyEditImageUpload/ReplyEditImageUpload'
+// import ReplyEditImageUpload from '../replyEditImageUpload/ReplyEditImageUpload'
 import PostEditImageUpload from '../posteditImageUpload/PostEditImageUpload'
 
-const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, firstName, lastName, userUrl}) => {
+const PostEditModal = ({setShowModal, post, postUrl, id, firstName, lastName, userUrl}) => {
   const dispatch = useDispatch()
   const currentPost = useSelector(state => state.posts[id])
   // state
@@ -25,10 +25,6 @@ const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, 
     dispatch(postActions.getPostById(id))
   },[dispatch])
 
-  const removeImage = (e) => {
-    e.preventDefault()
-    setPostUrlData(null)
-  }
 
   const handleSubmit = async(e) => {
     e.preventDefault()
@@ -47,8 +43,8 @@ const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, 
 
     if(!error.length){
       setErrorMessage([])
-      // hideForm()
       dispatch(postActions.updateAPost(payload, id))
+      setShowModal(false)
     }
 
 
@@ -57,11 +53,6 @@ const PostEditModal = ({setShowModal, sessionUser, post, postUrl, hideForm, id, 
       setErrorMessage(error)
     }
   }
-
-  // const handleEdit = (e) => {
-  //   e.preventDefault()
-  //   setErrorMessage([])
-  // }
 
   return (
     <div className='postEdit'>

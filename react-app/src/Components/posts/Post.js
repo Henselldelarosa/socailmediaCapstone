@@ -155,7 +155,7 @@ const Post = ({
           <> {
             singleReply && singleReply.reverse().map((reply) => {
               return (
-                <div key={reply.id}>
+                <div key={reply?.id}>
                   <Replies
                     reply={reply?.reply}
                     id={reply?.id}
