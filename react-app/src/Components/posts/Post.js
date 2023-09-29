@@ -15,6 +15,7 @@ import CreateReply from '../createReply/CreateReply'
 import {getAllPostLikes} from '../../store/postLike'
 import PostLike from '../postLike/PostLike'
 import {deletePost} from '../../store/post'
+import DateCreated from '../date/DateCreated'
 
 
 const Post = ({
@@ -84,8 +85,8 @@ const Post = ({
                 {
                 `${firstName} ${lastName}`
               }</span>
-              <span className="postDate">
-                {dateCreated}</span>
+
+              <DateCreated dateCreated={dateCreated}/>
             </div>
 
             <div className="postTopRight">
@@ -119,10 +120,7 @@ const Post = ({
 
             <div className="postBottomRight">
               <span className="postCommentText">
-                {
-                singleReply.length
-              }
-                comments · share
+                {singleReply.length <= 1 ? `${singleReply.length} comment` : `${singleReply.length} comments`} · share
               </span>
             </div>
           </div>
@@ -150,10 +148,11 @@ const Post = ({
             </div>
           </div>
         </div>
-        <hr className="posthr"/> {
+        {
         showReply && (
           <> {
             singleReply && singleReply.reverse().map((reply) => {
+              <hr className="posthr"/>
               return (
                 <div key={reply?.id}>
                   <Replies

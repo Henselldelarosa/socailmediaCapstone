@@ -18,28 +18,6 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-# @likes_routes.route('/', methods=['GET'])
-# @login_required
-# def get_all_likes():
-#     all_likes = db.sessio
-
-# @likes_routes.route('/replies/<int:id>', methods=['GET'])
-# @login_required
-# def add_like(id):
-#     # reply = Reply.query.filter(Reply.id == id).first()
-#     like = Like.query.filter(Like.userId == current_user.id, Like.replyId == id).first()
-
-#     if like:
-#         db.session.delete(like)
-#         db.session.commit()
-
-#     else:
-#         like = Like(userId=current_user.id, replyId=id)
-#         db.session.add(like)
-#         db.session.commit()
-
-#     return like.to_dict()
-
 
 @likes_routes.route('/replies/<int:id>', methods=['POST'])
 @login_required
@@ -66,10 +44,6 @@ def reply_upvote_likes(id):
 @likes_routes.route('/replies/<int:id>', methods=['GET'])
 @login_required
 def get_reply_likes(id):
-    # reply_like = Like.query.filter(
-    #     Like.replyId == id,
-    #     Like.userId == current_user.id
-    # ).first()
     reply_like = Like.query.filter(Like.userId == current_user.id and Reply.id == id)
     if reply_like:
      return {'likes': [like.to_dict() for like in reply_like]}

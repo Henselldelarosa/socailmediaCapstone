@@ -22,75 +22,33 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ReplyLike from '../replyLike/ReplyLike';
 import EditReplyModalRender from '../editReplyModal/EditReplyModalRender';
 import ReplyEditDeleteDrop from '../replyEditDeleteDrop/ReplyEditDeleteDrop';
+import DateCreated from '../date/DateCreated';
 const Replies = ({
   id,
-  user,
   reply,
   replyUrl,
   dateCreated,
-  postId,
-  reactions,
   userUrl,
   firstName,
   lastName,
-  userId
 }) => {
   const {darkMode} = useContext(DarkModeContext)
   const dispatch = useDispatch()
-  const replies = useSelector(state => Object.values(state.replies))
-  const sessionUser = useSelector(state => state.session.user)
   const likes = useSelector(state => state.likes[id])
-
-  const [showButton, setShowButton] = useState(false)
-  const [showEdit, setShowEdit] = useState(false)
 
   useEffect(() => {
     dispatch(getAllReplyLikes(id))
   },[dispatch,id])
 
-  const handleShow = (e) => {
-    e.preventDefault()
-
-    if(showButton) {
-      setShowButton(false)
-    }else{
-      setShowButton(true)
-    }
-  }
-
-  const handleClose =() =>{
-    setShowButton(false)
-  }
-
   const handleDelete = (e) => {
     e.preventDefault()
     dispatch(deleteReplies(id))
-    handleClose()
   }
 
   return (
     <div className='reply'>
-    {showEdit ? (
-      <>
-      {/* <EditReplyModalRender
-      id={id}
-      reply={reply}
-      replyUrl={replyUrl}
-      sessionUser={sessionUser}
-      /> */}
-        {/* <ReplyEdit
-        id={id}
-        firstName={firstName}
-        lastName={lastName}
-        reply={reply}
-        replyUrl={replyUrl}
-        dateCreated={dateCreated}
-        hideForm={() => setShowEdit(false)}
-        /> */}
-         {/* <ReplyEditImageUpload replyUrl={replyUrl} setReplyUrl={setReplyData}/> */}
-      </>
 
-    ):(<div className="replyWrapper">
+    <div className="replyWrapper">
 
                <div className="replyTop">
 
@@ -101,7 +59,7 @@ const Replies = ({
                   className="replyProfileImg"
                   />
                   <span className="replyUsername">{`${firstName} ${lastName}`}</span>
-                  <span className="replyDate">{dateCreated}</span>
+                  <DateCreated dateCreated={dateCreated}/>
                 </div>
 
                 <div className="replyTopRight">
@@ -110,23 +68,7 @@ const Replies = ({
                   reply={reply}
                   replyUrl={replyUrl}
                   id={id}
-                  setShowModal={handleClose}
                   />
-                  {/* <IconButton>
-                    {userId === sessionUser.id &&(
-                      <>
-                    <MoreVert onClick={handleShow} className='replyVertButton'/>
-                    {showButton && (
-                      <div className='replyActionButton'>
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={() =>
-                         { setShowEdit(true)
-                         handleClose()}}>Edit</button>
-                      </div>
-                    )}
-                    </>
-                    )}
-                  </IconButton> */}
                 </div>
               </div>
 
@@ -155,60 +97,11 @@ const Replies = ({
                 />
 
               </div>
-          </div>)}
+          </div>
+
     </div>
 
   )
 }
 
 export default Replies
-
-//     <div className='reply'>
-    //         <div className="replyWrapper">
-
-    //           <div className="replyTop">
-
-    //             <div className="replyTopLeft">
-    //               <img
-    //               src={userUrl}
-    //               alt=""
-    //               className="replyProfileImg"
-    //               />
-    //               <span className="replyUsername">{`${firstName} ${lastName}`}</span>
-    //               <span className="replyDate">{dateCreated}</span>
-    //             </div>
-
-    //             <div className="replyTopRight">
-    //               <IconButton>
-    //                 {replies[id]?.userId !== sessionUser.id &&(
-    //                   <>
-    //                 <MoreVert onClick={handleShow} className='replyVertButton'/>
-    //                 {showButton && (
-    //                   <div className='replyActionButton'>
-    //                     <button onClick={handleDelete}>Delete</button>
-    //                     <button onClick={() => (setShowEdit(true))}>Edit</button>
-    //                   </div>
-    //                 )}
-    //                 </>
-    //                 )}
-    //               </IconButton>
-    //             </div>
-    //           </div>
-
-    //           <div className="replyCenter">
-    //             <span className="replyText">{reply}</span>
-    //             <img
-    //             src={replyUrl}
-    //             alt=""
-    //             className="replyImg"
-    //             />
-    //           </div>
-
-    //           <div className="replyBottom">
-
-    //             <div className="replyBottomLeft">
-    //               <ThumbUp className='replyButtomLeftIcon'/>
-    //             </div>
-    //           </div>
-    //       </div>
-    // </div>

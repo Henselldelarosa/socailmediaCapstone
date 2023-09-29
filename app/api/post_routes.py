@@ -17,11 +17,6 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-# def post_reply(inputs):
-#     final = {'posts':[]}
-#     for input in inputs:
-#         final
-
 
 # get all post
 @posts_routes.route('/', methods=['GET'])
