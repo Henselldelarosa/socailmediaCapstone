@@ -36,6 +36,7 @@ class User(db.Model, UserMixin):
     post_likes = db.relationship('PostLike', back_populates='user')
     searches = db.relationship('Search', back_populates='user')
     images = db.relationship('Image', back_populates='user')
+    stories = db.relationship('Story', back_populates='user')
     followed = db.relationship(
         'User', secondary=followers,
         primaryjoin=(followers.c.followed_id == id),
@@ -103,7 +104,6 @@ class User(db.Model, UserMixin):
             'lastName': self.lastName,
             'userUrl': self.userUrl
         }
-
 
     def to_reply_dict(self):
         return{

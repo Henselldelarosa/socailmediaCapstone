@@ -6,3 +6,4 @@ from .like import Like
 from .search import Search
 from .image import Image
 from .post_like import PostLike
+from .story  import Story

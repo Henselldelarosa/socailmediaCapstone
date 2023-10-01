@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from app.models import Post, Reply, db
 from app.forms import PostForm
 from sqlalchemy import inspect
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_required
 
 posts_routes = Blueprint('posts', __name__)
 
