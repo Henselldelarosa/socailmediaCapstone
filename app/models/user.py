@@ -29,6 +29,7 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String(255), default='N/A')
     country = db.Column(db.String(255), default='N/A')
     relationship = db.Column(db.String(255), default='Single')
+    # theme = db.Column(db.Boolean, default = False)
 
     posts = db.relationship('Post', back_populates='user')
     replies = db.relationship('Reply', back_populates='user')

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField
+from wtforms import StringField, IntegerField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import User
 
@@ -13,3 +13,4 @@ class UserForm(FlaskForm):
     address = StringField('phone_number')
     country = StringField('country')
     relationship = StringField('relationship')
+    theme = BooleanField('theme')

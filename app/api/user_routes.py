@@ -48,6 +48,7 @@ def edit_user(id):
 
     if form.validate_on_submit():
         wanted_user = User.query.get(id)
+
         if wanted_user.id == current_user.id:
             wanted_user.firstName = form.data['firstName']
             wanted_user.lastName = form.data['lastName']
@@ -58,7 +59,6 @@ def edit_user(id):
             wanted_user.address = form.data['address']
             wanted_user.country = form.data['country']
             wanted_user.relationship = form.data['relationship']
-
             db.session.commit()
             return wanted_user.to_dict()
 
