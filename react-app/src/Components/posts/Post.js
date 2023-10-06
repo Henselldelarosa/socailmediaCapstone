@@ -112,17 +112,19 @@ const Post = ({
           <div className="postBottom">
 
             <div className="postBottomLeft">
-              <ThumbUp className='bottomLeftIcon'
+              {/* <ThumbUp className='bottomLeftIcon'
                 style={
                   {color: '#1877f2'}
-                }/> {/* <span className="postLikeCounter">{post.like}</span> */} </div>
+                }/> */}
+                {/* <span className="postLikeCounter">{post.like}</span> */} </div>
 
             <div className="postBottomRight">
               <span className="postCommentText">
                 {
                 singleReply.length
               }
-                comments · share
+                {/* comments · share */}
+                comments
               </span>
             </div>
           </div>
@@ -144,10 +146,10 @@ const Post = ({
                 className="footerText">Comment</span>
             </div>
 
-            <div className="postBottomFooterItem">
+            {/* <div className="postBottomFooterItem">
               <ShareOutlined className='footerIcon'/>
               <span className="footerText">Share</span>
-            </div>
+            </div> */}
           </div>
         </div>
         <hr className="posthr"/> {
